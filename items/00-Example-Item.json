@@ -1,0 +1,130 @@
+{
+  "_meta": {
+    "patch": "OB-XX",
+    "fecha": "2026-10-23",
+    "nota": "Valores de ejemplo, NO son los reales. Reemplazar con datos del juego."
+  },
+  "items": [
+    {
+      "id": "warriors_axe",
+      "name": "Warrior's Axe",
+      "category": "starter",
+      "tier": 1,
+      "cost": 600,
+      "builds_from": [],
+      "stats": {
+        "strength": 10,
+        "max_health": 75
+      },
+      "passive": {
+        "description": "Texto completo de la pasiva tal como aparece en el juego.",
+        "values": {
+          "bonus_damage": 10,
+          "duration_s": 3
+        }
+      },
+      "active": null,
+      "tags": ["starter", "solo", "sustain"]
+    },
+    {
+      "id": "warriors_axe_upgrade",
+      "name": "Nombre del starter mejorado",
+      "category": "starter",
+      "tier": 2,
+      "cost": 800,
+      "builds_from": ["warriors_axe"],
+      "stats": {
+        "strength": 20,
+        "max_health": 150
+      },
+      "passive": {
+        "description": "Texto completo de la pasiva mejorada.",
+        "values": {}
+      },
+      "active": null,
+      "upgrade_condition": "Se mejora automáticamente al nivel 12 (o la condición real).",
+      "tags": ["starter", "solo"]
+    },
+    {
+      "id": "sundering_axe",
+      "name": "Componente de ejemplo (tier 2)",
+      "category": "component",
+      "tier": 2,
+      "cost": 900,
+      "builds_from": ["light_blade"],
+      "stats": {
+        "strength": 15,
+        "penetration_percent": 10
+      },
+      "passive": null,
+      "active": null,
+      "tags": ["penetration"]
+    },
+    {
+      "id": "the_crusher",
+      "name": "The Crusher",
+      "category": "final",
+      "tier": 3,
+      "cost": 1100,
+      "builds_from": ["sundering_axe", "light_blade"],
+      "stats": {
+        "strength": 40,
+        "penetration_flat": 10,
+        "penetration_percent": 10
+      },
+      "passive": {
+        "description": "Texto completo de la pasiva.",
+        "values": {
+          "damage_base": 20,
+          "damage_strength_scaling": 0.15,
+          "tick_interval_s": 0.5,
+          "duration_s": 2
+        }
+      },
+      "active": null,
+      "unique_group": null,
+      "tags": ["penetration", "burst", "strength"]
+    },
+    {
+      "id": "item_con_activa",
+      "name": "Objeto final con activa (ejemplo)",
+      "category": "final",
+      "tier": 3,
+      "cost": 1000,
+      "builds_from": ["componente_a", "componente_b"],
+      "stats": {
+        "physical_protection": 40,
+        "max_health": 200
+      },
+      "passive": null,
+      "active": {
+        "description": "Texto completo de la activa.",
+        "cooldown_s": 90,
+        "values": {
+          "shield_base": 150,
+          "duration_s": 3
+        }
+      },
+      "tags": ["active", "defense", "anti-burst"]
+    },
+    {
+      "id": "purification_beads",
+      "name": "Purification Beads",
+      "category": "relic",
+      "tier": 1,
+      "cost": 0,
+      "builds_from": [],
+      "stats": {},
+      "passive": null,
+      "active": {
+        "description": "Texto completo de la reliquia.",
+        "cooldown_s": 150,
+        "values": {
+          "cc_immunity_s": 2
+        }
+      },
+      "upgrades_into": "nombre_de_la_mejora_si_existe",
+      "tags": ["relic", "anti-cc"]
+    }
+  ]
+}

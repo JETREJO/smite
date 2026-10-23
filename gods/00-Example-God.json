@@ -1,0 +1,120 @@
+{
+  "_meta": {
+    "patch": "OB-XX",
+    "nota": "Estructura de ejemplo. Los números NO son los reales."
+  },
+  "id": "ra",
+  "name": "Ra",
+  "pantheon": "Egyptian",
+  "roles": ["mid", "support"],
+  "playstyle_tags": ["ranged", "poke", "zone control", "healing"],
+  "basic_attack": {
+    "type": "ranged",
+    "damage_type": "physical",
+    "range": 55,
+    "progression": "1/1/1 o el patrón de golpes que tenga",
+    "notes": "Cualquier detalle especial de sus básicos."
+  },
+  "base_stats": {
+    "health":            { "base": 400, "per_level": 70 },
+    "mana":              { "base": 250, "per_level": 45 },
+    "physical_protection": { "base": 10, "per_level": 2.5 },
+    "magical_protection":  { "base": 30, "per_level": 0.9 },
+    "attack_speed":      { "base": 1.0, "per_level": 0.01 },
+    "movement_speed":    { "base": 360, "per_level": 0 },
+    "basic_attack_damage": { "base": 30, "per_level": 2 },
+    "hp5":               { "base": 6, "per_level": 0.5 },
+    "mp5":               { "base": 4, "per_level": 0.4 }
+  },
+  "passive": {
+    "name": "Speed of Light",
+    "description": "Texto completo de la pasiva tal como aparece en el juego.",
+    "values": {}
+  },
+  "abilities": [
+    {
+      "slot": 1,
+      "name": "Celestial Beam",
+      "description": "Texto completo de la habilidad.",
+      "targeting": "ground target, delayed",
+      "damage_type": "magical",
+      "damage": {
+        "per_rank": [80, 120, 160, 200, 240],
+        "scaling": { "strength": 0.0, "intelligence": 0.7 }
+      },
+      "cooldown_s": [8, 8, 8, 8, 8],
+      "mana_cost": [50, 55, 60, 65, 70],
+      "range": 70,
+      "radius": 10,
+      "effects": [],
+      "notes": ""
+    },
+    {
+      "slot": 2,
+      "name": "Divine Light",
+      "description": "Texto completo.",
+      "targeting": "cone",
+      "damage_type": "magical",
+      "damage": {
+        "per_rank": [60, 100, 140, 180, 220],
+        "scaling": { "strength": 0.0, "intelligence": 0.5 }
+      },
+      "cooldown_s": [13, 13, 13, 13, 13],
+      "mana_cost": [60, 65, 70, 75, 80],
+      "effects": [
+        { "type": "blind", "duration_s": [1.5, 1.5, 1.5, 1.5, 1.5] },
+        { "type": "slow", "amount_percent": [30, 30, 30, 30, 30], "duration_s": 2 }
+      ]
+    },
+    {
+      "slot": 3,
+      "name": "Solar Blessing",
+      "description": "Texto completo.",
+      "damage_type": "none",
+      "heal": {
+        "per_rank": [10, 15, 20, 25, 30],
+        "scaling": { "intelligence": 0.1 },
+        "interval_s": 1
+      },
+      "cooldown_s": [15, 15, 15, 15, 15],
+      "mana_cost": [60, 60, 60, 60, 60],
+      "effects": [
+        { "type": "buff", "stat": "attack_speed_percent", "per_rank": [10, 15, 20, 25, 30] }
+      ]
+    },
+    {
+      "slot": 4,
+      "name": "Searing Pain",
+      "description": "Texto completo.",
+      "targeting": "line",
+      "damage_type": "magical",
+      "damage": {
+        "per_rank": [250, 350, 450, 550, 650],
+        "scaling": { "strength": 0.0, "intelligence": 1.0 }
+      },
+      "cooldown_s": [90, 85, 80, 75, 70],
+      "mana_cost": [100, 100, 100, 100, 100],
+      "effects": []
+    }
+  ],
+  "aspects": [
+    {
+      "name": "Aspect of Thermotherapy",
+      "description": "Texto completo del aspecto.",
+      "modifies": [
+        {
+          "target": "ability:3",
+          "change": "Solar Blessing puede colocarse en aliados y se adhiere a ellos.",
+          "numeric_changes": {}
+        },
+        {
+          "target": "ability:4",
+          "change": "Searing Pain cura a los aliados que golpea; su daño ya no escala.",
+          "numeric_changes": {
+            "ally_heal_per_rank": [100, 150, 200, 250, 300]
+          }
+        }
+      ]
+    }
+  ]
+}
