@@ -1,9 +1,16 @@
 import type { Authorship } from "@/interfaces/authorship.interface";
 
-/** Marks data that Claude created or changed while testing; shows nothing for the user's own data. */
+/**
+ * Marks data that still belongs to Claude. A row Claude created becomes the user's once the user
+ * edits it (updated_by = "user"), so it shows nothing, like the user's own data.
+ */
 export function AuthorBadge({ createdBy, updatedBy }: Authorship) {
   const label =
-    createdBy === "claude" ? "Registrado por Claude" : updatedBy === "claude" ? "Modificado por Claude" : null;
+    updatedBy !== "claude"
+      ? null
+      : createdBy === "claude"
+        ? "Registrado por Claude"
+        : "Modificado por Claude";
   if (!label) return null;
 
   return (

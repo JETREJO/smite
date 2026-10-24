@@ -48,12 +48,15 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 
 - `gods`, `items`, `builds`, `specializations`, `tags` y los catálogos tienen `created_by` y `updated_by`: `user` (el usuario desde la app), `claude` (pruebas de Claude) o `seed` (`db/seed.sql`). El valor por defecto es `user`: un dato sin marcar se trata como del usuario.
 - Las tablas hijas (habilidades, stats, componentes, items de una build…) heredan el autor de su dios, item o build.
+- **Adueñarse de un dato:** si Claude registra algo y luego el usuario lo edita desde la app, `updated_by` pasa a `user` y desde ese momento el registro es del usuario: ya no se borra en la limpieza y deja de mostrar la etiqueta. Un registro es "de Claude" solo si `created_by = 'claude'` **y** `updated_by = 'claude'`.
+- Los datos reales que el usuario le pide a Claude capturar (p.ej. Anubis) se registran como `claude` hasta que el usuario los edite.
 - La app escribe el autor según `DATA_AUTHOR`: `npm run dev` → `user`; `npm run dev:claude` → `claude` (puerto 3001, compila en `.next-claude/` para poder correr al mismo tiempo que el servidor del usuario).
 - **Reglas para Claude:**
   - Puede probar en la base real, pero **nunca borra ni edita datos del usuario** (`created_by = 'user'`).
   - Prueba con `npm run dev:claude`; si inserta con SQL, marca `created_by = 'claude'`.
   - Para probar una edición, crea su propio registro y lo edita.
   - Limpia sus datos solo con `npm run db:clean-claude` (respaldo antes; `-- --dry-run` para simular). Conserva lo que datos del usuario necesitan y reporta los registros del usuario que Claude haya modificado.
+  - Antes de limpiar, revisa con `-- --dry-run` que no se vaya a borrar un dato real que el usuario pidió capturar y aún no ha editado.
   - Nunca usa `db:reset -- --force`.
 - En la página de un dios, item o build aparece "Registrado por Claude" o "Modificado por Claude" cuando aplica.
 

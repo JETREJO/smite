@@ -1,4 +1,6 @@
-// Deletes only the test data Claude created (created_by = 'claude'); the user's data is never touched.
+// Deletes only Claude's test data: rows Claude created and nobody else changed
+// (created_by = 'claude' AND updated_by = 'claude'). The user's data is never touched, and a row
+// Claude created becomes the user's as soon as the user edits it (updated_by = 'user').
 // Usage: npm run db:clean-claude              (makes a backup first, then deletes)
 //        npm run db:clean-claude -- --dry-run (only shows what would be deleted)
 //
@@ -29,14 +31,14 @@ function clean() {
   const deleted = {};
   const kept = {};
 
-  deleted.builds = names("SELECT name FROM builds WHERE created_by = 'claude' ORDER BY name");
-  db.prepare("DELETE FROM builds WHERE created_by = 'claude'").run();
+  deleted.builds = names("SELECT name FROM builds WHERE created_by = 'claude' AND updated_by = 'claude' ORDER BY name");
+  db.prepare("DELETE FROM builds WHERE created_by = 'claude' AND updated_by = 'claude'").run();
 
   // An item can only go once no remaining item or build uses it; deleting a parent frees its components.
   deleted.items = [];
   const deletableItems = db.prepare(
     `SELECT id, name FROM items i
-      WHERE created_by = 'claude'
+      WHERE created_by = 'claude' AND updated_by = 'claude'
         AND NOT EXISTS (SELECT 1 FROM item_recipes r WHERE r.component_id = i.id)
         AND NOT EXISTS (SELECT 1 FROM build_items bi WHERE bi.item_id = i.id)`,
   );
@@ -47,39 +49,46 @@ function clean() {
       deleted.items.push(item.name);
     }
   }
-  kept.items = names("SELECT name FROM items WHERE created_by = 'claude' ORDER BY name");
+  kept.items = names("SELECT name FROM items WHERE created_by = 'claude' AND updated_by = 'claude' ORDER BY name");
 
   // Claude's builds are gone, so any build left on a Claude god belongs to the user.
   deleted.gods = names(
-    `SELECT name FROM gods g WHERE created_by = 'claude'
+    `SELECT name FROM gods g WHERE created_by = 'claude' AND updated_by = 'claude'
        AND NOT EXISTS (SELECT 1 FROM builds b WHERE b.god_id = g.id) ORDER BY name`,
   );
   db.prepare(
-    `DELETE FROM gods WHERE created_by = 'claude'
+    `DELETE FROM gods WHERE created_by = 'claude' AND updated_by = 'claude'
        AND NOT EXISTS (SELECT 1 FROM builds b WHERE b.god_id = gods.id)`,
   ).run();
-  kept.gods = names("SELECT name FROM gods WHERE created_by = 'claude' ORDER BY name");
+  kept.gods = names("SELECT name FROM gods WHERE created_by = 'claude' AND updated_by = 'claude' ORDER BY name");
 
   deleted.specializations = names(
-    `SELECT name FROM specializations s WHERE created_by = 'claude'
+    `SELECT name FROM specializations s WHERE created_by = 'claude' AND updated_by = 'claude'
        AND NOT EXISTS (SELECT 1 FROM god_specializations gs WHERE gs.specialization_id = s.id) ORDER BY name`,
   );
   db.prepare(
-    `DELETE FROM specializations WHERE created_by = 'claude'
+    `DELETE FROM specializations WHERE created_by = 'claude' AND updated_by = 'claude'
        AND NOT EXISTS (SELECT 1 FROM god_specializations gs WHERE gs.specialization_id = specializations.id)`,
   ).run();
 
   deleted.tags = names(
-    `SELECT name FROM tags t WHERE created_by = 'claude'
+    `SELECT name FROM tags t WHERE created_by = 'claude' AND updated_by = 'claude'
        AND NOT EXISTS (SELECT 1 FROM item_tags it WHERE it.tag_id = t.id) ORDER BY name`,
   );
   db.prepare(
-    `DELETE FROM tags WHERE created_by = 'claude'
+    `DELETE FROM tags WHERE created_by = 'claude' AND updated_by = 'claude'
        AND NOT EXISTS (SELECT 1 FROM item_tags it WHERE it.tag_id = tags.id)`,
   ).run();
 
   return { deleted, kept };
 }
+
+// Rows Claude created that the user edited afterwards: they belong to the user now.
+const takenByUser = {
+  gods: names("SELECT name FROM gods WHERE created_by = 'claude' AND updated_by = 'user' ORDER BY name"),
+  items: names("SELECT name FROM items WHERE created_by = 'claude' AND updated_by = 'user' ORDER BY name"),
+  builds: names("SELECT name FROM builds WHERE created_by = 'claude' AND updated_by = 'user' ORDER BY name"),
+};
 
 // The user's rows that Claude edited are never deleted; they're only reported.
 const editedByClaude = {
@@ -124,5 +133,6 @@ const deletedTotal = countDeleted(result.deleted);
 console.log(isDryRun ? "Simulación: no se borró nada." : `Listo: se borraron ${deletedTotal} registros de prueba.`);
 print(isDryRun ? "Se borraría:" : "Borrado:", result.deleted);
 print("Se conservan porque datos del usuario dependen de ellos:", result.kept);
+print("Registrados por Claude pero editados por el usuario (ahora son del usuario, no se tocan):", takenByUser);
 print("Registros del usuario modificados por Claude (no se tocan):", editedByClaude);
 if (deletedTotal === 0) console.log("No había datos de prueba de Claude que borrar.");
