@@ -21,6 +21,12 @@ CREATE TABLE roles (
     name TEXT NOT NULL UNIQUE
 );
 
+CREATE TABLE attack_types (
+    id   INTEGER PRIMARY KEY,
+    key  TEXT NOT NULL UNIQUE,          -- melee, ranged
+    name TEXT NOT NULL
+);
+
 CREATE TABLE damage_types (
     id   INTEGER PRIMARY KEY,
     key  TEXT NOT NULL UNIQUE,          -- physical, magical, true
@@ -29,11 +35,15 @@ CREATE TABLE damage_types (
 
 -- Todos los stats que pueden tener un dios o un item (strength, health, ...).
 -- Un solo catálogo para que el calculador de builds sume stats de dios + items.
+-- applies_to_gods / applies_to_items indican en qué formularios aparece cada stat.
 CREATE TABLE stats (
-    id         INTEGER PRIMARY KEY,
-    key        TEXT NOT NULL UNIQUE,
-    name       TEXT NOT NULL,
-    is_percent INTEGER NOT NULL DEFAULT 0 CHECK (is_percent IN (0, 1))
+    id               INTEGER PRIMARY KEY,
+    key              TEXT NOT NULL UNIQUE,
+    name             TEXT NOT NULL,
+    is_percent       INTEGER NOT NULL DEFAULT 0 CHECK (is_percent IN (0, 1)),
+    applies_to_gods  INTEGER NOT NULL DEFAULT 0 CHECK (applies_to_gods IN (0, 1)),
+    applies_to_items INTEGER NOT NULL DEFAULT 0 CHECK (applies_to_items IN (0, 1)),
+    sort_order       INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE item_categories (
@@ -56,7 +66,13 @@ CREATE TABLE ability_value_types (
     name TEXT NOT NULL
 );
 
--- Etiquetas libres compartidas por dioses e items (poke, sustain, anti-cc, ...).
+-- Especializaciones de los dioses (Sniper, Healing, Buffs, ...).
+CREATE TABLE specializations (
+    id   INTEGER PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE
+);
+
+-- Etiquetas libres de los items (sustain, anti-cc, penetration, ...).
 CREATE TABLE tags (
     id   INTEGER PRIMARY KEY,
     name TEXT NOT NULL UNIQUE
@@ -70,8 +86,9 @@ CREATE TABLE gods (
     id                          INTEGER PRIMARY KEY,
     slug                        TEXT NOT NULL UNIQUE,
     name                        TEXT NOT NULL UNIQUE,
+    title                       TEXT,                 -- p.ej. "Dios del Sol"
     pantheon_id                 INTEGER NOT NULL REFERENCES pantheons(id),
-    basic_attack_type           TEXT NOT NULL CHECK (basic_attack_type IN ('melee', 'ranged')),
+    attack_type_id              INTEGER NOT NULL REFERENCES attack_types(id),
     basic_attack_damage_type_id INTEGER REFERENCES damage_types(id),
     basic_attack_range          REAL,
     basic_attack_progression    TEXT,
@@ -85,10 +102,10 @@ CREATE TABLE god_roles (
     PRIMARY KEY (god_id, role_id)
 );
 
-CREATE TABLE god_tags (
-    god_id INTEGER NOT NULL REFERENCES gods(id) ON DELETE CASCADE,
-    tag_id INTEGER NOT NULL REFERENCES tags(id),
-    PRIMARY KEY (god_id, tag_id)
+CREATE TABLE god_specializations (
+    god_id            INTEGER NOT NULL REFERENCES gods(id) ON DELETE CASCADE,
+    specialization_id INTEGER NOT NULL REFERENCES specializations(id),
+    PRIMARY KEY (god_id, specialization_id)
 );
 
 -- Stat a nivel 1 = base; en el nivel N = base + per_level * (N - 1).
@@ -97,6 +114,14 @@ CREATE TABLE god_base_stats (
     stat_id   INTEGER NOT NULL REFERENCES stats(id),
     base      REAL NOT NULL,
     per_level REAL NOT NULL DEFAULT 0,
+    PRIMARY KEY (god_id, stat_id)
+);
+
+-- Escalado del ataque básico (p.ej. 20% de Strength + 20% de Intelligence).
+CREATE TABLE god_basic_attack_scalings (
+    god_id  INTEGER NOT NULL REFERENCES gods(id) ON DELETE CASCADE,
+    stat_id INTEGER NOT NULL REFERENCES stats(id),
+    ratio   REAL NOT NULL,
     PRIMARY KEY (god_id, stat_id)
 );
 
