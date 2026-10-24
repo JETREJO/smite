@@ -80,8 +80,8 @@ export function GodAbilitySection({ abilityIndex, slot, catalogs }: GodAbilitySe
         </div>
         {effects.fields.length === 0 && <p className="text-sm text-fg-subtle">Sin efectos (stun, slow, buff…).</p>}
         {effects.fields.map((field, effectIndex) => (
-          <div key={field.id} className="grid items-end gap-3 sm:grid-cols-[2rem_1fr_1fr_1fr_auto]">
-            <span className="pb-2 text-sm text-fg-subtle">{effectIndex + 1}.</span>
+          <div key={field.id} className="grid items-start gap-3 sm:grid-cols-[2rem_1fr_1fr_1fr_auto]">
+            <span className="text-sm text-fg-subtle sm:pt-8">{effectIndex + 1}.</span>
             <FormField label="Tipo" name={`${path}.effects.${effectIndex}.effectTypeId`}>
               <SelectInput
                 options={catalogs.effectTypes}
@@ -102,7 +102,7 @@ export function GodAbilitySection({ abilityIndex, slot, catalogs }: GodAbilitySe
               <TextInput {...register(`${path}.effects.${effectIndex}.notes`)} />
             </FormField>
             {!isReadOnly && (
-              <Button variant="danger" onClick={() => removeEffect(effectIndex)}>
+              <Button variant="danger" onClick={() => removeEffect(effectIndex)} className="justify-self-start sm:mt-6">
                 Quitar
               </Button>
             )}

@@ -41,7 +41,7 @@ export function AbilityValueFields({ abilityIndex, valueIndex, slot, catalogs, o
 
   return (
     <div className="flex flex-col gap-4 rounded-lg border border-line bg-canvas/40 p-4">
-      <div className="grid gap-4 sm:grid-cols-[12rem_1fr_auto] sm:items-end">
+      <div className="grid items-start gap-4 sm:grid-cols-[12rem_1fr_auto]">
         <FormField label="Tipo de valor" name={`${path}.valueTypeId`} required>
           <SelectInput
             options={catalogs.abilityValueTypes}
@@ -52,7 +52,7 @@ export function AbilityValueFields({ abilityIndex, valueIndex, slot, catalogs, o
           <TextInput {...register(`${path}.label`)} />
         </FormField>
         {!isReadOnly && (
-          <Button variant="danger" onClick={onRemove} className="justify-self-start sm:self-end">
+          <Button variant="danger" onClick={onRemove} className="justify-self-start sm:mt-6">
             Quitar valor
           </Button>
         )}
