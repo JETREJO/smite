@@ -3,7 +3,7 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 
 import { AbilityValueFields } from "@/components/gods/AbilityValueFields";
-import { useIsGodFormReadOnly } from "@/components/gods/god-form-mode";
+import { useIsFormReadOnly } from "@/components/ui/form-mode";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { NumberInput, SelectInput, TextArea, TextInput } from "@/components/ui/inputs";
@@ -26,7 +26,7 @@ export function GodAbilitySection({ abilityIndex, slot, catalogs }: GodAbilitySe
   const effects = useFieldArray({ control, name: `${path}.effects` });
   const values = useFieldArray({ control, name: `${path}.values` });
   const isPassive = slot === PASSIVE_SLOT;
-  const isReadOnly = useIsGodFormReadOnly();
+  const isReadOnly = useIsFormReadOnly();
 
   // Values point to effects by index, so keep those references valid when an effect is removed.
   function removeEffect(effectIndex: number) {

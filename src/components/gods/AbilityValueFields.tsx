@@ -3,7 +3,7 @@
 import { useFormContext, useWatch } from "react-hook-form";
 
 import { ScalingFields } from "@/components/gods/ScalingFields";
-import { useIsGodFormReadOnly } from "@/components/gods/god-form-mode";
+import { useIsFormReadOnly } from "@/components/ui/form-mode";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { NumberInput, SelectInput, TextInput } from "@/components/ui/inputs";
@@ -27,7 +27,7 @@ export function AbilityValueFields({ abilityIndex, valueIndex, slot, catalogs, o
   const effects = useWatch({ control, name: `abilities.${abilityIndex}.effects` });
   const aspects = useWatch({ control, name: "aspects" });
   const rankCount = getRankCount(slot);
-  const isReadOnly = useIsGodFormReadOnly();
+  const isReadOnly = useIsFormReadOnly();
 
   // Effects and aspects are referenced by their position in the form.
   const effectOptions: CatalogOption[] = effects.map((effect, index) => ({

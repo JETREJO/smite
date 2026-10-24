@@ -2,7 +2,7 @@
 
 import { useFieldArray, useFormContext } from "react-hook-form";
 
-import { useIsGodFormReadOnly } from "@/components/gods/god-form-mode";
+import { useIsFormReadOnly } from "@/components/ui/form-mode";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { SelectInput, TextArea, TextInput } from "@/components/ui/inputs";
@@ -22,7 +22,7 @@ function AspectChangesFields({ aspectIndex }: { aspectIndex: number }) {
   const { control, register } = useFormContext<GodInput>();
   const path = `aspects.${aspectIndex}.changes` as const;
   const changes = useFieldArray({ control, name: path });
-  const isReadOnly = useIsGodFormReadOnly();
+  const isReadOnly = useIsFormReadOnly();
 
   return (
     <div className="flex flex-col gap-3">
@@ -64,7 +64,7 @@ function AspectChangesFields({ aspectIndex }: { aspectIndex: number }) {
 export function GodAspectsSection() {
   const { control, register, getValues, setValue } = useFormContext<GodInput>();
   const aspects = useFieldArray({ control, name: "aspects" });
-  const isReadOnly = useIsGodFormReadOnly();
+  const isReadOnly = useIsFormReadOnly();
 
   // Ability values point to aspects by index, so keep those references valid when one is removed.
   function removeAspect(aspectIndex: number) {

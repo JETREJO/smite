@@ -2,7 +2,7 @@
 
 import { Controller, useFormContext } from "react-hook-form";
 
-import { useIsGodFormReadOnly } from "@/components/gods/god-form-mode";
+import { useIsFormReadOnly } from "@/components/ui/form-mode";
 import { SpecializationPicker } from "@/components/gods/SpecializationPicker";
 import { ChipMultiSelect } from "@/components/ui/ChipMultiSelect";
 import { FormField } from "@/components/ui/FormField";
@@ -18,7 +18,7 @@ interface GodGeneralSectionProps {
 
 export function GodGeneralSection({ catalogs }: GodGeneralSectionProps) {
   const { register, control } = useFormContext<GodInput>();
-  const isReadOnly = useIsGodFormReadOnly();
+  const isReadOnly = useIsFormReadOnly();
 
   return (
     <SectionCard title="Datos generales">

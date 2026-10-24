@@ -10,7 +10,7 @@ import { GodAspectsSection } from "@/components/gods/GodAspectsSection";
 import { GodBaseStatsSection } from "@/components/gods/GodBaseStatsSection";
 import { GodBasicAttackSection } from "@/components/gods/GodBasicAttackSection";
 import { GodGeneralSection } from "@/components/gods/GodGeneralSection";
-import { GodFormReadOnlyProvider } from "@/components/gods/god-form-mode";
+import { FormReadOnlyProvider } from "@/components/ui/form-mode";
 import { Button } from "@/components/ui/Button";
 import { buildEmptyGodForm } from "@/helpers/god-form-defaults";
 import type { ActionResult } from "@/interfaces/action-result.interface";
@@ -85,7 +85,7 @@ export function GodForm(props: GodFormProps) {
   }
 
   return (
-    <GodFormReadOnlyProvider value={isReadOnly}>
+    <FormReadOnlyProvider value={isReadOnly}>
       <FormProvider {...form}>
         <form onSubmit={form.handleSubmit(onSubmit, onInvalid)} noValidate className="flex flex-col gap-6">
           {mode === "edit" && isReadOnly && (
@@ -122,6 +122,6 @@ export function GodForm(props: GodFormProps) {
           )}
         </form>
       </FormProvider>
-    </GodFormReadOnlyProvider>
+    </FormReadOnlyProvider>
   );
 }

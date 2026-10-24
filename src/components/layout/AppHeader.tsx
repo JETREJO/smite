@@ -8,8 +8,11 @@ export function AppHeader() {
           SMITE 2 <span className="text-accent">Builds</span>
         </Link>
         <nav className="flex items-center gap-4 text-sm text-fg-muted">
-          <Link href="/gods/new" className="hover:text-fg">
-            Registrar dios
+          <Link href="/" className="hover:text-fg">
+            Dioses
+          </Link>
+          <Link href="/items" className="hover:text-fg">
+            Items
           </Link>
         </nav>
       </div>

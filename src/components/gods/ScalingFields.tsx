@@ -2,7 +2,7 @@
 
 import { useFieldArray, useFormContext } from "react-hook-form";
 
-import { useIsGodFormReadOnly } from "@/components/gods/god-form-mode";
+import { useIsFormReadOnly } from "@/components/ui/form-mode";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { NumberInput, SelectInput } from "@/components/ui/inputs";
@@ -22,7 +22,7 @@ interface ScalingFieldsProps {
 export function ScalingFields({ name, stats }: ScalingFieldsProps) {
   const { control, register } = useFormContext<GodInput>();
   const { fields, append, remove } = useFieldArray({ control, name });
-  const isReadOnly = useIsGodFormReadOnly();
+  const isReadOnly = useIsFormReadOnly();
 
   if (isReadOnly && fields.length === 0) return <p className="text-sm text-fg-subtle">Sin escalado.</p>;
 

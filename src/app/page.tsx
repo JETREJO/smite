@@ -37,9 +37,17 @@ export default async function HomePage({ searchParams }: PageProps<"/">) {
           Registra dioses e items, consulta sus stats y el escalado de sus habilidades, y arma builds personalizadas
           para cada dios.
         </p>
-        <ButtonLink href="/gods/new" className="px-6 py-3 text-base">
-          Registrar dios
-        </ButtonLink>
+        <div className="flex flex-wrap gap-3">
+          <ButtonLink href="/gods/new" className="px-6 py-3 text-base">
+            Registrar dios
+          </ButtonLink>
+          <ButtonLink href="/items/new" className="px-6 py-3 text-base">
+            Registrar item
+          </ButtonLink>
+          <ButtonLink href="/items" variant="secondary" className="px-6 py-3 text-base">
+            Ver items
+          </ButtonLink>
+        </div>
       </section>
 
       <section className="flex flex-col gap-5">

@@ -47,10 +47,23 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 | `/` | Saludo y tabla de dioses en orden alfabético, con buscador por nombre y filtros por rol y tipo de daño. 25 dioses por página. Los filtros viven en la URL (`?q=&role=&damage=&page=`). |
 | `/gods/new` | Formulario para registrar un dios. |
 | `/gods/{id}` | Detalle del dios en dos pestañas: **Información** (el mismo formulario en solo lectura; "Editar" habilita los campos y "Guardar cambios" los guarda) y **Builds**. |
+| `/items` | Tabla de items en orden alfabético con buscador por nombre (`?q=`). 25 por página. Sin más filtros por ahora. |
+| `/items/new` | Formulario para registrar un item con sus ramificaciones. |
+| `/items/{id}` | Detalle del item en solo lectura con "Editar", y la lista de items que lo usan como componente. |
 
-- Las rutas de dioses van en plural (`/gods/...`).
+- Las rutas van en plural (`/gods/...`, `/items/...`).
 - Toda página o lista sin contenido muestra un mensaje que explica qué pasa (`EmptyState`): sin dioses, filtros sin resultados, dios sin builds, dios inexistente.
 - Al editar un dios, los aspectos se actualizan en su lugar (no se borran y recrean) porque las builds los referencian. Quitar un aspecto que usa una build da error.
+
+## Items
+
+- Un item es todo lo que se compra en la tienda: starters, componentes, finales, reliquias y consumibles (incluye pociones). La categoría sale del catálogo `item_categories`.
+- Se registra el item **con sus ramificaciones**: cada componente puede ser un item **nuevo** (se registra en el mismo formulario, con sus stats, pasiva, activa y sus propios componentes) o uno **ya registrado**.
+- En el formulario el árbol se guarda como una lista plana (`components`); cada componente apunta a su padre con `parentKey` (`ROOT_ITEM_KEY` para el item principal).
+- Al editar un item solo se cambian sus datos y sus componentes directos. Cada componente se edita desde su propia página.
+- Un item no puede ser componente de sí mismo, ni directa ni indirectamente (el servidor lo valida).
+- Los números de la pasiva y la activa se guardan como pares nombre/valor (`item_values`).
+- Ojo con React Hook Form: no usar `root` como nombre de campo, porque RHF reserva `errors.root` y descarta esos errores al enviar. Por eso el item principal vive en `item`.
 
 ## Builds
 
