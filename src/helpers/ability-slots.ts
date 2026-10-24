@@ -14,3 +14,7 @@ export function getAbilitySlotLabel(slot: number): string {
 export function getRankCount(slot: number): number {
   return slot === PASSIVE_SLOT ? 1 : ABILITY_RANK_COUNT;
 }
+
+/** Slots that can be leveled up in a build's skill order (the passive can't). */
+export const LEVELABLE_SLOTS = [1, 2, 3, 4] as const;
+export const MAX_GOD_LEVEL = 20;

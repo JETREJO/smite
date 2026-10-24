@@ -10,11 +10,15 @@ export interface TabItem {
 
 interface TabsProps {
   tabs: TabItem[];
+  /** Tab shown first; defaults to the first one. */
+  defaultKey?: string;
 }
 
 /** Every panel stays mounted (only hidden), so unsaved form changes survive a tab switch. */
-export function Tabs({ tabs }: TabsProps) {
-  const [activeKey, setActiveKey] = useState(tabs[0]?.key);
+export function Tabs({ tabs, defaultKey }: TabsProps) {
+  const [activeKey, setActiveKey] = useState(
+    tabs.some((tab) => tab.key === defaultKey) ? defaultKey : tabs[0]?.key,
+  );
   const baseId = useId();
 
   return (

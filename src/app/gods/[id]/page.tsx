@@ -6,6 +6,7 @@ import { connection } from "next/server";
 import { GodBuildsList } from "@/components/gods/GodBuildsList";
 import { GodForm } from "@/components/gods/GodForm";
 import { Tabs } from "@/components/ui/Tabs";
+import { getStringParam } from "@/helpers/search-params";
 import { listBuildsByGod } from "@/server/repositories/build.repository";
 import { getGodFormCatalogs } from "@/server/repositories/catalog.repository";
 import { getGodFormValues, getGodName } from "@/server/repositories/god-query.repository";
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: PageProps<"/gods/[id]">): Pro
   return { title: `${name ?? "Dios no encontrado"} · SMITE 2 Builds` };
 }
 
-export default async function GodPage({ params }: PageProps<"/gods/[id]">) {
+export default async function GodPage({ params, searchParams }: PageProps<"/gods/[id]">) {
   await connection();
   const godId = parseGodId((await params).id);
   if (godId === null) notFound();
@@ -34,6 +35,8 @@ export default async function GodPage({ params }: PageProps<"/gods/[id]">) {
   );
   if (!god) notFound();
   const builds = listBuildsByGod(godId);
+  // ?tab=builds opens the builds tab (used after saving a build).
+  const initialTab = getStringParam(await searchParams, "tab");
 
   return (
     <div className="flex flex-col gap-8">
@@ -48,6 +51,7 @@ export default async function GodPage({ params }: PageProps<"/gods/[id]">) {
       </header>
 
       <Tabs
+        defaultKey={initialTab}
         tabs={[
           {
             key: "info",
@@ -57,7 +61,7 @@ export default async function GodPage({ params }: PageProps<"/gods/[id]">) {
           {
             key: "builds",
             label: `Builds (${builds.length})`,
-            content: <GodBuildsList godName={god.name} builds={builds} />,
+            content: <GodBuildsList godId={godId} godName={god.name} builds={builds} />,
           },
         ]}
       />

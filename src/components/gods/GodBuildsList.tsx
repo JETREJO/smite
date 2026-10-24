@@ -1,23 +1,31 @@
+import { ButtonLink } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/EmptyState";
 import type { BuildSummary } from "@/interfaces/build.interface";
 
 interface GodBuildsListProps {
+  godId: number;
   godName: string;
   builds: BuildSummary[];
 }
 
-export function GodBuildsList({ godName, builds }: GodBuildsListProps) {
+export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
+  const newBuildHref = `/gods/${godId}/builds/new`;
+
   if (builds.length === 0) {
     return (
       <EmptyState
         title={`${godName} aún no tiene builds`}
         description="Cuando guardes una build para este dios aparecerá aquí, con sus items, para qué sirve y en qué situación usarla."
+        action={<ButtonLink href={newBuildHref}>Nueva build</ButtonLink>}
       />
     );
   }
 
   return (
     <div className="flex flex-col gap-4">
+      <div className="flex justify-end">
+        <ButtonLink href={newBuildHref}>Nueva build</ButtonLink>
+      </div>
       {builds.map((build) => (
         <article key={build.id} className="flex flex-col gap-4 rounded-xl border border-line bg-surface p-5 sm:p-6">
           <header className="flex flex-wrap items-start justify-between gap-3">
@@ -46,6 +54,23 @@ export function GodBuildsList({ godName, builds }: GodBuildsListProps) {
                 </li>
               ))}
             </ol>
+          )}
+          {build.skillOrder.some((slot) => slot !== null) && (
+            <div className="flex flex-col gap-2">
+              <h4 className="text-xs font-semibold uppercase tracking-wide text-fg-muted">Orden de habilidades</h4>
+              <ol className="flex flex-wrap gap-1">
+                {build.skillOrder.map((slot, index) => (
+                  <li
+                    key={index}
+                    title={`Nivel ${index + 1}`}
+                    className="flex w-8 flex-col items-center rounded-md bg-elevated py-1 text-xs"
+                  >
+                    <span className="tabular-nums text-fg-subtle">{index + 1}</span>
+                    <span className="font-semibold">{slot ?? "–"}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
           )}
         </article>
       ))}

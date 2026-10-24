@@ -47,6 +47,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 | `/` | Saludo y tabla de dioses en orden alfabético, con buscador por nombre y filtros por rol y tipo de daño. 25 dioses por página. Los filtros viven en la URL (`?q=&role=&damage=&page=`). |
 | `/gods/new` | Formulario para registrar un dios. |
 | `/gods/{id}` | Detalle del dios en dos pestañas: **Información** (el mismo formulario en solo lectura; "Editar" habilita los campos y "Guardar cambios" los guarda) y **Builds**. |
+| `/gods/{id}/builds/new` | Formulario para crear una build del dios. Al guardar vuelve a `/gods/{id}?tab=builds`. |
 | `/items` | Tabla de items en orden alfabético con buscador por nombre (`?q=`). 25 por página. Sin más filtros por ahora. |
 | `/items/new` | Formulario para registrar un item con sus ramificaciones. |
 | `/items/{id}` | Detalle del item en solo lectura con "Editar", y la lista de items que lo usan como componente. |
@@ -68,7 +69,11 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 ## Builds
 
 - Cada build tiene **nombre** y **descripción** obligatorios (para qué sirve y en qué situación usarla), aspecto y rol opcionales, items en orden de compra y orden de subida de habilidades.
-- Todavía no hay pantalla para crear builds; la pestaña Builds solo las lista.
+- **Items:** lista libre en orden de compra (cualquier categoría, se pueden repetir y reordenar con flechas). Mínimo un item. No se imponen slots del juego.
+- **Orden de habilidades:** cuadrícula de niveles 1–20 × habilidades 1–4. Opcional; cada habilidad sube como máximo a rango 5.
+- El nombre de la build es único por dios (sin distinguir mayúsculas).
+- Por ahora solo se crean builds y se listan en la pestaña Builds del dios. Ver, editar, borrar y el resumen de stats/costo quedan pendientes hasta que el usuario lo pida.
+- `useFieldArray` de React Hook Form no valida su regla de "mínimo una fila" al enviar; la lista de items se revisa a mano en `onSubmit`.
 
 ## Estructura del código
 
