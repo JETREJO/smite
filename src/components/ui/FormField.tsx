@@ -24,13 +24,13 @@ export function FormField({ label, name, hint, required, isGroup, className = ""
     <Wrapper className={`flex flex-col gap-1.5 ${className}`}>
       <span className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
         {label}
-        {required && <span className="ml-0.5 text-accent">*</span>}
+        {required && <span className="ml-0.5 text-accent in-[fieldset:disabled]:hidden">*</span>}
       </span>
       {children}
       {error?.message ? (
         <span className="text-xs text-danger">{error.message}</span>
       ) : (
-        hint && <span className="text-xs text-fg-subtle">{hint}</span>
+        hint && <span className="text-xs text-fg-subtle in-[fieldset:disabled]:hidden">{hint}</span>
       )}
     </Wrapper>
   );

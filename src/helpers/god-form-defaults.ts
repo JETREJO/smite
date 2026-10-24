@@ -2,10 +2,12 @@ import { ABILITY_SLOTS, getRankCount } from "@/helpers/ability-slots";
 import type { GodFormCatalogs } from "@/interfaces/catalog.interface";
 import type {
   AbilityEffectInput,
+  AbilityInput,
+  AbilitySlot,
   AbilityValueInput,
   AspectChangeInput,
   AspectInput,
-  CreateGodInput,
+  GodInput,
   ScalingInput,
 } from "@/interfaces/god.interface";
 
@@ -29,16 +31,31 @@ export function buildEmptyAbilityValue(slot: number): AbilityValueInput {
   };
 }
 
+export function buildEmptyAbility(slot: AbilitySlot): AbilityInput {
+  return {
+    slot,
+    name: "",
+    description: "",
+    targeting: "",
+    damageTypeId: null,
+    range: null,
+    radius: null,
+    notes: "",
+    effects: [],
+    values: [],
+  };
+}
+
 export function buildEmptyAspectChange(): AspectChangeInput {
   return { abilitySlot: null, description: "" };
 }
 
 export function buildEmptyAspect(): AspectInput {
-  return { name: "", description: "", changes: [] };
+  return { id: null, name: "", description: "", changes: [] };
 }
 
 /** Empty form: one row per god stat from the catalog, a passive and 4 abilities. */
-export function buildEmptyGodForm(catalogs: GodFormCatalogs): CreateGodInput {
+export function buildEmptyGodForm(catalogs: GodFormCatalogs): GodInput {
   return {
     name: "",
     title: "",
@@ -48,18 +65,7 @@ export function buildEmptyGodForm(catalogs: GodFormCatalogs): CreateGodInput {
     newSpecializations: [],
     basicAttack: { attackTypeId: null, damageTypeId: null, range: null, progression: "", notes: "", scalings: [] },
     baseStats: catalogs.godStats.map((stat) => ({ statId: stat.id, base: null, perLevel: null })),
-    abilities: ABILITY_SLOTS.map((slot) => ({
-      slot,
-      name: "",
-      description: "",
-      targeting: "",
-      damageTypeId: null,
-      range: null,
-      radius: null,
-      notes: "",
-      effects: [],
-      values: [],
-    })),
+    abilities: ABILITY_SLOTS.map(buildEmptyAbility),
     aspects: [],
   };
 }

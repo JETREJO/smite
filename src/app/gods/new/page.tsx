@@ -21,7 +21,7 @@ export default async function NewGodPage() {
           Captura los datos actuales del dios. Los campos con <span className="text-accent">*</span> son obligatorios.
         </p>
       </header>
-      <GodForm catalogs={catalogs} />
+      <GodForm mode="create" catalogs={catalogs} />
     </div>
   );
 }

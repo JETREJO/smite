@@ -3,13 +3,14 @@
 import { useFormContext, useWatch } from "react-hook-form";
 
 import { ScalingFields } from "@/components/gods/ScalingFields";
+import { useIsGodFormReadOnly } from "@/components/gods/god-form-mode";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { NumberInput, SelectInput, TextInput } from "@/components/ui/inputs";
 import { getRankCount } from "@/helpers/ability-slots";
 import { toOptionalNumber } from "@/helpers/form-values";
 import type { CatalogOption, GodFormCatalogs } from "@/interfaces/catalog.interface";
-import type { CreateGodInput } from "@/interfaces/god.interface";
+import type { GodInput } from "@/interfaces/god.interface";
 
 interface AbilityValueFieldsProps {
   abilityIndex: number;
@@ -21,11 +22,12 @@ interface AbilityValueFieldsProps {
 
 /** One numeric value of an ability (damage, cooldown, ...) with its ranks and scalings. */
 export function AbilityValueFields({ abilityIndex, valueIndex, slot, catalogs, onRemove }: AbilityValueFieldsProps) {
-  const { register, control } = useFormContext<CreateGodInput>();
+  const { register, control } = useFormContext<GodInput>();
   const path = `abilities.${abilityIndex}.values.${valueIndex}` as const;
   const effects = useWatch({ control, name: `abilities.${abilityIndex}.effects` });
   const aspects = useWatch({ control, name: "aspects" });
   const rankCount = getRankCount(slot);
+  const isReadOnly = useIsGodFormReadOnly();
 
   // Effects and aspects are referenced by their position in the form.
   const effectOptions: CatalogOption[] = effects.map((effect, index) => ({
@@ -49,9 +51,11 @@ export function AbilityValueFields({ abilityIndex, valueIndex, slot, catalogs, o
         <FormField label="Etiqueta" hint="Opcional, p.ej. «Daño por tick».">
           <TextInput {...register(`${path}.label`)} />
         </FormField>
-        <Button variant="danger" onClick={onRemove} className="justify-self-start sm:self-end">
-          Quitar valor
-        </Button>
+        {!isReadOnly && (
+          <Button variant="danger" onClick={onRemove} className="justify-self-start sm:self-end">
+            Quitar valor
+          </Button>
+        )}
       </div>
 
       <div className={rankCount > 1 ? "grid grid-cols-3 gap-2 sm:grid-cols-5" : "w-40"}>

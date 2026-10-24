@@ -3,11 +3,12 @@
 import { useState, type KeyboardEvent } from "react";
 import { useController, useFormContext } from "react-hook-form";
 
+import { useIsGodFormReadOnly } from "@/components/gods/god-form-mode";
 import { Button } from "@/components/ui/Button";
 import { ChipMultiSelect } from "@/components/ui/ChipMultiSelect";
 import { TextInput } from "@/components/ui/inputs";
 import type { CatalogOption } from "@/interfaces/catalog.interface";
-import type { CreateGodInput } from "@/interfaces/god.interface";
+import type { GodInput } from "@/interfaces/god.interface";
 
 interface SpecializationPickerProps {
   options: CatalogOption[];
@@ -15,10 +16,11 @@ interface SpecializationPickerProps {
 
 /** Pick existing specializations or type new ones; new ones are created when the god is saved. */
 export function SpecializationPicker({ options }: SpecializationPickerProps) {
-  const { control } = useFormContext<CreateGodInput>();
+  const { control } = useFormContext<GodInput>();
   const selected = useController({ control, name: "specializationIds" });
   const created = useController({ control, name: "newSpecializations" });
   const [draft, setDraft] = useState("");
+  const isReadOnly = useIsGodFormReadOnly();
 
   function addDraft() {
     const name = draft.trim();
@@ -37,6 +39,10 @@ export function SpecializationPicker({ options }: SpecializationPickerProps) {
       event.preventDefault();
       addDraft();
     }
+  }
+
+  if (isReadOnly) {
+    return <ChipMultiSelect options={options} value={selected.field.value} onChange={selected.field.onChange} readOnly />;
   }
 
   return (

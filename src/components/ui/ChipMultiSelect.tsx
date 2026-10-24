@@ -5,9 +5,25 @@ interface ChipMultiSelectProps {
   value: number[];
   onChange: (value: number[]) => void;
   invalid?: boolean;
+  /** Show only the selected options, without buttons. */
+  readOnly?: boolean;
 }
 
-export function ChipMultiSelect({ options, value, onChange, invalid }: ChipMultiSelectProps) {
+export function ChipMultiSelect({ options, value, onChange, invalid, readOnly }: ChipMultiSelectProps) {
+  if (readOnly) {
+    const selected = options.filter((option) => value.includes(option.id));
+    if (selected.length === 0) return <p className="text-sm text-fg-subtle">Ninguno.</p>;
+    return (
+      <div className="flex flex-wrap gap-2">
+        {selected.map((option) => (
+          <span key={option.id} className="rounded-full border border-line-strong bg-elevated px-3 py-1.5 text-sm">
+            {option.name}
+          </span>
+        ))}
+      </div>
+    );
+  }
+
   function toggle(id: number) {
     onChange(value.includes(id) ? value.filter((selectedId) => selectedId !== id) : [...value, id]);
   }

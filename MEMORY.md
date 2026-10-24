@@ -40,6 +40,23 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - `npm run db:init` crea la base. `npm run db:reset` la borra y la vuelve a crear (se pierden los datos).
 - Cada conexión activa `PRAGMA foreign_keys = ON`.
 
+## Páginas
+
+| Ruta | Qué hace |
+|---|---|
+| `/` | Saludo y tabla de dioses en orden alfabético, con buscador por nombre y filtros por rol y tipo de daño. 25 dioses por página. Los filtros viven en la URL (`?q=&role=&damage=&page=`). |
+| `/gods/new` | Formulario para registrar un dios. |
+| `/gods/{id}` | Detalle del dios en dos pestañas: **Información** (el mismo formulario en solo lectura; "Editar" habilita los campos y "Guardar cambios" los guarda) y **Builds**. |
+
+- Las rutas de dioses van en plural (`/gods/...`).
+- Toda página o lista sin contenido muestra un mensaje que explica qué pasa (`EmptyState`): sin dioses, filtros sin resultados, dios sin builds, dios inexistente.
+- Al editar un dios, los aspectos se actualizan en su lugar (no se borran y recrean) porque las builds los referencian. Quitar un aspecto que usa una build da error.
+
+## Builds
+
+- Cada build tiene **nombre** y **descripción** obligatorios (para qué sirve y en qué situación usarla), aspecto y rol opcionales, items en orden de compra y orden de subida de habilidades.
+- Todavía no hay pantalla para crear builds; la pestaña Builds solo las lista.
+
 ## Estructura del código
 
 ```
@@ -55,7 +72,7 @@ src/
   config/         Configuración del front (tema de Tailwind)
   server/         Back: solo corre en el servidor
     db/           Conexión a SQLite
-    repositories/ Consultas SQL por entidad
+    repositories/ Consultas SQL por entidad (escrituras en *.repository.ts, lecturas de dioses en god-query.repository.ts)
     validators/   Validación de datos antes de guardar
     actions/      Server Actions que llama el front
 scripts/          Scripts de Node (inicializar la base)

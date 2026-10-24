@@ -8,14 +8,14 @@ import { NumberInput, SelectInput, TextArea, TextInput } from "@/components/ui/i
 import { SectionCard } from "@/components/ui/SectionCard";
 import { toOptionalNumber } from "@/helpers/form-values";
 import type { GodFormCatalogs } from "@/interfaces/catalog.interface";
-import type { CreateGodInput } from "@/interfaces/god.interface";
+import type { GodInput } from "@/interfaces/god.interface";
 
 interface GodBasicAttackSectionProps {
   catalogs: GodFormCatalogs;
 }
 
 export function GodBasicAttackSection({ catalogs }: GodBasicAttackSectionProps) {
-  const { register } = useFormContext<CreateGodInput>();
+  const { register } = useFormContext<GodInput>();
 
   return (
     <SectionCard title="Ataque básico" description="El tipo de daño del ataque básico define si el dios es físico o mágico.">

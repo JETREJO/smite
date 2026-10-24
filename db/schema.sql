@@ -256,14 +256,14 @@ CREATE TABLE item_tags (
 ------------------------------------------------------------------------------
 
 CREATE TABLE builds (
-    id         INTEGER PRIMARY KEY,
-    god_id     INTEGER NOT NULL REFERENCES gods(id) ON DELETE CASCADE,
-    aspect_id  INTEGER,
-    role_id    INTEGER REFERENCES roles(id),
-    name       TEXT NOT NULL,
-    notes      TEXT,
-    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    id          INTEGER PRIMARY KEY,
+    god_id      INTEGER NOT NULL REFERENCES gods(id) ON DELETE CASCADE,
+    aspect_id   INTEGER,
+    role_id     INTEGER REFERENCES roles(id),
+    name        TEXT NOT NULL,
+    description TEXT NOT NULL,          -- para qué sirve y en qué situación usarla
+    created_at  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (god_id, name),
     -- el aspecto tiene que ser del mismo dios
     FOREIGN KEY (aspect_id, god_id) REFERENCES aspects(id, god_id)

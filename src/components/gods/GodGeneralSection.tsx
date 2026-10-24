@@ -2,6 +2,7 @@
 
 import { Controller, useFormContext } from "react-hook-form";
 
+import { useIsGodFormReadOnly } from "@/components/gods/god-form-mode";
 import { SpecializationPicker } from "@/components/gods/SpecializationPicker";
 import { ChipMultiSelect } from "@/components/ui/ChipMultiSelect";
 import { FormField } from "@/components/ui/FormField";
@@ -9,14 +10,15 @@ import { SelectInput, TextInput } from "@/components/ui/inputs";
 import { SectionCard } from "@/components/ui/SectionCard";
 import { toOptionalNumber } from "@/helpers/form-values";
 import type { GodFormCatalogs } from "@/interfaces/catalog.interface";
-import type { CreateGodInput } from "@/interfaces/god.interface";
+import type { GodInput } from "@/interfaces/god.interface";
 
 interface GodGeneralSectionProps {
   catalogs: GodFormCatalogs;
 }
 
 export function GodGeneralSection({ catalogs }: GodGeneralSectionProps) {
-  const { register, control } = useFormContext<CreateGodInput>();
+  const { register, control } = useFormContext<GodInput>();
+  const isReadOnly = useIsGodFormReadOnly();
 
   return (
     <SectionCard title="Datos generales">
@@ -46,12 +48,17 @@ export function GodGeneralSection({ catalogs }: GodGeneralSectionProps) {
               value={field.value}
               onChange={field.onChange}
               invalid={fieldState.invalid}
+              readOnly={isReadOnly}
             />
           )}
         />
       </FormField>
 
-      <FormField label="Especializaciones" isGroup hint="Selecciona las que apliquen o escribe una nueva.">
+      <FormField
+        label="Especializaciones"
+        isGroup
+        hint={isReadOnly ? undefined : "Selecciona las que apliquen o escribe una nueva."}
+      >
         <SpecializationPicker options={catalogs.specializations} />
       </FormField>
     </SectionCard>

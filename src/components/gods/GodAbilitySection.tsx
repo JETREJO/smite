@@ -3,6 +3,7 @@
 import { useFieldArray, useFormContext } from "react-hook-form";
 
 import { AbilityValueFields } from "@/components/gods/AbilityValueFields";
+import { useIsGodFormReadOnly } from "@/components/gods/god-form-mode";
 import { Button } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
 import { NumberInput, SelectInput, TextArea, TextInput } from "@/components/ui/inputs";
@@ -11,7 +12,7 @@ import { getAbilitySlotLabel, PASSIVE_SLOT } from "@/helpers/ability-slots";
 import { toOptionalNumber } from "@/helpers/form-values";
 import { buildEmptyAbilityValue, buildEmptyEffect } from "@/helpers/god-form-defaults";
 import type { GodFormCatalogs } from "@/interfaces/catalog.interface";
-import type { CreateGodInput } from "@/interfaces/god.interface";
+import type { GodInput } from "@/interfaces/god.interface";
 
 interface GodAbilitySectionProps {
   abilityIndex: number;
@@ -20,11 +21,12 @@ interface GodAbilitySectionProps {
 }
 
 export function GodAbilitySection({ abilityIndex, slot, catalogs }: GodAbilitySectionProps) {
-  const { register, control, getValues, setValue } = useFormContext<CreateGodInput>();
+  const { register, control, getValues, setValue } = useFormContext<GodInput>();
   const path = `abilities.${abilityIndex}` as const;
   const effects = useFieldArray({ control, name: `${path}.effects` });
   const values = useFieldArray({ control, name: `${path}.values` });
   const isPassive = slot === PASSIVE_SLOT;
+  const isReadOnly = useIsGodFormReadOnly();
 
   // Values point to effects by index, so keep those references valid when an effect is removed.
   function removeEffect(effectIndex: number) {
@@ -70,9 +72,11 @@ export function GodAbilitySection({ abilityIndex, slot, catalogs }: GodAbilitySe
       <div className="flex flex-col gap-3 border-t border-line pt-5">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold">Efectos</h3>
-          <Button variant="ghost" onClick={() => effects.append(buildEmptyEffect())}>
-            + Efecto
-          </Button>
+          {!isReadOnly && (
+            <Button variant="ghost" onClick={() => effects.append(buildEmptyEffect())}>
+              + Efecto
+            </Button>
+          )}
         </div>
         {effects.fields.length === 0 && <p className="text-sm text-fg-subtle">Sin efectos (stun, slow, buff…).</p>}
         {effects.fields.map((field, effectIndex) => (
@@ -97,9 +101,11 @@ export function GodAbilitySection({ abilityIndex, slot, catalogs }: GodAbilitySe
             <FormField label="Notas">
               <TextInput {...register(`${path}.effects.${effectIndex}.notes`)} />
             </FormField>
-            <Button variant="danger" onClick={() => removeEffect(effectIndex)}>
-              Quitar
-            </Button>
+            {!isReadOnly && (
+              <Button variant="danger" onClick={() => removeEffect(effectIndex)}>
+                Quitar
+              </Button>
+            )}
           </div>
         ))}
       </div>
@@ -107,9 +113,11 @@ export function GodAbilitySection({ abilityIndex, slot, catalogs }: GodAbilitySe
       <div className="flex flex-col gap-3 border-t border-line pt-5">
         <div className="flex items-center justify-between">
           <h3 className="text-sm font-semibold">Valores</h3>
-          <Button variant="ghost" onClick={() => values.append(buildEmptyAbilityValue(slot))}>
-            + Valor
-          </Button>
+          {!isReadOnly && (
+            <Button variant="ghost" onClick={() => values.append(buildEmptyAbilityValue(slot))}>
+              + Valor
+            </Button>
+          )}
         </div>
         {values.fields.length === 0 && (
           <p className="text-sm text-fg-subtle">Sin valores (daño, enfriamiento, costo, duraciones…).</p>

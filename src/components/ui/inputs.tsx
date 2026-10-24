@@ -5,7 +5,10 @@ import type { CatalogOption } from "@/interfaces/catalog.interface";
 const CONTROL_CLASSES =
   "w-full rounded-lg border border-line bg-elevated px-3 py-2 text-sm text-fg placeholder:text-fg-subtle " +
   "focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30 " +
-  "aria-invalid:border-danger";
+  "aria-invalid:border-danger " +
+  // Read-only view (disabled fieldset): looks like plain data, not like a disabled control.
+  "disabled:cursor-default disabled:border-transparent disabled:bg-canvas/60 disabled:opacity-100 " +
+  "disabled:placeholder:text-transparent";
 
 export function TextInput({ className = "", ...props }: ComponentProps<"input">) {
   return <input type="text" className={`${CONTROL_CLASSES} ${className}`} {...props} />;

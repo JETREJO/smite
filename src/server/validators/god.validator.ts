@@ -1,5 +1,5 @@
 import { ABILITY_SLOTS, getAbilitySlotLabel, getRankCount } from "@/helpers/ability-slots";
-import type { CreateGodInput, ScalingInput } from "@/interfaces/god.interface";
+import type { GodInput, ScalingInput } from "@/interfaces/god.interface";
 
 function isBlank(value: string | null | undefined): boolean {
   return !value || value.trim() === "";
@@ -22,7 +22,7 @@ function validateScalings(scalings: ScalingInput[], context: string, errors: str
 }
 
 /** Returns the list of problems found; an empty list means the input is valid. */
-export function validateCreateGod(input: CreateGodInput): string[] {
+export function validateGod(input: GodInput): string[] {
   const errors: string[] = [];
 
   if (isBlank(input.name)) errors.push("El nombre es obligatorio.");

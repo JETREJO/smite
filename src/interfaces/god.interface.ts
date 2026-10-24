@@ -50,12 +50,14 @@ export interface AspectChangeInput {
 }
 
 export interface AspectInput {
+  /** Database id of an aspect that already exists; null for a new one. */
+  id: number | null;
   name: string;
   description: string;
   changes: AspectChangeInput[];
 }
 
-export interface CreateGodInput {
+export interface GodInput {
   name: string;
   title: string;
   pantheonId: number | null;

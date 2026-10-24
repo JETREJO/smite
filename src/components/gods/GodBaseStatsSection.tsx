@@ -7,14 +7,14 @@ import { NumberInput } from "@/components/ui/inputs";
 import { SectionCard } from "@/components/ui/SectionCard";
 import { toOptionalNumber } from "@/helpers/form-values";
 import type { GodFormCatalogs } from "@/interfaces/catalog.interface";
-import type { CreateGodInput } from "@/interfaces/god.interface";
+import type { GodInput } from "@/interfaces/god.interface";
 
 interface GodBaseStatsSectionProps {
   catalogs: GodFormCatalogs;
 }
 
 export function GodBaseStatsSection({ catalogs }: GodBaseStatsSectionProps) {
-  const { register } = useFormContext<CreateGodInput>();
+  const { register } = useFormContext<GodInput>();
 
   return (
     <SectionCard title="Stats base" description="Valor a nivel 1 y lo que gana por cada nivel.">

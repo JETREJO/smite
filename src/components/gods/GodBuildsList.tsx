@@ -1,0 +1,54 @@
+import { EmptyState } from "@/components/ui/EmptyState";
+import type { BuildSummary } from "@/interfaces/build.interface";
+
+interface GodBuildsListProps {
+  godName: string;
+  builds: BuildSummary[];
+}
+
+export function GodBuildsList({ godName, builds }: GodBuildsListProps) {
+  if (builds.length === 0) {
+    return (
+      <EmptyState
+        title={`${godName} aún no tiene builds`}
+        description="Cuando guardes una build para este dios aparecerá aquí, con sus items, para qué sirve y en qué situación usarla."
+      />
+    );
+  }
+
+  return (
+    <div className="flex flex-col gap-4">
+      {builds.map((build) => (
+        <article key={build.id} className="flex flex-col gap-4 rounded-xl border border-line bg-surface p-5 sm:p-6">
+          <header className="flex flex-wrap items-start justify-between gap-3">
+            <h3 className="text-lg font-semibold">{build.name}</h3>
+            <div className="flex flex-wrap gap-2 text-xs">
+              {build.roleName && (
+                <span className="rounded-full border border-line-strong px-2.5 py-1 text-fg-muted">{build.roleName}</span>
+              )}
+              {build.aspectName && (
+                <span className="rounded-full border border-accent/60 bg-accent/10 px-2.5 py-1 text-accent-strong">
+                  {build.aspectName}
+                </span>
+              )}
+            </div>
+          </header>
+          <p className="whitespace-pre-line text-sm text-fg-muted">{build.description}</p>
+          {build.items.length === 0 ? (
+            <p className="text-sm text-fg-subtle">Esta build todavía no tiene items.</p>
+          ) : (
+            <ol className="flex flex-wrap gap-2">
+              {build.items.map((item) => (
+                <li key={item.position} className="flex items-center gap-2 rounded-lg bg-elevated px-3 py-2 text-sm">
+                  <span className="tabular-nums text-fg-subtle">{item.position}.</span>
+                  <span>{item.name}</span>
+                  <span className="text-xs text-fg-subtle">{item.category}</span>
+                </li>
+              ))}
+            </ol>
+          )}
+        </article>
+      ))}
+    </div>
+  );
+}

@@ -1,4 +1,4 @@
-import type { CatalogOption, GodFormCatalogs, StatOption } from "@/interfaces/catalog.interface";
+import type { CatalogOption, GodFormCatalogs, GodListFilterCatalogs, StatOption } from "@/interfaces/catalog.interface";
 import { getDb } from "@/server/db/connection";
 
 interface StatRow {
@@ -30,5 +30,12 @@ export function getGodFormCatalogs(): GodFormCatalogs {
     scalingStats: listStats("1 = 1"),
     effectTypes: listOptions("SELECT id, name FROM effect_types ORDER BY name"),
     abilityValueTypes: listOptions("SELECT id, name FROM ability_value_types ORDER BY id"),
+  };
+}
+
+export function getGodListFilterCatalogs(): GodListFilterCatalogs {
+  return {
+    roles: listOptions("SELECT id, name FROM roles ORDER BY id"),
+    damageTypes: listOptions("SELECT id, name FROM damage_types ORDER BY id"),
   };
 }

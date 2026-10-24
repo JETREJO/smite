@@ -20,3 +20,9 @@ export interface GodFormCatalogs {
   effectTypes: CatalogOption[];
   abilityValueTypes: CatalogOption[];
 }
+
+/** Catalogs for the filters of the gods table. */
+export interface GodListFilterCatalogs {
+  roles: CatalogOption[];
+  damageTypes: CatalogOption[];
+}
