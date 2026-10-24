@@ -3,6 +3,7 @@ import type Database from "better-sqlite3";
 import { slugify } from "@/helpers/slugify";
 import type { AbilityInput, AspectInput, GodInput, ScalingInput } from "@/interfaces/god.interface";
 import { getDb } from "@/server/db/connection";
+import { getDataAuthor } from "@/server/db/data-author";
 
 /** An error whose message can be shown to the user as is. */
 export class GodWriteError extends Error {}
@@ -29,13 +30,16 @@ function insertScalings(db: Database.Database, sql: string, ownerId: number, sca
 
 /** Ids of the selected specializations plus the ones created from new names. */
 function resolveSpecializationIds(db: Database.Database, input: GodInput): number[] {
-  const insert = db.prepare("INSERT OR IGNORE INTO specializations (name) VALUES (?)");
+  const insert = db.prepare(
+    "INSERT OR IGNORE INTO specializations (name, created_by, updated_by) VALUES (?, ?, ?)",
+  );
+  const author = getDataAuthor();
   const find = db.prepare("SELECT id FROM specializations WHERE name = ?");
   const ids = new Set(input.specializationIds);
   for (const name of input.newSpecializations) {
     const trimmed = name.trim();
     if (trimmed === "") continue;
-    insert.run(trimmed);
+    insert.run(trimmed, author, author);
     ids.add((find.get(trimmed) as { id: number }).id);
   }
   return [...ids];
@@ -227,10 +231,10 @@ export function createGod(input: GodInput): number {
       db
         .prepare(
           `INSERT INTO gods (slug, name, title, pantheon_id, attack_type_id, basic_attack_damage_type_id,
-                             basic_attack_range, basic_attack_progression, basic_attack_notes)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                             basic_attack_range, basic_attack_progression, basic_attack_notes, created_by, updated_by)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         )
-        .run(...godRowParams(input)).lastInsertRowid,
+        .run(...godRowParams(input), getDataAuthor(), getDataAuthor()).lastInsertRowid,
     );
     writeGodDetails(db, godId, input);
     return godId;
@@ -246,10 +250,10 @@ export function updateGod(godId: number, input: GodInput): void {
       .prepare(
         `UPDATE gods SET slug = ?, name = ?, title = ?, pantheon_id = ?, attack_type_id = ?,
                          basic_attack_damage_type_id = ?, basic_attack_range = ?, basic_attack_progression = ?,
-                         basic_attack_notes = ?, updated_at = CURRENT_TIMESTAMP
+                         basic_attack_notes = ?, updated_at = CURRENT_TIMESTAMP, updated_by = ?
          WHERE id = ?`,
       )
-      .run(...godRowParams(input), godId);
+      .run(...godRowParams(input), getDataAuthor(), godId);
     if (result.changes === 0) throw new GodWriteError("El dios ya no existe.");
     writeGodDetails(db, godId, input);
   });

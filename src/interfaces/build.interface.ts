@@ -1,3 +1,4 @@
+import type { Authorship } from "@/interfaces/authorship.interface";
 import type { CatalogOption } from "@/interfaces/catalog.interface";
 import type { ItemOption } from "@/interfaces/item-list.interface";
 
@@ -7,7 +8,7 @@ export interface BuildItemSummary {
   category: string;
 }
 
-export interface BuildSummary {
+export interface BuildSummary extends Authorship {
   id: number;
   name: string;
   description: string;

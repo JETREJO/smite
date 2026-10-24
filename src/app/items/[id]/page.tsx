@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import { connection } from "next/server";
 
 import { ItemForm } from "@/components/items/ItemForm";
+import { AuthorBadge } from "@/components/ui/AuthorBadge";
 import { SectionCard } from "@/components/ui/SectionCard";
+import { getAuthorship } from "@/server/repositories/authorship.repository";
 import { getItemFormCatalogs } from "@/server/repositories/catalog.repository";
 import { getItemFormValues, getItemName, listItemParents } from "@/server/repositories/item-query.repository";
 
@@ -29,6 +31,7 @@ export default async function ItemPage({ params }: PageProps<"/items/[id]">) {
   if (!item) notFound();
   const catalogs = getItemFormCatalogs();
   const parents = listItemParents(itemId);
+  const authorship = getAuthorship("items", itemId);
 
   return (
     <div className="flex flex-col gap-8">
@@ -36,7 +39,10 @@ export default async function ItemPage({ params }: PageProps<"/items/[id]">) {
         <Link href="/items" className="text-sm text-fg-muted hover:text-fg">
           ← Items
         </Link>
-        <h1 className="text-3xl font-bold">{item.item.name}</h1>
+        <div className="flex flex-wrap items-center gap-3">
+          <h1 className="text-3xl font-bold">{item.item.name}</h1>
+          {authorship && <AuthorBadge {...authorship} />}
+        </div>
       </header>
 
       <ItemForm mode="edit" catalogs={catalogs} itemId={itemId} initialValues={item} />

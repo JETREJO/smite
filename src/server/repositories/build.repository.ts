@@ -2,13 +2,15 @@ import { MAX_GOD_LEVEL } from "@/helpers/ability-slots";
 import type { BuildFormCatalogs, BuildInput, BuildItemSummary, BuildSummary } from "@/interfaces/build.interface";
 import type { CatalogOption } from "@/interfaces/catalog.interface";
 import { getDb } from "@/server/db/connection";
+import { getDataAuthor } from "@/server/db/data-author";
 import { listItemOptions } from "@/server/repositories/item-query.repository";
 
 export function listBuildsByGod(godId: number): BuildSummary[] {
   const db = getDb();
   const builds = db
     .prepare(
-      `SELECT b.id, b.name, b.description, a.name AS aspectName, r.name AS roleName
+      `SELECT b.id, b.name, b.description, a.name AS aspectName, r.name AS roleName,
+              b.created_by AS createdBy, b.updated_by AS updatedBy
          FROM builds b
          LEFT JOIN aspects a ON a.id = b.aspect_id
          LEFT JOIN roles r ON r.id = b.role_id
@@ -73,8 +75,19 @@ export function createBuild(godId: number, input: BuildInput): number {
   const run = db.transaction((): number => {
     const buildId = Number(
       db
-        .prepare("INSERT INTO builds (god_id, aspect_id, role_id, name, description) VALUES (?, ?, ?, ?, ?)")
-        .run(godId, input.aspectId, input.roleId, input.name.trim(), input.description.trim()).lastInsertRowid,
+        .prepare(
+          `INSERT INTO builds (god_id, aspect_id, role_id, name, description, created_by, updated_by)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        )
+        .run(
+          godId,
+          input.aspectId,
+          input.roleId,
+          input.name.trim(),
+          input.description.trim(),
+          getDataAuthor(),
+          getDataAuthor(),
+        ).lastInsertRowid,
     );
 
     const insertItem = db.prepare("INSERT INTO build_items (build_id, position, item_id) VALUES (?, ?, ?)");

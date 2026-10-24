@@ -5,8 +5,10 @@ import { connection } from "next/server";
 
 import { GodBuildsList } from "@/components/gods/GodBuildsList";
 import { GodForm } from "@/components/gods/GodForm";
+import { AuthorBadge } from "@/components/ui/AuthorBadge";
 import { Tabs } from "@/components/ui/Tabs";
 import { getStringParam } from "@/helpers/search-params";
+import { getAuthorship } from "@/server/repositories/authorship.repository";
 import { listBuildsByGod } from "@/server/repositories/build.repository";
 import { getGodFormCatalogs } from "@/server/repositories/catalog.repository";
 import { getGodFormValues, getGodName } from "@/server/repositories/god-query.repository";
@@ -35,6 +37,7 @@ export default async function GodPage({ params, searchParams }: PageProps<"/gods
   );
   if (!god) notFound();
   const builds = listBuildsByGod(godId);
+  const authorship = getAuthorship("gods", godId);
   // ?tab=builds opens the builds tab (used after saving a build).
   const initialTab = getStringParam(await searchParams, "tab");
 
@@ -45,7 +48,10 @@ export default async function GodPage({ params, searchParams }: PageProps<"/gods
           ← Dioses
         </Link>
         <div>
-          <h1 className="text-3xl font-bold">{god.name}</h1>
+          <div className="flex flex-wrap items-center gap-3">
+            <h1 className="text-3xl font-bold">{god.name}</h1>
+            {authorship && <AuthorBadge {...authorship} />}
+          </div>
           {god.title && <p className="mt-1 text-fg-muted">{god.title}</p>}
         </div>
       </header>

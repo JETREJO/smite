@@ -2,7 +2,8 @@ import Database from "better-sqlite3";
 import { existsSync } from "node:fs";
 import path from "node:path";
 
-const DB_PATH = path.join(process.cwd(), "data", "smite.db");
+// SMITE_DB_PATH lets tests use another database file.
+const DB_PATH = process.env.SMITE_DB_PATH ?? path.join(process.cwd(), "data", "smite.db");
 
 // Keep a single connection across hot reloads in development.
 const globalForDb = globalThis as unknown as { smiteDb?: Database.Database };

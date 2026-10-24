@@ -37,8 +37,25 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 
 - Esquema: `db/schema.sql`. Valores iniciales: `db/seed.sql`.
 - El archivo vive en `data/smite.db` y no se sube a git.
-- `npm run db:init` crea la base. `npm run db:reset` la borra y la vuelve a crear (se pierden los datos).
+- `npm run db:init` crea una base nueva (con todas las migraciones ya incluidas).
+- **Cambios al esquema = migraciones.** Nunca recrear la base para cambiar el esquema: se agrega un archivo numerado en `db/migrations/` (y el mismo cambio en `schema.sql`) y se aplica con `npm run db:migrate`, que guarda un respaldo antes. La tabla `schema_migrations` registra lo aplicado.
+- `npm run db:reset` guarda un respaldo y **se niega a borrar** si hay datos del usuario, salvo con `-- --force`.
+- Los respaldos van a `data/backups/` (no se suben a git).
+- `SMITE_DB_PATH` permite apuntar la app y los scripts a otro archivo de base (útil para pruebas).
 - Cada conexión activa `PRAGMA foreign_keys = ON`.
+
+## Autoría de los datos y reglas para Claude
+
+- `gods`, `items`, `builds`, `specializations`, `tags` y los catálogos tienen `created_by` y `updated_by`: `user` (el usuario desde la app), `claude` (pruebas de Claude) o `seed` (`db/seed.sql`). El valor por defecto es `user`: un dato sin marcar se trata como del usuario.
+- Las tablas hijas (habilidades, stats, componentes, items de una build…) heredan el autor de su dios, item o build.
+- La app escribe el autor según `DATA_AUTHOR`: `npm run dev` → `user`; `npm run dev:claude` → `claude` (puerto 3001, compila en `.next-claude/` para poder correr al mismo tiempo que el servidor del usuario).
+- **Reglas para Claude:**
+  - Puede probar en la base real, pero **nunca borra ni edita datos del usuario** (`created_by = 'user'`).
+  - Prueba con `npm run dev:claude`; si inserta con SQL, marca `created_by = 'claude'`.
+  - Para probar una edición, crea su propio registro y lo edita.
+  - Limpia sus datos solo con `npm run db:clean-claude` (respaldo antes; `-- --dry-run` para simular). Conserva lo que datos del usuario necesitan y reporta los registros del usuario que Claude haya modificado.
+  - Nunca usa `db:reset -- --force`.
+- En la página de un dios, item o build aparece "Registrado por Claude" o "Modificado por Claude" cuando aplica.
 
 ## Páginas
 
@@ -93,7 +110,8 @@ src/
     repositories/ Consultas SQL por entidad (escrituras en *.repository.ts, lecturas de dioses en god-query.repository.ts)
     validators/   Validación de datos antes de guardar
     actions/      Server Actions que llama el front
-scripts/          Scripts de Node (inicializar la base)
+scripts/          Scripts de Node (crear, migrar, respaldar y limpiar la base)
+db/migrations/    Migraciones SQL numeradas
 db/               Esquema y seed SQL
 ```
 

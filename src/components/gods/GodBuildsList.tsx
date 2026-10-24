@@ -1,3 +1,4 @@
+import { AuthorBadge } from "@/components/ui/AuthorBadge";
 import { ButtonLink } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/EmptyState";
 import type { BuildSummary } from "@/interfaces/build.interface";
@@ -31,6 +32,7 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
           <header className="flex flex-wrap items-start justify-between gap-3">
             <h3 className="text-lg font-semibold">{build.name}</h3>
             <div className="flex flex-wrap gap-2 text-xs">
+              <AuthorBadge createdBy={build.createdBy} updatedBy={build.updatedBy} />
               {build.roleName && (
                 <span className="rounded-full border border-line-strong px-2.5 py-1 text-fg-muted">{build.roleName}</span>
               )}

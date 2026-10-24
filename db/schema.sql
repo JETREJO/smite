@@ -2,35 +2,54 @@
 -- Solo guarda los valores actuales: cuando sale un parche se editan a mano (UPDATE).
 -- No hay historial ni nombres de parche.
 --
--- Uso:  sqlite3 smite.db < db/schema.sql && sqlite3 smite.db < db/seed.sql
+-- Uso: npm run db:init (crea la base con este esquema y db/seed.sql).
+-- Los cambios a una base que ya existe se hacen con migraciones (db/migrations, npm run db:migrate).
 -- La app debe ejecutar `PRAGMA foreign_keys = ON;` en cada conexión.
+--
+-- Autoría: las tablas principales y los catálogos tienen created_by / updated_by
+-- ('user' = el usuario desde la app, 'claude' = datos de prueba de Claude, 'seed' = db/seed.sql).
+-- El valor por defecto es 'user', así un dato sin marcar nunca se trata como de prueba.
 
 PRAGMA foreign_keys = ON;
+
+-- Migraciones aplicadas (ver db/migrations).
+CREATE TABLE schema_migrations (
+    name       TEXT PRIMARY KEY,
+    applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 
 ------------------------------------------------------------------------------
 -- Catálogos (alimentan los dropdowns del frontend)
 ------------------------------------------------------------------------------
 
 CREATE TABLE pantheons (
-    id   INTEGER PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE
+    id         INTEGER PRIMARY KEY,
+    name       TEXT NOT NULL UNIQUE,
+    created_by TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 CREATE TABLE roles (
-    id   INTEGER PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE
+    id         INTEGER PRIMARY KEY,
+    name       TEXT NOT NULL UNIQUE,
+    created_by TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 CREATE TABLE attack_types (
-    id   INTEGER PRIMARY KEY,
-    key  TEXT NOT NULL UNIQUE,          -- melee, ranged
-    name TEXT NOT NULL
+    id         INTEGER PRIMARY KEY,
+    key        TEXT NOT NULL UNIQUE,          -- melee, ranged
+    name       TEXT NOT NULL,
+    created_by TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 CREATE TABLE damage_types (
-    id   INTEGER PRIMARY KEY,
-    key  TEXT NOT NULL UNIQUE,          -- physical, magical, true
-    name TEXT NOT NULL
+    id         INTEGER PRIMARY KEY,
+    key        TEXT NOT NULL UNIQUE,          -- physical, magical, true
+    name       TEXT NOT NULL,
+    created_by TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 -- Todos los stats que pueden tener un dios o un item (strength, health, ...).
@@ -43,39 +62,51 @@ CREATE TABLE stats (
     is_percent       INTEGER NOT NULL DEFAULT 0 CHECK (is_percent IN (0, 1)),
     applies_to_gods  INTEGER NOT NULL DEFAULT 0 CHECK (applies_to_gods IN (0, 1)),
     applies_to_items INTEGER NOT NULL DEFAULT 0 CHECK (applies_to_items IN (0, 1)),
-    sort_order       INTEGER NOT NULL DEFAULT 0
+    sort_order       INTEGER NOT NULL DEFAULT 0,
+    created_by       TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by       TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 CREATE TABLE item_categories (
-    id   INTEGER PRIMARY KEY,
-    key  TEXT NOT NULL UNIQUE,          -- starter, component, final, relic, consumable
-    name TEXT NOT NULL
+    id         INTEGER PRIMARY KEY,
+    key        TEXT NOT NULL UNIQUE,          -- starter, component, final, relic, consumable
+    name       TEXT NOT NULL,
+    created_by TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 -- Tipos de efecto de las habilidades: stun, slow, blind, buff, ...
 CREATE TABLE effect_types (
-    id   INTEGER PRIMARY KEY,
-    key  TEXT NOT NULL UNIQUE,
-    name TEXT NOT NULL
+    id         INTEGER PRIMARY KEY,
+    key        TEXT NOT NULL UNIQUE,
+    name       TEXT NOT NULL,
+    created_by TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 -- Qué representa un valor numérico de una habilidad: damage, cooldown, cost, ...
 CREATE TABLE ability_value_types (
-    id   INTEGER PRIMARY KEY,
-    key  TEXT NOT NULL UNIQUE,
-    name TEXT NOT NULL
+    id         INTEGER PRIMARY KEY,
+    key        TEXT NOT NULL UNIQUE,
+    name       TEXT NOT NULL,
+    created_by TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 -- Especializaciones de los dioses (Sniper, Healing, Buffs, ...).
 CREATE TABLE specializations (
-    id   INTEGER PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE
+    id         INTEGER PRIMARY KEY,
+    name       TEXT NOT NULL UNIQUE,
+    created_by TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 -- Etiquetas libres de los items (sustain, anti-cc, penetration, ...).
 CREATE TABLE tags (
-    id   INTEGER PRIMARY KEY,
-    name TEXT NOT NULL UNIQUE
+    id         INTEGER PRIMARY KEY,
+    name       TEXT NOT NULL UNIQUE,
+    created_by TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 ------------------------------------------------------------------------------
@@ -93,7 +124,9 @@ CREATE TABLE gods (
     basic_attack_range          REAL,
     basic_attack_progression    TEXT,
     basic_attack_notes          TEXT,
-    updated_at                  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    updated_at                  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by                  TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by                  TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 CREATE TABLE god_roles (
@@ -205,18 +238,20 @@ CREATE TABLE ability_value_scalings (
 ------------------------------------------------------------------------------
 
 CREATE TABLE items (
-    id                 INTEGER PRIMARY KEY,
-    slug               TEXT NOT NULL UNIQUE,
-    name               TEXT NOT NULL UNIQUE,
-    category_id        INTEGER NOT NULL REFERENCES item_categories(id),
-    tier               INTEGER NOT NULL CHECK (tier BETWEEN 1 AND 3),
-    cost               INTEGER NOT NULL DEFAULT 0 CHECK (cost >= 0),
-    passive_text       TEXT,
-    active_text        TEXT,
-    active_cooldown_s  REAL,
-    upgrade_condition  TEXT,                   -- starters/reliquias que se mejoran
-    unique_group       TEXT,                   -- items que no se pueden combinar entre sí
-    updated_at         TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+    id                INTEGER PRIMARY KEY,
+    slug              TEXT NOT NULL UNIQUE,
+    name              TEXT NOT NULL UNIQUE,
+    category_id       INTEGER NOT NULL REFERENCES item_categories(id),
+    tier              INTEGER NOT NULL CHECK (tier BETWEEN 1 AND 3),
+    cost              INTEGER NOT NULL DEFAULT 0 CHECK (cost >= 0),
+    passive_text      TEXT,
+    active_text       TEXT,
+    active_cooldown_s REAL,
+    upgrade_condition TEXT,                   -- starters/reliquias que se mejoran
+    unique_group      TEXT,                   -- items que no se pueden combinar entre sí
+    updated_at        TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by        TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by        TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
 );
 
 CREATE TABLE item_stats (
@@ -264,6 +299,8 @@ CREATE TABLE builds (
     description TEXT NOT NULL,          -- para qué sirve y en qué situación usarla
     created_at  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by  TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by  TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed')),
     UNIQUE (god_id, name),
     -- el aspecto tiene que ser del mismo dios
     FOREIGN KEY (aspect_id, god_id) REFERENCES aspects(id, god_id)

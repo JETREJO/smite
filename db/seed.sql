@@ -76,3 +76,14 @@ INSERT INTO effect_types (key, name) VALUES
     ('cripple',   'Lisiado'),
     ('buff',      'Mejora'),
     ('debuff',    'Penalización');
+
+-- Todo lo anterior viene del seed, no del usuario ni de Claude.
+UPDATE pantheons           SET created_by = 'seed', updated_by = 'seed';
+UPDATE roles               SET created_by = 'seed', updated_by = 'seed';
+UPDATE specializations     SET created_by = 'seed', updated_by = 'seed';
+UPDATE attack_types        SET created_by = 'seed', updated_by = 'seed';
+UPDATE damage_types        SET created_by = 'seed', updated_by = 'seed';
+UPDATE item_categories     SET created_by = 'seed', updated_by = 'seed';
+UPDATE stats               SET created_by = 'seed', updated_by = 'seed';
+UPDATE ability_value_types SET created_by = 'seed', updated_by = 'seed';
+UPDATE effect_types        SET created_by = 'seed', updated_by = 'seed';

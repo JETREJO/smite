@@ -26,7 +26,15 @@ npm run dev
 
 Luego abre http://localhost:3000.
 
-`npm run db:reset` borra la base de datos y la vuelve a crear vacía, solo con los catálogos.
+Otros comandos de la base de datos:
+
+| Comando | Qué hace |
+|---|---|
+| `npm run db:migrate` | Aplica los cambios de esquema pendientes (`db/migrations`) sin borrar datos. Guarda un respaldo antes. |
+| `npm run db:clean-claude` | Borra solo los datos de prueba que registró Claude. Agrega `-- --dry-run` para ver qué borraría. |
+| `npm run db:reset` | Guarda un respaldo, borra la base y la crea vacía. Se niega si hay datos registrados por el usuario, salvo con `-- --force`. |
+
+Los respaldos quedan en `data/backups/`.
 
 ## Estructura
 

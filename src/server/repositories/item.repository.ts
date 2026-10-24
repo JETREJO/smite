@@ -4,6 +4,7 @@ import { slugify } from "@/helpers/slugify";
 import { ROOT_ITEM_KEY } from "@/helpers/item-form-defaults";
 import type { ItemFieldsInput, ItemInput } from "@/interfaces/item.interface";
 import { getDb } from "@/server/db/connection";
+import { getDataAuthor } from "@/server/db/data-author";
 
 /** An error whose message can be shown to the user as is. */
 export class ItemWriteError extends Error {}
@@ -23,13 +24,14 @@ export function findTakenItemNames(names: string[], excludeItemId: number | null
 
 /** Ids of the selected tags plus the ones created from new names. */
 function resolveTagIds(db: Database.Database, fields: ItemFieldsInput): number[] {
-  const insert = db.prepare("INSERT OR IGNORE INTO tags (name) VALUES (?)");
+  const insert = db.prepare("INSERT OR IGNORE INTO tags (name, created_by, updated_by) VALUES (?, ?, ?)");
+  const author = getDataAuthor();
   const find = db.prepare("SELECT id FROM tags WHERE name = ?");
   const ids = new Set(fields.tagIds);
   for (const name of fields.newTags) {
     const trimmed = name.trim();
     if (trimmed === "") continue;
-    insert.run(trimmed);
+    insert.run(trimmed, author, author);
     ids.add((find.get(trimmed) as { id: number }).id);
   }
   return [...ids];
@@ -55,10 +57,10 @@ function insertItemRow(db: Database.Database, fields: ItemFieldsInput): number {
     db
       .prepare(
         `INSERT INTO items (slug, name, category_id, tier, cost, passive_text, active_text, active_cooldown_s,
-                            upgrade_condition, unique_group)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                            upgrade_condition, unique_group, created_by, updated_by)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
-      .run(...itemRowParams(fields)).lastInsertRowid,
+      .run(...itemRowParams(fields), getDataAuthor(), getDataAuthor()).lastInsertRowid,
   );
 }
 
@@ -117,10 +119,11 @@ export function updateItem(itemId: number, input: ItemInput): void {
     const result = db
       .prepare(
         `UPDATE items SET slug = ?, name = ?, category_id = ?, tier = ?, cost = ?, passive_text = ?, active_text = ?,
-                          active_cooldown_s = ?, upgrade_condition = ?, unique_group = ?, updated_at = CURRENT_TIMESTAMP
+                          active_cooldown_s = ?, upgrade_condition = ?, unique_group = ?, updated_at = CURRENT_TIMESTAMP,
+                          updated_by = ?
          WHERE id = ?`,
       )
-      .run(...itemRowParams(input.item), itemId);
+      .run(...itemRowParams(input.item), getDataAuthor(), itemId);
     if (result.changes === 0) throw new ItemWriteError("El item ya no existe.");
     writeItemDetails(db, itemId, input.item);
     db.prepare("DELETE FROM item_recipes WHERE item_id = ?").run(itemId);

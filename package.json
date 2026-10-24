@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:claude": "DATA_AUTHOR=claude next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "db:init": "node scripts/init-db.mjs",
-    "db:reset": "node scripts/init-db.mjs --reset"
+    "db:migrate": "node scripts/migrate-db.mjs",
+    "db:reset": "node scripts/init-db.mjs --reset",
+    "db:clean-claude": "node scripts/clean-claude-data.mjs"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",
