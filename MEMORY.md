@@ -116,7 +116,9 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
   4. Solo después compara las combinaciones que quedan.
 - `useFieldArray` de React Hook Form no valida su regla de "mínimo una fila" al enviar; la lista de items se revisa a mano en `onSubmit`.
 - **Builds de Anubis:** Claude creó Ráfaga, Asedio y Bastión a pedido del usuario. Son datos reales, pero están marcadas como `claude`: `db:clean-claude` las borra si el usuario no las ha editado desde la app; al editarlas pasan a ser suyas. Revisar siempre con `-- --dry-run` antes de limpiar.
-- **Supuestos del análisis de builds (no están en la base; confirmar en el juego):** mitigación = 100 / (100 + protección), tope de penetración de 40%, y lecturas ambiguas de items como Alma segadora ("infligido 4 veces") y Gema de almas (si "golpe de habilidad" cuenta cada tick). `Eco` no está definido en los datos, por eso esos items no se evaluaron.
+- **Builds de Cu Chulainn:** Claude creó Sabueso, Sed de sangre y Guardián (rol Solo) con las mismas reglas de autoría que las de Anubis.
+- **Regla al comparar builds:** cada build tiene que ganar la situación que promete. Se fija un mínimo de vida efectiva por situación, para que el simulador no elija solo daño, y si una build pierde en su propia especialidad contra otra, se cambia en vez de dejarle la etiqueta.
+- **Supuestos del análisis de builds (no están en la base; confirmar en el juego):** mitigación = 100 / (100 + protección), tope de penetración de 40%, y lecturas ambiguas de items como Alma segadora ("infligido 4 veces") y Gema de almas (si "golpe de habilidad" cuenta cada tick). `Eco` no está definido en los datos, por eso esos items no se evaluaron. Para dioses de ataques también se asume que el robo de vida cura 100% con ataques; el multiplicador de crítico no está en los datos.
 
 ## Estructura del código
 
