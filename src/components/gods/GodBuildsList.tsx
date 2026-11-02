@@ -11,6 +11,10 @@ interface GodBuildsListProps {
   builds: BuildSummary[];
 }
 
+function formatGold(amount: number): string {
+  return amount.toLocaleString("es-MX");
+}
+
 export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
   const newBuildHref = `/gods/${godId}/builds/new`;
 
@@ -35,7 +39,7 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
             <div className="flex flex-col gap-1">
               <h3 className="text-lg font-semibold">{build.name}</h3>
               <p className="text-sm text-fg-muted">
-                Costo total: <span className="font-semibold tabular-nums text-fg">{build.totalCost.toLocaleString("es-MX")}</span> de oro
+                Costo total: <span className="font-semibold tabular-nums text-fg">{formatGold(build.totalCost)}</span> de oro
               </p>
             </div>
             <div className="flex flex-wrap gap-2 text-xs">
@@ -50,6 +54,18 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
               )}
             </div>
           </header>
+          {build.strengths.length > 0 && (
+            <ul aria-label="Fortalezas" className="flex flex-wrap gap-2">
+              {build.strengths.map((strength) => (
+                <li
+                  key={strength}
+                  className="rounded-full border border-accent bg-accent/15 px-3 py-1 text-sm font-semibold text-accent-strong"
+                >
+                  {strength}
+                </li>
+              ))}
+            </ul>
+          )}
           <p className="whitespace-pre-line text-sm text-fg-muted">{build.description}</p>
           {build.items.length === 0 ? (
             <p className="text-sm text-fg-subtle">Esta build todavía no tiene items.</p>
@@ -61,10 +77,18 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
                     href={`/items/${item.itemId}`}
                     className="flex h-full flex-col gap-3 rounded-lg border border-line-strong bg-elevated p-4 text-sm text-fg hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                   >
-                    <span className="flex flex-wrap items-baseline gap-2">
-                      <span className="tabular-nums text-fg-subtle">{item.position}.</span>
-                      <span className="font-semibold">{item.name}</span>
-                      <span className="text-xs text-fg-subtle">{item.category}</span>
+                    <span className="flex items-start justify-between gap-3">
+                      <span className="flex min-w-0 gap-2">
+                        <span className="tabular-nums text-fg-subtle">{item.position}.</span>
+                        <span className="flex min-w-0 flex-col">
+                          <span className="font-semibold">{item.name}</span>
+                          {item.englishName && <span className="text-xs text-fg-subtle">{item.englishName}</span>}
+                        </span>
+                      </span>
+                      <span className="flex shrink-0 flex-col items-end">
+                        <span className="font-semibold tabular-nums">{formatGold(item.cost)} de oro</span>
+                        <span className="text-xs text-fg-subtle">{item.category}</span>
+                      </span>
                     </span>
                     {item.stats.length > 0 && (
                       <span className="flex flex-wrap gap-1.5">

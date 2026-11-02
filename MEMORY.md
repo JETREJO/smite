@@ -46,7 +46,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 
 ## Autoría de los datos y reglas para Claude
 
-- `gods`, `items`, `builds`, `specializations`, `tags` y los catálogos tienen `created_by` y `updated_by`: `user` (el usuario desde la app), `claude` (pruebas de Claude) o `seed` (`db/seed.sql`). El valor por defecto es `user`: un dato sin marcar se trata como del usuario.
+- `gods`, `items`, `builds`, `specializations`, `tags` y los catálogos (incluido `build_strengths`) tienen `created_by` y `updated_by`: `user` (el usuario desde la app), `claude` (pruebas de Claude) o `seed` (`db/seed.sql`). El valor por defecto es `user`: un dato sin marcar se trata como del usuario.
 - Las tablas hijas (habilidades, stats, componentes, items de una build…) heredan el autor de su dios, item o build.
 - **Adueñarse de un dato:** si Claude registra algo y luego el usuario lo edita desde la app, `updated_by` pasa a `user` y desde ese momento el registro es del usuario: ya no se borra en la limpieza y deja de mostrar la etiqueta. Un registro es "de Claude" solo si `created_by = 'claude'` **y** `updated_by = 'claude'`.
 - Los datos reales que el usuario le pide a Claude capturar (p.ej. Anubis) se registran como `claude` hasta que el usuario los edite.
@@ -103,10 +103,11 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 ## Builds
 
 - Cada build tiene **nombre** y **descripción** obligatorios (para qué sirve y en qué situación usarla), aspecto y rol opcionales, items en orden de compra y orden de subida de habilidades.
+- **Fortalezas:** etiquetas cortas que resumen el motivo de la build (`Burst`, `Peleas largas`…). Son opcionales, salen del catálogo `build_strengths` y se pueden crear desde el formulario, igual que las especializaciones. Se muestran como pills en orden de inserción. El tipo de build se llama **Burst**, no "Nuke" (término del usuario).
 - **Items:** lista libre en orden de compra (cualquier categoría, se pueden repetir y reordenar con flechas). Mínimo un item. No se imponen slots del juego.
 - **Orden de habilidades:** cuadrícula de niveles 1–20 × habilidades 1–4. Opcional; cada habilidad sube como máximo a rango 5.
 - El nombre de la build es único por dios (sin distinguir mayúsculas).
-- Por ahora solo se crean builds y se listan en la pestaña Builds del dios. Cada tarjeta muestra el costo total (suma de `items.cost`; un item repetido cuenta cada vez) y cada item es un botón a `/items/{id}` con sus stats, pasiva y activa. Ver, editar, borrar y el resumen de stats quedan pendientes hasta que el usuario lo pida.
+- Por ahora solo se crean builds y se listan en la pestaña Builds del dios. Cada tarjeta muestra el costo total (suma de `items.cost`; un item repetido cuenta cada vez) y cada item es un botón a `/items/{id}` con su nombre en inglés, precio, stats, pasiva y activa. Ver, editar, borrar y el resumen de stats quedan pendientes hasta que el usuario lo pida.
 - **Cómo crea builds Claude (decisión del usuario):**
   1. Solo evalúa items de Tier III, los últimos de cada rama. Los componentes de Tier I y II nunca entran en la evaluación.
   2. Antes de cada build analiza al dios: tipo de daño, escalados, kit, puntos fuertes y debilidades.

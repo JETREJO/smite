@@ -5,6 +5,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 import { BuildItemsField, EMPTY_ITEMS_MESSAGE } from "@/components/builds/BuildItemsField";
+import { BuildStrengthPicker } from "@/components/builds/BuildStrengthPicker";
 import { SkillOrderGrid } from "@/components/builds/SkillOrderGrid";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { FormField } from "@/components/ui/FormField";
@@ -71,6 +72,9 @@ export function BuildForm({ godId, catalogs }: BuildFormProps) {
             hint="Para qué sirve y en qué situación usarla."
           >
             <TextArea rows={4} {...register("description", { required: "La descripción es obligatoria." })} />
+          </FormField>
+          <FormField label="Fortalezas" hint="Opcional. Resume en pocas palabras el motivo de la build: Burst, Peleas largas, Anti-curación…">
+            <BuildStrengthPicker options={catalogs.strengths} />
           </FormField>
           <div className="grid items-start gap-5 sm:grid-cols-2">
             <FormField

@@ -6,6 +6,7 @@ export interface BuildItemSummary {
   position: number;
   itemId: number;
   name: string;
+  englishName: string | null;
   category: string;
   cost: number;
   /** Formatted stats, e.g. "+40 Fuerza". */
@@ -21,6 +22,8 @@ export interface BuildSummary extends Authorship {
   description: string;
   aspectName: string | null;
   roleName: string | null;
+  /** Short labels that summarize what the build is for. */
+  strengths: string[];
   items: BuildItemSummary[];
   /** Sum of the items' full cost; a repeated item counts every time. */
   totalCost: number;
@@ -33,6 +36,9 @@ export interface BuildInput {
   description: string;
   aspectId: number | null;
   roleId: number | null;
+  strengthIds: number[];
+  /** Strengths typed in the form that don't exist in the catalog yet. */
+  newStrengths: string[];
   /** Items in purchase order. */
   items: { itemId: number | null }[];
   /** One entry per god level (1-20): the ability slot leveled up, or null. */
@@ -42,6 +48,7 @@ export interface BuildInput {
 export interface BuildFormCatalogs {
   aspects: CatalogOption[];
   roles: CatalogOption[];
+  strengths: CatalogOption[];
   items: ItemOption[];
   /** The god's abilities 1-4, to label the skill order grid. */
   abilities: { slot: number; name: string }[];

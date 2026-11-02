@@ -76,6 +76,15 @@ function clean() {
        AND NOT EXISTS (SELECT 1 FROM god_specializations gs WHERE gs.specialization_id = specializations.id)`,
   ).run();
 
+  deleted.buildStrengths = names(
+    `SELECT name FROM build_strengths s WHERE created_by = 'claude' AND updated_by = 'claude'
+       AND NOT EXISTS (SELECT 1 FROM build_strength_links l WHERE l.strength_id = s.id) ORDER BY name`,
+  );
+  db.prepare(
+    `DELETE FROM build_strengths WHERE created_by = 'claude' AND updated_by = 'claude'
+       AND NOT EXISTS (SELECT 1 FROM build_strength_links l WHERE l.strength_id = build_strengths.id)`,
+  ).run();
+
   deleted.tags = names(
     `SELECT name FROM tags t WHERE created_by = 'claude' AND updated_by = 'claude'
        AND NOT EXISTS (SELECT 1 FROM item_tags it WHERE it.tag_id = t.id) ORDER BY name`,

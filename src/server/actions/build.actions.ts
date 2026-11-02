@@ -9,6 +9,7 @@ import {
   buildNameExists,
   createBuild,
   roleExists,
+  strengthsExist,
 } from "@/server/repositories/build.repository";
 import { getGodName } from "@/server/repositories/god-query.repository";
 import { getExistingItemIds } from "@/server/repositories/item-query.repository";
@@ -31,6 +32,9 @@ export async function createBuildAction(godId: number, input: BuildInput): Promi
   }
   if (input.roleId !== null && !roleExists(input.roleId)) {
     return { ok: false, message: "El rol ya no existe." };
+  }
+  if (!strengthsExist(input.strengthIds)) {
+    return { ok: false, message: "Una de las fortalezas ya no existe. Recarga la página." };
   }
   const itemIds = input.items.map((item) => item.itemId as number);
   const foundIds = getExistingItemIds([...new Set(itemIds)]);

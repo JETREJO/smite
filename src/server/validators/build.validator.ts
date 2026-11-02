@@ -18,6 +18,9 @@ export function validateBuild(input: BuildInput): string[] {
   if (input.aspectId !== null && !isId(input.aspectId)) errors.push("El aspecto no es válido.");
   if (input.roleId !== null && !isId(input.roleId)) errors.push("El rol no es válido.");
 
+  if (input.strengthIds.some((id) => !isId(id))) errors.push("Una de las fortalezas no es válida.");
+  if (input.newStrengths.some(isBlank)) errors.push("Una de las fortalezas nuevas está vacía.");
+
   if (input.items.length === 0) errors.push("Agrega al menos un item.");
   input.items.forEach((item, index) => {
     if (!isId(item.itemId)) errors.push(`Item ${index + 1}: selecciona un item.`);

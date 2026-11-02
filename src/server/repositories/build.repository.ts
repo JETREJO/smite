@@ -1,3 +1,5 @@
+import type Database from "better-sqlite3";
+
 import { MAX_GOD_LEVEL } from "@/helpers/ability-slots";
 import type { BuildFormCatalogs, BuildInput, BuildItemSummary, BuildSummary } from "@/interfaces/build.interface";
 import type { CatalogOption } from "@/interfaces/catalog.interface";
@@ -17,10 +19,10 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
         WHERE b.god_id = ?
         ORDER BY b.name COLLATE NOCASE`,
     )
-    .all(godId) as Omit<BuildSummary, "items" | "totalCost" | "skillOrder">[];
+    .all(godId) as Omit<BuildSummary, "strengths" | "items" | "totalCost" | "skillOrder">[];
 
   const selectItems = db.prepare(
-    `SELECT bi.position, bi.item_id AS itemId, i.name, c.name AS category, i.cost,
+    `SELECT bi.position, bi.item_id AS itemId, i.name, i.english_name AS englishName, c.name AS category, i.cost,
             i.passive_text AS passiveText, i.active_text AS activeText, i.active_cooldown_s AS activeCooldownS
        FROM build_items bi
        JOIN items i ON i.id = bi.item_id
@@ -29,6 +31,13 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
       ORDER BY bi.position`,
   );
   const selectSkillOrder = db.prepare("SELECT level, slot FROM build_skill_order WHERE build_id = ? ORDER BY level");
+  const selectStrengths = db.prepare(
+    `SELECT s.name
+       FROM build_strength_links l
+       JOIN build_strengths s ON s.id = l.strength_id
+      WHERE l.build_id = ?
+      ORDER BY l.rowid`,
+  );
   const stats = getStatSummaries();
 
   return builds.map((build) => {
@@ -41,6 +50,7 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
     }));
     return {
       ...build,
+      strengths: (selectStrengths.all(build.id) as { name: string }[]).map((row) => row.name),
       items,
       totalCost: items.reduce((total, item) => total + item.cost, 0),
       skillOrder: Array.from({ length: MAX_GOD_LEVEL }, (_, index) => slotsByLevel.get(index + 1) ?? null),
@@ -54,6 +64,7 @@ export function getBuildFormCatalogs(godId: number): BuildFormCatalogs {
   return {
     aspects: db.prepare("SELECT id, name FROM aspects WHERE god_id = ? ORDER BY name").all(godId) as CatalogOption[],
     roles: db.prepare("SELECT id, name FROM roles ORDER BY id").all() as CatalogOption[],
+    strengths: db.prepare("SELECT id, name FROM build_strengths ORDER BY name").all() as CatalogOption[],
     items: listItemOptions(),
     abilities: db
       .prepare("SELECT slot, name FROM abilities WHERE god_id = ? AND slot BETWEEN 1 AND 4 ORDER BY slot")
@@ -76,6 +87,23 @@ export function roleExists(roleId: number): boolean {
   return getDb().prepare("SELECT 1 FROM roles WHERE id = ?").get(roleId) !== undefined;
 }
 
+export function strengthsExist(strengthIds: number[]): boolean {
+  const find = getDb().prepare("SELECT 1 FROM build_strengths WHERE id = ?");
+  return strengthIds.every((id) => find.get(id) !== undefined);
+}
+
+/** Ids of the selected strengths plus the ones created from new names. */
+function resolveStrengthIds(db: Database.Database, input: BuildInput): number[] {
+  const insert = db.prepare("INSERT OR IGNORE INTO build_strengths (name, created_by, updated_by) VALUES (?, ?, ?)");
+  const find = db.prepare("SELECT id FROM build_strengths WHERE name = ?");
+  const ids = new Set(input.strengthIds);
+  for (const name of input.newStrengths) {
+    insert.run(name.trim(), getDataAuthor(), getDataAuthor());
+    ids.add((find.get(name.trim()) as { id: number }).id);
+  }
+  return [...ids];
+}
+
 /** Inserts the build with its items and skill order in one transaction. Returns the new build id. */
 export function createBuild(godId: number, input: BuildInput): number {
   const db = getDb();
@@ -96,6 +124,9 @@ export function createBuild(godId: number, input: BuildInput): number {
           getDataAuthor(),
         ).lastInsertRowid,
     );
+
+    const insertStrength = db.prepare("INSERT INTO build_strength_links (build_id, strength_id) VALUES (?, ?)");
+    resolveStrengthIds(db, input).forEach((strengthId) => insertStrength.run(buildId, strengthId));
 
     const insertItem = db.prepare("INSERT INTO build_items (build_id, position, item_id) VALUES (?, ?, ?)");
     input.items.forEach((item, index) => insertItem.run(buildId, index + 1, item.itemId));
