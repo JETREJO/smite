@@ -38,7 +38,7 @@ function clean() {
   deleted.items = [];
   const deletableItems = db.prepare(
     `SELECT id, name FROM items i
-      WHERE created_by = 'claude' AND updated_by = 'claude'
+      WHERE created_by = 'claude' AND updated_by = 'claude' AND source IS NULL
         AND NOT EXISTS (SELECT 1 FROM item_recipes r WHERE r.component_id = i.id)
         AND NOT EXISTS (SELECT 1 FROM build_items bi WHERE bi.item_id = i.id)`,
   );
@@ -49,7 +49,10 @@ function clean() {
       deleted.items.push(item.name);
     }
   }
-  kept.items = names("SELECT name FROM items WHERE created_by = 'claude' AND updated_by = 'claude' ORDER BY name");
+  // Imported items (source = 'wiki') are real data, not tests: they are never deleted nor listed here.
+  kept.items = names(
+    "SELECT name FROM items WHERE created_by = 'claude' AND updated_by = 'claude' AND source IS NULL ORDER BY name",
+  );
 
   // Claude's builds are gone, so any build left on a Claude god belongs to the user.
   deleted.gods = names(

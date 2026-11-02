@@ -85,7 +85,12 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - Un item no puede ser componente de sí mismo, ni directa ni indirectamente (el servidor lo valida).
 - Los números de la pasiva y la activa se guardan como pares nombre/valor (`item_values`).
 - `items.english_name` guarda el nombre original en inglés (opcional). `name` sigue siendo el nombre principal y el único que se valida como único.
-- **Daño de ataque** (`attack_damage`, Attack Damage) es un stat de items: da daño extra a los ataques básicos. **Fuerza** escala habilidades y da 100% a los ataques básicos. Se guardó separado de "Poder de ataque" (`basic_attack_damage`, stat base de dioses) porque el wiki no confirma que sean el mismo stat; si se confirma, conviene unificarlos.
+- **Importación del wiki:** los items del wiki oficial se preparan en JSON (`db/imports/`) y se cargan con `npm run db:import-items -- <archivo> [--dry-run]`. Se guardan traducidos al español, con el nombre original en `english_name`, `created_by = 'claude'` y `source = 'wiki'`. Es todo o nada: valida nombres, stats, componentes y que costo total = costo propio + componentes, y hace respaldo antes.
+- `db:clean-claude` nunca borra items con `source` (son datos reales, no pruebas). Si el usuario edita uno, pasa a ser suyo como cualquier otro.
+- Las traducciones de nombres son de Claude, no oficiales del juego: el usuario las revisa.
+- **Daño de ataque** (`attack_damage`, Attack Damage) es un stat de items: da daño extra a los ataques básicos. **Fuerza** escala habilidades y da 100% a los ataques básicos. Se guardó separado de "Poder de ataque" (`basic_attack_damage`, stat base de dioses) porque el wiki no confirma que sean el mismo stat; si se confirma, conviene unificarlos. Indicio: el wiki usa el icono `BasicAttackPower` para Attack Damage.
+- Tier I, II y III del wiki ya están completos (12, 40 y 136). Falta importar reliquias, curios, consumibles, starters y específicos de un dios. El tipo de Tier III (ofensivo, defensivo, híbrido) aún no se guarda.
+- Stats: `Amortiguación` y `Blindaje` son puntos (1 punto = 1%, tope 35); `Eco` y `Tenacidad` son porcentaje.
 - Ojo con React Hook Form: no usar `root` como nombre de campo, porque RHF reserva `errors.root` y descarta esos errores al enviar. Por eso el item principal vive en `item`.
 
 ## Builds

@@ -27,7 +27,9 @@ INSERT INTO item_categories (key, name) VALUES
     ('component',  'Componente'),
     ('final',      'Final'),
     ('relic',      'Reliquia'),
-    ('consumable', 'Consumible');
+    ('consumable', 'Consumible'),
+    ('curio',        'Curio'),
+    ('god_specific', 'Específico de un dios');
 
 INSERT INTO stats (key, name, is_percent, applies_to_gods, applies_to_items, sort_order) VALUES
     ('health',                 'Vida',                       0, 1, 1, 10),
@@ -48,7 +50,12 @@ INSERT INTO stats (key, name, is_percent, applies_to_gods, applies_to_items, sor
     ('penetration_percent',    'Penetración %',              1, 0, 1, 150),
     ('cooldown_rate',          'Tasa de enfriamiento',       1, 0, 1, 160),
     ('lifesteal',              'Robo de vida',               1, 0, 1, 170),
-    ('critical_chance',        'Probabilidad de crítico',    1, 0, 1, 180);
+    ('critical_chance',        'Probabilidad de crítico',    1, 0, 1, 180),
+    ('tenacity',               'Tenacidad',                  1, 0, 1, 190),
+    ('echo',                   'Eco',                        1, 0, 1, 200),
+    ('dampening',              'Amortiguación',              0, 0, 1, 210),
+    ('plating',                'Blindaje',                   0, 0, 1, 220),
+    ('pathfinding',            'Pathfinding',                0, 0, 1, 230);
 
 INSERT INTO ability_value_types (key, name) VALUES
     ('damage',         'Daño'),

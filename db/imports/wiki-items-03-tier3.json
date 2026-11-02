@@ -1,0 +1,5953 @@
+{
+ "source": "https://wiki.smite2.com/w/Items",
+ "items": [
+  {
+   "name": "Arco de Eros",
+   "englishName": "Eros' Bow",
+   "category": "final",
+   "tier": 3,
+   "cost": 2300,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 35
+    },
+    {
+     "key": "health",
+     "value": 150
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 25
+    },
+    {
+     "key": "mp5",
+     "value": 2.5
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    },
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: marca a un dios aliado como tu Amado. Solo un aliado puede estar marcado, y la marca se rompe si se aleja más de 20 m.\n\nAl golpear con un ataque: ganas 1 acumulación de Devoción (máximo 10).\n\nAl mejorar, curar o escudar a tu Amado con una habilidad: consumes tu Devoción y le das Pasión, que aumenta su fuerza en 5 y su inteligencia en 7.5 por acumulación consumida.",
+   "activeValues": [
+    {
+     "key": "Distancia máxima del Amado (m)",
+     "value": 20
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 10
+    },
+    {
+     "key": "Fuerza por acumulación",
+     "value": 5
+    },
+    {
+     "key": "Inteligencia por acumulación",
+     "value": 7.5
+    }
+   ]
+  },
+  {
+   "name": "Ira",
+   "englishName": "Rage",
+   "category": "final",
+   "tier": 3,
+   "cost": 2350,
+   "ownCost": 200,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 30
+    },
+    {
+     "key": "critical_chance",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Kopesh",
+     "quantity": 1
+    },
+    {
+     "name": "Espada ganchuda",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Matar o asistir a un dios: +4% de probabilidad de crítico (máximo 20%).\n\nTras 5 muertes o asistencias: +10% adicional de probabilidad de crítico.",
+   "passiveValues": [
+    {
+     "key": "Crítico por muerte o asistencia (%)",
+     "value": 4
+    },
+    {
+     "key": "Crítico máximo acumulado (%)",
+     "value": 20
+    },
+    {
+     "key": "Muertes o asistencias para el bono",
+     "value": 5
+    },
+    {
+     "key": "Crítico adicional (%)",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "name": "Trascendencia",
+   "englishName": "Transcendence",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 35
+    },
+    {
+     "key": "mana",
+     "value": 250
+    },
+    {
+     "key": "mp5",
+     "value": 4
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha infundida",
+     "quantity": 1
+    },
+    {
+     "name": "Tomo de maná",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Ganas fuerza igual al 3% del maná de tus items.\n\nInfligir 700 de daño a súbditos o monstruos de la jungla: +1 acumulación de Evolución y +1 de Infusión de maná (máximo 50). El daño a dioses cuenta doble.\n\nCada acumulación de Infusión de maná: +10 de maná.\n\nCon 50 acumulaciones de Evolución, el item evoluciona y gana +10 de penetración y +100 de maná.",
+   "passiveValues": [
+    {
+     "key": "Fuerza (% del maná de items)",
+     "value": 3
+    },
+    {
+     "key": "Daño para una acumulación",
+     "value": 700
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 50
+    },
+    {
+     "key": "Maná por acumulación",
+     "value": 10
+    },
+    {
+     "key": "Penetración al evolucionar",
+     "value": 10
+    },
+    {
+     "key": "Maná al evolucionar",
+     "value": 100
+    }
+   ]
+  },
+  {
+   "name": "Arco Rayo de Sol",
+   "englishName": "Sun Beam Bow",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 450,
+   "stats": [
+    {
+     "key": "attack_damage",
+     "value": 20
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco manchú",
+     "quantity": 1
+    },
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Stat adaptativo: +20 de fuerza o +40 de inteligencia, según tu stat de items más alto.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 20
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 40
+    }
+   ],
+   "activeText": "Al usar: disparas 2 proyectiles adicionales por ataque. Infligen 10 + 30% del daño de ataque como daño mágico, con 8.8 m de alcance. Se puede activar y desactivar, y consume 5% del maná máximo por segundo mientras está activo. Las estructuras y jefes reciben 25% del daño.",
+   "activeValues": [
+    {
+     "key": "Proyectiles adicionales",
+     "value": 2
+    },
+    {
+     "key": "Daño base",
+     "value": 10
+    },
+    {
+     "key": "Daño (% del daño de ataque)",
+     "value": 30
+    },
+    {
+     "key": "Alcance (m)",
+     "value": 8.8
+    },
+    {
+     "key": "Maná máximo consumido por segundo (%)",
+     "value": 5
+    },
+    {
+     "key": "Daño a estructuras y jefes (%)",
+     "value": 25
+    }
+   ]
+  },
+  {
+   "name": "Venganza de Jotunn",
+   "englishName": "Jotunn's Revenge",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 400,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 35
+    },
+    {
+     "key": "mana",
+     "value": 250
+    },
+    {
+     "key": "penetration_flat",
+     "value": 5
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 25
+    }
+   ],
+   "components": [
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    },
+    {
+     "name": "Caestus",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Matar o asistir a un dios: -1 s de enfriamiento en habilidades que no son definitivas y -5 s en definitivas.",
+   "passiveValues": [
+    {
+     "key": "Reducción de enfriamiento (s)",
+     "value": 1
+    },
+    {
+     "key": "Reducción de enfriamiento de la definitiva (s)",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Tyrfing",
+   "englishName": "Tyrfing",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 450,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 25
+    },
+    {
+     "key": "attack_damage",
+     "value": 25
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco manchú",
+     "quantity": 1
+    },
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Los ataques infligen +15 de daño físico adicional.\n\nAl golpear a un dios: el daño adicional aumenta +15 durante 4 s. Se acumula una vez, y +1 acumulación cada 4 niveles (máximo 6).",
+   "passiveValues": [
+    {
+     "key": "Daño físico adicional",
+     "value": 15
+    },
+    {
+     "key": "Aumento por acumulación",
+     "value": 15
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    },
+    {
+     "key": "Niveles por acumulación adicional",
+     "value": 4
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 6
+    }
+   ]
+  },
+  {
+   "name": "Lamento de la hidra",
+   "englishName": "Hydra's Lament",
+   "category": "final",
+   "tier": 3,
+   "cost": 2450,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 45
+    },
+    {
+     "key": "mana",
+     "value": 200
+    },
+    {
+     "key": "mp5",
+     "value": 4
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha infundida",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Habilidad usada: tu siguiente ataque exitoso inflige daño adicional: +30% cuerpo a cuerpo o +20% a distancia. El efecto dura 8 s.",
+   "passiveValues": [
+    {
+     "key": "Daño adicional cuerpo a cuerpo (%)",
+     "value": 30
+    },
+    {
+     "key": "Daño adicional a distancia (%)",
+     "value": 20
+    },
+    {
+     "key": "Duración (s)",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "name": "Arco de Odiseo",
+   "englishName": "Odysseus' Bow",
+   "category": "final",
+   "tier": 3,
+   "cost": 2450,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "attack_speed_percent",
+     "value": 45
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco del cazador",
+     "quantity": 2
+    }
+   ],
+   "passiveText": "Cada cuarto ataque que golpea activa Cadena de rayos: inflige 15 + 60% del daño de ataque como daño físico al objetivo y a un máximo de 4 enemigos cercanos, con 4.8 m de rebote. Puede golpear al mismo objetivo más de una vez.",
+   "passiveValues": [
+    {
+     "key": "Ataques para activarse",
+     "value": 4
+    },
+    {
+     "key": "Daño base",
+     "value": 15
+    },
+    {
+     "key": "Daño (% del daño de ataque)",
+     "value": 60
+    },
+    {
+     "key": "Enemigos cercanos máximos",
+     "value": 4
+    },
+    {
+     "key": "Alcance del rebote (m)",
+     "value": 4.8
+    }
+   ]
+  },
+  {
+   "name": "Daga del frenesí",
+   "englishName": "Dagger of Frenzy",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "attack_damage",
+     "value": 25
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 25
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco manchú",
+     "quantity": 1
+    },
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: +10 (+4 por nivel) de daño de ataque y +20% (+1% por nivel) de velocidad de ataque durante 6 ataques. Matar a un dios reinicia el enfriamiento.",
+   "activeValues": [
+    {
+     "key": "Daño de ataque base",
+     "value": 10
+    },
+    {
+     "key": "Daño de ataque por nivel",
+     "value": 4
+    },
+    {
+     "key": "Velocidad de ataque base (%)",
+     "value": 20
+    },
+    {
+     "key": "Velocidad de ataque por nivel (%)",
+     "value": 1
+    },
+    {
+     "key": "Duración (ataques)",
+     "value": 6
+    }
+   ],
+   "activeCooldownS": 15
+  },
+  {
+   "name": "Death Metal",
+   "englishName": "Death Metal",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 500,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 35
+    },
+    {
+     "key": "intelligence",
+     "value": 40
+    },
+    {
+     "key": "critical_chance",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Cítara",
+     "quantity": 1
+    },
+    {
+     "name": "Espada ganchuda",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: pierdes toda tu inteligencia y ganas 66% de ella como fuerza, y +25% de probabilidad de crítico. Dura 6 s.",
+   "activeValues": [
+    {
+     "key": "Conversión a fuerza (%)",
+     "value": 66
+    },
+    {
+     "key": "Crítico adicional (%)",
+     "value": 25
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    }
+   ],
+   "activeCooldownS": 45
+  },
+  {
+   "name": "Anillo ágil",
+   "englishName": "Nimble Ring",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 35
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 20
+    },
+    {
+     "key": "lifesteal",
+     "value": 7.5
+    }
+   ],
+   "components": [
+    {
+     "name": "Brazalete encantado",
+     "quantity": 1
+    },
+    {
+     "name": "Hoz maldita",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Por cada 10 de inteligencia: +1 de daño de ataque y +1% de velocidad de ataque.",
+   "passiveValues": [
+    {
+     "key": "Inteligencia requerida",
+     "value": 10
+    },
+    {
+     "key": "Daño de ataque por tramo",
+     "value": 1
+    },
+    {
+     "key": "Velocidad de ataque por tramo (%)",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "name": "Guantelete del devorador",
+   "englishName": "Devourer's Gauntlet",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 300,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 35
+    },
+    {
+     "key": "lifesteal",
+     "value": 5
+    }
+   ],
+   "components": [
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    },
+    {
+     "name": "Hoz adamantina",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Matar súbditos o monstruos de la jungla: +1 acumulación. Cada acumulación da +0.4 de fuerza y +0.05% de robo de vida.\n\nCon 75 acumulaciones ganas +10 de fuerza, +3% de robo de vida y +5 de penetración. Después sigues acumulando más lento: 10 súbditos dan +1 acumulación, y matar o asistir a un jefe de la jungla da +4.",
+   "passiveValues": [
+    {
+     "key": "Fuerza por acumulación",
+     "value": 0.4
+    },
+    {
+     "key": "Robo de vida por acumulación (%)",
+     "value": 0.05
+    },
+    {
+     "key": "Acumulaciones para el bono",
+     "value": 75
+    },
+    {
+     "key": "Fuerza del bono",
+     "value": 10
+    },
+    {
+     "key": "Robo de vida del bono (%)",
+     "value": 3
+    },
+    {
+     "key": "Penetración del bono",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Trinchador espinoso",
+   "englishName": "Barbed Carver",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 650,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 40
+    },
+    {
+     "key": "lifesteal",
+     "value": 7.5
+    }
+   ],
+   "components": [
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    },
+    {
+     "name": "Hoz maldita",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad: el objetivo gana +1 acumulación de Heridas dentadas durante 5 s (máximo 3). Se activa una vez por habilidad y objetivo.\n\nCada acumulación: +8% (+1% por cada 10% de robo de vida) del daño de ataques y habilidades como daño físico.",
+   "passiveValues": [
+    {
+     "key": "Duración (s)",
+     "value": 5
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 3
+    },
+    {
+     "key": "Daño por acumulación (%)",
+     "value": 8
+    },
+    {
+     "key": "Daño adicional por cada 10% de robo de vida (%)",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "name": "Mazo del alba",
+   "englishName": "Daybreak Gavel",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 700,
+   "stats": [
+    {
+     "key": "health",
+     "value": 300
+    }
+   ],
+   "components": [
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    },
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Stat adaptativo: +40 de fuerza o +60 de inteligencia, según tu stat de items más alto.\n\nAl curarte con una habilidad de curación: +1 acumulación (máximo 3).\n\nAl usar una habilidad que no cura: consumes todas las acumulaciones y ganas +10 de fuerza o +15 de inteligencia (según tu stat de items más alto) durante 8 s por acumulación. Enfriamiento: 4 s.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 40
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 60
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 3
+    },
+    {
+     "key": "Fuerza por acumulación",
+     "value": 10
+    },
+    {
+     "key": "Inteligencia por acumulación",
+     "value": 15
+    },
+    {
+     "key": "Duración (s)",
+     "value": 8
+    },
+    {
+     "key": "Enfriamiento (s)",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Brazal del abismo",
+   "englishName": "Bracer of The Abyss",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 700,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 60
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 30
+    }
+   ],
+   "components": [
+    {
+     "name": "Piedra asesina",
+     "quantity": 1
+    },
+    {
+     "name": "Brazalete encantado",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpear dioses enemigos o jefes de la jungla: +8 de daño de ataque durante 10 s. Se acumula hasta 8 veces.",
+   "passiveValues": [
+    {
+     "key": "Daño de ataque por acumulación",
+     "value": 8
+    },
+    {
+     "key": "Duración (s)",
+     "value": 10
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "name": "Arco de Lerna",
+   "englishName": "Lernaean Bow",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 40
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 30
+    }
+   ],
+   "components": [
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    },
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: disparas 3 flechas que atraviesan enemigos en una línea de 10.5 m. Infligen 40% de tu daño de ataque como daño físico, reducen 50% los escudos y pueden ser críticas.",
+   "activeValues": [
+    {
+     "key": "Flechas",
+     "value": 3
+    },
+    {
+     "key": "Largo de la línea (m)",
+     "value": 10.5
+    },
+    {
+     "key": "Daño (% del daño de ataque)",
+     "value": 40
+    },
+    {
+     "key": "Reducción de escudo (%)",
+     "value": 50
+    }
+   ],
+   "activeCooldownS": 30
+  },
+  {
+   "name": "Amplificador vital",
+   "englishName": "Vital Amplifier",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "health",
+     "value": 200
+    },
+    {
+     "key": "hp5",
+     "value": 3
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    },
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Stat adaptativo: +30 de fuerza o +45 de inteligencia, según tu stat de items más alto.\n\nAl curarte con una habilidad: +7.5% de velocidad de ataque y +5% de daño de ataque (a distancia) o +10% (cuerpo a cuerpo). Dura 6 s y se acumula hasta 3 veces.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 30
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 45
+    },
+    {
+     "key": "Velocidad de ataque (%)",
+     "value": 7.5
+    },
+    {
+     "key": "Daño de ataque a distancia (%)",
+     "value": 5
+    },
+    {
+     "key": "Daño de ataque cuerpo a cuerpo (%)",
+     "value": 10
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Talaria de Mercurio",
+   "englishName": "Mercury's Talaria",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 600,
+   "stats": [
+    {
+     "key": "pathfinding",
+     "value": 12
+    }
+   ],
+   "components": [
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    },
+    {
+     "name": "Botas de combate",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Stat adaptativo: +40 de fuerza o +70 de inteligencia, según tu stat de items más alto.\n\nFuera de combate: almacenas energía al moverte. Tu siguiente habilidad que no sea definitiva inflige hasta 8% más de daño según la energía almacenada. Las habilidades de movimiento infligen hasta 10% más.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 40
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 70
+    },
+    {
+     "key": "Daño adicional máximo (%)",
+     "value": 8
+    },
+    {
+     "key": "Daño adicional en habilidades de movimiento (%)",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "name": "Damaru",
+   "englishName": "Damaru",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "mp5",
+     "value": 5
+    },
+    {
+     "key": "echo",
+     "value": 20
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Stat adaptativo: +35 de fuerza o +50 de inteligencia, según tu stat de items más alto.\n\nCada vez que haces Eco al golpear a un dios o jefe de la jungla: +1 acumulación de Ritmo. Cada una da +2% de velocidad de movimiento durante 5 s, hasta 5 acumulaciones.\n\nCon 5 acumulaciones las pierdes todas y ganas Armonizado: +15% de velocidad de movimiento durante 10 s. Mientras estás Armonizado no ganas Ritmo.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 35
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 50
+    },
+    {
+     "key": "Velocidad por acumulación (%)",
+     "value": 2
+    },
+    {
+     "key": "Duración de la acumulación (s)",
+     "value": 5
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 5
+    },
+    {
+     "key": "Velocidad Armonizado (%)",
+     "value": 15
+    },
+    {
+     "key": "Duración Armonizado (s)",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "name": "El Verdugo",
+   "englishName": "The Executioner",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "attack_speed_percent",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    },
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Stat adaptativo: +30 de fuerza o +55 de inteligencia, según tu stat de items más alto.\n\nAl atacar a un dios o jefe: aplicas 1 acumulación de Perforación, que reduce 7% las protecciones durante 4 s. Se acumula hasta 4 veces.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 30
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 55
+    },
+    {
+     "key": "Reducción de protecciones (%)",
+     "value": 7
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Arondight",
+   "englishName": "Arondight",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 55
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: revelas a los dioses enemigos en 17.6 m durante 6 s, incluso en sigilo. Si revelas a alguno, ganas +25% de velocidad de movimiento durante 6 s. La primera vez que dañas a un dios revelado infliges +50 (+50% de fuerza) de daño físico.",
+   "activeValues": [
+    {
+     "key": "Radio (m)",
+     "value": 17.6
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    },
+    {
+     "key": "Velocidad de movimiento (%)",
+     "value": 25
+    },
+    {
+     "key": "Daño base",
+     "value": 50
+    },
+    {
+     "key": "Daño (% de fuerza)",
+     "value": 50
+    }
+   ],
+   "activeCooldownS": 60
+  },
+  {
+   "name": "Lanza del juramento",
+   "englishName": "Oath-Sworn Spear",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 300,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 50
+    }
+   ],
+   "components": [
+    {
+     "name": "Martillo de Lucerna",
+     "quantity": 1
+    },
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad: reduce 5 la protección física del objetivo durante 4 s. Al matar o asistir a un dios, este efecto aumenta 1. Reducción máxima: 20 de protección física.",
+   "passiveValues": [
+    {
+     "key": "Reducción de protección física",
+     "value": 5
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    },
+    {
+     "key": "Aumento por muerte o asistencia",
+     "value": 1
+    },
+    {
+     "key": "Reducción máxima",
+     "value": 20
+    }
+   ]
+  },
+  {
+   "name": "Forjasangre",
+   "englishName": "Bloodforge",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 350,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 55
+    },
+    {
+     "key": "lifesteal",
+     "value": 7.5
+    }
+   ],
+   "components": [
+    {
+     "name": "Hoz adamantina",
+     "quantity": 1
+    },
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: ganas un escudo de vida durante 6 s igual a 10% de tu vida máxima y 150% de la fuerza de tus items. Con el escudo: +10% de robo de vida. Matar a un dios reduce 25% el enfriamiento.",
+   "activeValues": [
+    {
+     "key": "Duración (s)",
+     "value": 6
+    },
+    {
+     "key": "Escudo (% de vida máxima)",
+     "value": 10
+    },
+    {
+     "key": "Escudo (% de fuerza de items)",
+     "value": 150
+    },
+    {
+     "key": "Robo de vida (%)",
+     "value": 10
+    },
+    {
+     "key": "Reducción de enfriamiento al matar (%)",
+     "value": 25
+    }
+   ],
+   "activeCooldownS": 80
+  },
+  {
+   "name": "Arpa de Bragi",
+   "englishName": "Bragi's Harp",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 500,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 35
+    },
+    {
+     "key": "intelligence",
+     "value": 25
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco manchú",
+     "quantity": 1
+    },
+    {
+     "name": "Cítara",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al golpear con un ataque: +10 (+3 por nivel) de daño mágico adicional. Las estructuras y jefes reciben la mitad del daño.",
+   "passiveValues": [
+    {
+     "key": "Daño mágico base",
+     "value": 10
+    },
+    {
+     "key": "Daño mágico por nivel",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Corazón de Tifón",
+   "englishName": "Typhon’s Heart",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 80
+    },
+    {
+     "key": "lifesteal",
+     "value": 7.5
+    }
+   ],
+   "components": [
+    {
+     "name": "Piedra asesina",
+     "quantity": 1
+    },
+    {
+     "name": "Hoz maldita",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Matar un súbdito o monstruo: +1 acumulación. Matar un dios: +30. Asistir: +15.\n\nCon 30 acumulaciones invocas un Monstruo de Tifón. Vida: 200 (+55 por nivel). Daño: 300% de tu robo de vida y 30% de tu inteligencia. Tu robo de vida cura al monstruo.\n\nSi fueras a invocar otro: curas por completo al actual y le das +25% de vida, velocidad de ataque y velocidad de movimiento (hasta 5 veces).",
+   "passiveValues": [
+    {
+     "key": "Acumulaciones por dios",
+     "value": 30
+    },
+    {
+     "key": "Acumulaciones por asistencia",
+     "value": 15
+    },
+    {
+     "key": "Acumulaciones para invocar",
+     "value": 30
+    },
+    {
+     "key": "Vida base del monstruo",
+     "value": 200
+    },
+    {
+     "key": "Vida por nivel",
+     "value": 55
+    },
+    {
+     "key": "Daño (% del robo de vida)",
+     "value": 300
+    },
+    {
+     "key": "Daño (% de inteligencia)",
+     "value": 30
+    },
+    {
+     "key": "Mejora por repetición (%)",
+     "value": 25
+    },
+    {
+     "key": "Mejoras máximas",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Grimorio glotón",
+   "englishName": "Gluttonous Grimoire",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 55
+    },
+    {
+     "key": "health",
+     "value": 150
+    },
+    {
+     "key": "lifesteal",
+     "value": 7.5
+    },
+    {
+     "key": "penetration_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Perla llameante",
+     "quantity": 1
+    },
+    {
+     "name": "Hoz maldita",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Almacenas 50% de la curación de tu robo de vida como daño mágico adicional en tu siguiente ataque (65% con la vida llena). El daño almacenado tiene un límite de 10% de tu vida máxima + 50% de inteligencia.",
+   "passiveValues": [
+    {
+     "key": "Curación almacenada (%)",
+     "value": 50
+    },
+    {
+     "key": "Curación almacenada con vida llena (%)",
+     "value": 65
+    },
+    {
+     "key": "Límite (% de vida máxima)",
+     "value": 10
+    },
+    {
+     "key": "Límite (% de inteligencia)",
+     "value": 50
+    }
+   ]
+  },
+  {
+   "name": "Sello antiguo",
+   "englishName": "Ancient Signet",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 90
+    },
+    {
+     "key": "mana",
+     "value": 250
+    }
+   ],
+   "components": [
+    {
+     "name": "Báculo del oráculo",
+     "quantity": 1
+    },
+    {
+     "name": "Relicario de almas",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad: +20 (+12 por nivel) de daño mágico adicional. Matar o asistir a un súbdito: -2 s de enfriamiento. Enfriamiento: 15 s.",
+   "passiveValues": [
+    {
+     "key": "Daño mágico base",
+     "value": 20
+    },
+    {
+     "key": "Daño mágico por nivel",
+     "value": 12
+    },
+    {
+     "key": "Reducción por súbdito (s)",
+     "value": 2
+    },
+    {
+     "key": "Enfriamiento (s)",
+     "value": 15
+    }
+   ]
+  },
+  {
+   "name": "Espadas gemelas de Musashi",
+   "englishName": "Musashi's Dual Swords",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 450,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 35
+    },
+    {
+     "key": "critical_chance",
+     "value": 30
+    }
+   ],
+   "components": [
+    {
+     "name": "Kopesh",
+     "quantity": 1
+    },
+    {
+     "name": "Espada ganchuda",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al golpear críticamente: +15% de velocidad de movimiento durante 5 s.",
+   "passiveValues": [
+    {
+     "key": "Velocidad de movimiento (%)",
+     "value": 15
+    },
+    {
+     "key": "Duración (s)",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Dominancia",
+   "englishName": "Dominance",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 600,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 40
+    },
+    {
+     "key": "mana",
+     "value": 150
+    },
+    {
+     "key": "mp5",
+     "value": 4
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha infundida",
+     "quantity": 1
+    },
+    {
+     "name": "Arco manchú",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Los ataques básicos ganan +20% de penetración adicional. Este efecto ignora el límite de penetración.",
+   "passiveValues": [
+    {
+     "key": "Penetración adicional (%)",
+     "value": 20
+    }
+   ]
+  },
+  {
+   "name": "Hoja de Qin",
+   "englishName": "Qin's Blade",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "attack_damage",
+     "value": 30
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 25
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco manchú",
+     "quantity": 1
+    },
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al golpear con un ataque: daño físico adicional igual a 2% de la vida base del objetivo + 5% de la vida de sus items.",
+   "passiveValues": [
+    {
+     "key": "Daño (% de vida base)",
+     "value": 2
+    },
+    {
+     "key": "Daño (% de vida de items)",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "La Segadora",
+   "englishName": "The Reaper",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 550,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 45
+    },
+    {
+     "key": "lifesteal",
+     "value": 7.5
+    },
+    {
+     "key": "penetration_flat",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Hoz adamantina",
+     "quantity": 1
+    },
+    {
+     "name": "Hoz maldita",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Matar a un dios: te curas 15% de la vida máxima del dios abatido. Asistir: 7.5%.\n\nDurante la fase de luz de luna: te curas 15% al matar o asistir.",
+   "passiveValues": [
+    {
+     "key": "Curación al matar (%)",
+     "value": 15
+    },
+    {
+     "key": "Curación al asistir (%)",
+     "value": 7.5
+    }
+   ]
+  },
+  {
+   "name": "Fatalis apresurada",
+   "englishName": "Hastened Fatalis",
+   "category": "final",
+   "tier": 3,
+   "cost": 2650,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "attack_damage",
+     "value": 25
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 25
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco manchú",
+     "quantity": 1
+    },
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al golpear a un dios con un ataque: -6.25% de penalización de movimiento al atacar. Los golpes cuerpo a cuerpo dan 4 acumulaciones. Se acumula hasta 8 veces y dura 2 s.",
+   "passiveValues": [
+    {
+     "key": "Reducción de penalización (%)",
+     "value": 6.25
+    },
+    {
+     "key": "Acumulaciones cuerpo a cuerpo",
+     "value": 4
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 8
+    },
+    {
+     "key": "Duración (s)",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Hoja vengadora",
+   "englishName": "Avenging Blade",
+   "category": "final",
+   "tier": 3,
+   "cost": 2650,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 60
+    },
+    {
+     "key": "health",
+     "value": 200
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha de batalla",
+     "quantity": 1
+    },
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al golpear a un dios con un ataque: le aplicas -3.5% de protecciones. Si está en la jungla o se cura 5% de su vida, las acumulaciones son el doble de efectivas. Dura 4 s y se acumula hasta 3 veces.",
+   "passiveValues": [
+    {
+     "key": "Reducción de protecciones (%)",
+     "value": 3.5
+    },
+    {
+     "key": "Curación que duplica el efecto (%)",
+     "value": 5
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "El Horror Cósmico",
+   "englishName": "The Cosmic Horror",
+   "category": "final",
+   "tier": 3,
+   "cost": 2650,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 55
+    },
+    {
+     "key": "penetration_flat",
+     "value": 10
+    },
+    {
+     "key": "echo",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo de disipación",
+     "quantity": 1
+    },
+    {
+     "name": "Tambor de cuenco",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Cada vez que haces Eco: +1 acumulación.\n\nCon 3 acumulaciones, el siguiente Eco invoca un tentáculo que inflige daño mágico adicional (45% de inteligencia durante 1.5 s) y elimina las acumulaciones. Solo aparece un tentáculo por segundo, y solo al golpear a un dios o jefe de la jungla.",
+   "passiveValues": [
+    {
+     "key": "Acumulaciones necesarias",
+     "value": 3
+    },
+    {
+     "key": "Daño (% de inteligencia)",
+     "value": 45
+    },
+    {
+     "key": "Duración (s)",
+     "value": 1.5
+    }
+   ]
+  },
+  {
+   "name": "Tekko-Kagi",
+   "englishName": "Tekko-Kagi",
+   "category": "final",
+   "tier": 3,
+   "cost": 2650,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 40
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 20
+    },
+    {
+     "key": "penetration_flat",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    },
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Habilidad usada: ganas una acumulación de Impulso. Impulso da +7% de Pathfinding durante 8 s y se acumula hasta 3 veces.",
+   "passiveValues": [
+    {
+     "key": "Pathfinding por acumulación (%)",
+     "value": 7
+    },
+    {
+     "key": "Duración (s)",
+     "value": 8
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Lanza del mago",
+   "englishName": "Spear of the Magus",
+   "category": "final",
+   "tier": 3,
+   "cost": 2700,
+   "ownCost": 600,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 90
+    },
+    {
+     "key": "penetration_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Ojo maligno",
+     "quantity": 1
+    },
+    {
+     "name": "Fragmento del vacío",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad a un dios: queda marcado durante 8 s. Los dioses marcados reciben 5% más de daño de todas las fuentes.",
+   "passiveValues": [
+    {
+     "key": "Duración de la marca (s)",
+     "value": 8
+    },
+    {
+     "key": "Daño adicional recibido (%)",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Desgarragarra",
+   "englishName": "Riptalon",
+   "category": "final",
+   "tier": 3,
+   "cost": 2700,
+   "ownCost": 1100,
+   "stats": [
+    {
+     "key": "attack_damage",
+     "value": 15
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 20
+    },
+    {
+     "key": "lifesteal",
+     "value": 7.5
+    },
+    {
+     "key": "penetration_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    },
+    {
+     "name": "Hoz maldita",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Con más de 50% de vida: los ataques ganan +10% de daño.\n\nCon menos de 50% de vida: los ataques ganan +25% de daño y +7.5% de robo de vida.",
+   "passiveValues": [
+    {
+     "key": "Vida umbral (%)",
+     "value": 50
+    },
+    {
+     "key": "Daño con vida alta (%)",
+     "value": 10
+    },
+    {
+     "key": "Daño con vida baja (%)",
+     "value": 25
+    },
+    {
+     "key": "Robo de vida con vida baja (%)",
+     "value": 7.5
+    }
+   ]
+  },
+  {
+   "name": "Hoja tóxica",
+   "englishName": "Toxic Blade",
+   "category": "final",
+   "tier": 3,
+   "cost": 2700,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "attack_damage",
+     "value": 25
+    },
+    {
+     "key": "health",
+     "value": 100
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 20
+    },
+    {
+     "key": "penetration_flat",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco manchú",
+     "quantity": 2
+    }
+   ],
+   "passiveText": "Al golpear a un dios con un ataque: aplicas 40% de reducción de curación y 7% de reducción de velocidad de ataque durante 5 s, y ganas 7% de velocidad de ataque durante 5 s. La mejora y la penalización se acumulan hasta 3 veces.",
+   "passiveValues": [
+    {
+     "key": "Reducción de curación (%)",
+     "value": 40
+    },
+    {
+     "key": "Velocidad de ataque (%)",
+     "value": 7
+    },
+    {
+     "key": "Duración (s)",
+     "value": 5
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Arco de rama de plata",
+   "englishName": "Silverbranch Bow",
+   "category": "final",
+   "tier": 3,
+   "cost": 2700,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "attack_damage",
+     "value": 25
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 30
+    },
+    {
+     "key": "penetration_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco manchú",
+     "quantity": 2
+    }
+   ],
+   "passiveText": "Cada tercer ataque que golpea: disparas una Flecha de plata teledirigida a tu objetivo. Inflige 25% de tu daño de ataque básico como daño físico. Disparas 1 flecha por cada 1 de velocidad de ataque.",
+   "passiveValues": [
+    {
+     "key": "Ataques para activarse",
+     "value": 3
+    },
+    {
+     "key": "Daño (% del ataque básico)",
+     "value": 25
+    }
+   ]
+  },
+  {
+   "name": "Hoja demoníaca",
+   "englishName": "Demon Blade",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 30
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 15
+    },
+    {
+     "key": "critical_chance",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Kopesh",
+     "quantity": 1
+    },
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al golpear críticamente: +30% de velocidad de ataque durante 3 s.",
+   "passiveValues": [
+    {
+     "key": "Velocidad de ataque (%)",
+     "value": 30
+    },
+    {
+     "key": "Duración (s)",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Hoja pendular",
+   "englishName": "Pendulum Blade",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 30
+    },
+    {
+     "key": "penetration_percent",
+     "value": 10
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Caestus",
+     "quantity": 1
+    },
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: -4 s en los enfriamientos de tus habilidades.",
+   "activeValues": [
+    {
+     "key": "Reducción de enfriamiento (s)",
+     "value": 4
+    }
+   ],
+   "activeCooldownS": 40
+  },
+  {
+   "name": "Cetro de jade",
+   "englishName": "Jade Scepter",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 100
+    },
+    {
+     "key": "health",
+     "value": 250
+    }
+   ],
+   "components": [
+    {
+     "name": "Perla llameante",
+     "quantity": 1
+    },
+    {
+     "name": "Piedra asesina",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: colocas una corriente de jade en un lugar. Tras 1 s estalla y empuja a todos los dioses; los enemigos son empujados hacia ti.",
+   "activeValues": [
+    {
+     "key": "Retraso (s)",
+     "value": 1
+    }
+   ],
+   "activeCooldownS": 60
+  },
+  {
+   "name": "La Trituradora",
+   "englishName": "The Crusher",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 500,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 55
+    },
+    {
+     "key": "penetration_flat",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Martillo de Lucerna",
+     "quantity": 1
+    },
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad: daño físico adicional igual a 35% de tu fuerza, durante 1 s. Los golpes siguientes al mismo objetivo infligen 33% de daño adicional durante 3 s.",
+   "passiveValues": [
+    {
+     "key": "Daño (% de fuerza)",
+     "value": 35
+    },
+    {
+     "key": "Duración (s)",
+     "value": 1
+    },
+    {
+     "key": "Daño de golpes siguientes (%)",
+     "value": 33
+    },
+    {
+     "key": "Duración de golpes siguientes (s)",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Tótem de la muerte",
+   "englishName": "Totem of Death",
+   "category": "final",
+   "tier": 3,
+   "cost": 2800,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 55
+    },
+    {
+     "key": "echo",
+     "value": 10
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Ojo maligno",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Cada vez que haces Eco: daño mágico adicional igual a 8% de la vida faltante del objetivo. Solo afecta a dioses y ocurre como máximo una vez por segundo.",
+   "passiveValues": [
+    {
+     "key": "Daño (% de vida faltante)",
+     "value": 8
+    },
+    {
+     "key": "Enfriamiento (s)",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "name": "La Piedra del Mundo",
+   "englishName": "The World Stone",
+   "category": "final",
+   "tier": 3,
+   "cost": 2800,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 70
+    },
+    {
+     "key": "mana",
+     "value": 250
+    },
+    {
+     "key": "mp5",
+     "value": 3
+    },
+    {
+     "key": "penetration_flat",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Báculo del oráculo",
+     "quantity": 2
+    }
+   ],
+   "passiveText": "-25% de enfriamiento en tu habilidad definitiva.",
+   "passiveValues": [
+    {
+     "key": "Reducción de enfriamiento de la definitiva (%)",
+     "value": 25
+    }
+   ]
+  },
+  {
+   "name": "Tambor del presagio",
+   "englishName": "Omen Drum",
+   "category": "final",
+   "tier": 3,
+   "cost": 2800,
+   "ownCost": 1050,
+   "stats": [
+    {
+     "key": "echo",
+     "value": 30
+    }
+   ],
+   "components": [
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    },
+    {
+     "name": "Tambor de cuenco",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Stat adaptativo: +50 de fuerza o +75 de inteligencia, según tu stat de items más alto.\n\nCada vez que haces Eco: +1 acumulación de Resonancia oscura, que da +10% de daño de Eco, hasta 30 acumulaciones. Duran 6 s y se reducen a la mitad al terminar.\n\nMientras Damaru está Armonizado: +100% de daño de Eco.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 50
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 75
+    },
+    {
+     "key": "Daño de Eco por acumulación (%)",
+     "value": 10
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 30
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    },
+    {
+     "key": "Daño de Eco Armonizado (%)",
+     "value": 100
+    }
+   ]
+  },
+  {
+   "name": "Perdición de los titanes",
+   "englishName": "Titan's Bane",
+   "category": "final",
+   "tier": 3,
+   "cost": 2850,
+   "ownCost": 700,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 40
+    },
+    {
+     "key": "penetration_percent",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Martillo de Lucerna",
+     "quantity": 1
+    },
+    {
+     "name": "Fragmento del vacío",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Obtienes el efecto Fragmentación: la primera habilidad lanzada gana +20% de penetración. Este efecto ignora el límite de penetración y no se acumula consigo mismo. Enfriamiento: 10 s.",
+   "passiveValues": [
+    {
+     "key": "Penetración adicional (%)",
+     "value": 20
+    },
+    {
+     "key": "Enfriamiento (s)",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "name": "Portadora de muerte",
+   "englishName": "Deathbringer",
+   "category": "final",
+   "tier": 3,
+   "cost": 2900,
+   "ownCost": 650,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 45
+    },
+    {
+     "key": "critical_chance",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    },
+    {
+     "name": "Kopesh",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "+35% de daño crítico.",
+   "passiveValues": [
+    {
+     "key": "Daño crítico (%)",
+     "value": 35
+    }
+   ]
+  },
+  {
+   "name": "Alma segadora",
+   "englishName": "Soul Reaver",
+   "category": "final",
+   "tier": 3,
+   "cost": 2950,
+   "ownCost": 1100,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 85
+    },
+    {
+     "key": "mana",
+     "value": 250
+    },
+    {
+     "key": "mp5",
+     "value": 5
+    }
+   ],
+   "components": [
+    {
+     "name": "Báculo del oráculo",
+     "quantity": 1
+    },
+    {
+     "name": "Relicario de almas",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad: daño mágico adicional igual a 1.2% de la vida base del objetivo + 3% de la vida de sus items, infligido 4 veces en 2 s. Se activa una vez por habilidad y por dios.",
+   "passiveValues": [
+    {
+     "key": "Daño (% de vida base)",
+     "value": 1.2
+    },
+    {
+     "key": "Daño (% de vida de items)",
+     "value": 3
+    },
+    {
+     "key": "Golpes",
+     "value": 4
+    },
+    {
+     "key": "Duración (s)",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Buscacorazones",
+   "englishName": "Heartseeker",
+   "category": "final",
+   "tier": 3,
+   "cost": 3000,
+   "ownCost": 700,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 45
+    },
+    {
+     "key": "mana",
+     "value": 250
+    },
+    {
+     "key": "mp5",
+     "value": 2
+    },
+    {
+     "key": "penetration_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Martillo de Lucerna",
+     "quantity": 1
+    },
+    {
+     "name": "Hacha infundida",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad: daño físico según la vida del objetivo. El daño es 2% de tu fuerza, como porcentaje de la vida máxima del objetivo.",
+   "passiveValues": [
+    {
+     "key": "Daño (% de fuerza como % de vida máxima)",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Ídolo del soñador",
+   "englishName": "Dreamer's Idol",
+   "category": "final",
+   "tier": 3,
+   "cost": 3500,
+   "ownCost": 1700,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 130
+    },
+    {
+     "key": "penetration_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Piedra asesina",
+     "quantity": 2
+    }
+   ],
+   "activeText": "Al usar: +25% de inteligencia e inmunidad a desplazamientos durante 10 s.",
+   "activeValues": [
+    {
+     "key": "Inteligencia adicional (%)",
+     "value": 25
+    },
+    {
+     "key": "Duración (s)",
+     "value": 10
+    }
+   ],
+   "activeCooldownS": 120
+  },
+  {
+   "name": "Parashu del avatar",
+   "englishName": "Avatar's Parashu",
+   "category": "final",
+   "tier": 3,
+   "cost": 3700,
+   "ownCost": 1700,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 90
+    },
+    {
+     "key": "penetration_percent",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Skeggox",
+     "quantity": 2
+    }
+   ],
+   "activeText": "Al usar: +25% de fuerza e inmunidad a desplazamientos durante 10 s.",
+   "activeValues": [
+    {
+     "key": "Fuerza adicional (%)",
+     "value": 25
+    },
+    {
+     "key": "Duración (s)",
+     "value": 10
+    }
+   ],
+   "activeCooldownS": 120
+  },
+  {
+   "name": "Guantelete de Tebas",
+   "englishName": "Gauntlet of Thebes",
+   "category": "final",
+   "tier": 3,
+   "cost": 2200,
+   "ownCost": 1400,
+   "stats": [
+    {
+     "key": "health",
+     "value": 200
+    },
+    {
+     "key": "mana",
+     "value": 150
+    }
+   ],
+   "components": [
+    {
+     "name": "Odigba",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Asistir a un súbdito: +1 acumulación. Matar o asistir a un dios: +5. Cada acumulación da +15 de vida máxima (máximo 40).\n\nCon 40 acumulaciones el item evoluciona y gana +100 de vida máxima y +10 de protección física y mágica.",
+   "passiveValues": [
+    {
+     "key": "Acumulaciones por dios",
+     "value": 5
+    },
+    {
+     "key": "Vida por acumulación",
+     "value": 15
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 40
+    },
+    {
+     "key": "Vida al evolucionar",
+     "value": 100
+    },
+    {
+     "key": "Protecciones al evolucionar",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "name": "Collar del yogui",
+   "englishName": "Yogi's Necklace",
+   "category": "final",
+   "tier": 3,
+   "cost": 2250,
+   "ownCost": 1050,
+   "stats": [
+    {
+     "key": "health",
+     "value": 325
+    },
+    {
+     "key": "mana",
+     "value": 250
+    },
+    {
+     "key": "hp5",
+     "value": 6
+    },
+    {
+     "key": "mp5",
+     "value": 6
+    }
+   ],
+   "components": [
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    },
+    {
+     "name": "Tomo de maná",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Te curas 0.5% de tu vida máxima por segundo.",
+   "passiveValues": [
+    {
+     "key": "Curación por segundo (% de vida máxima)",
+     "value": 0.5
+    }
+   ]
+  },
+  {
+   "name": "Ojo de la providencia",
+   "englishName": "Eye of Providence",
+   "category": "final",
+   "tier": 3,
+   "cost": 2300,
+   "ownCost": 700,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 30
+    },
+    {
+     "key": "magical_protection",
+     "value": 30
+    },
+    {
+     "key": "health",
+     "value": 250
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Destruir un guardián: +50 de oro.\n\nCon un espacio libre de consumible: ganas un Guardián centinela cada 120 s. Si no hay espacio, lo ganas y el contador se reinicia la próxima vez que haya uno libre. Máximo 2 guardianes colocados.",
+   "passiveValues": [
+    {
+     "key": "Oro por guardián",
+     "value": 50
+    },
+    {
+     "key": "Intervalo (s)",
+     "value": 120
+    },
+    {
+     "key": "Guardianes máximos",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Gracia de Chandra",
+   "englishName": "Chandra's Grace",
+   "category": "final",
+   "tier": 3,
+   "cost": 2300,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "health",
+     "value": 150
+    },
+    {
+     "key": "mana",
+     "value": 300
+    },
+    {
+     "key": "mp5",
+     "value": 5
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "+15% de curación y escudos.\n\nCada 15 s: el aliado con menos vida en 8.8 m gana +20 de regeneración de vida, +20 de regeneración de maná y -0.1 s de enfriamientos cada 0.2 s durante 3 s.\n\nDurante la fase de luz de luna: tú también ganas el efecto.",
+   "passiveValues": [
+    {
+     "key": "Curación y escudos (%)",
+     "value": 15
+    },
+    {
+     "key": "Intervalo (s)",
+     "value": 15
+    },
+    {
+     "key": "Radio (m)",
+     "value": 8.8
+    },
+    {
+     "key": "Regeneración de vida",
+     "value": 20
+    },
+    {
+     "key": "Regeneración de maná",
+     "value": 20
+    },
+    {
+     "key": "Duración (s)",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Armadura espectral",
+   "englishName": "Spectral Armor",
+   "category": "final",
+   "tier": 3,
+   "cost": 2300,
+   "ownCost": 600,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 20
+    },
+    {
+     "key": "plating",
+     "value": 10
+    },
+    {
+     "key": "health",
+     "value": 450
+    }
+   ],
+   "components": [
+    {
+     "name": "Metal laminado",
+     "quantity": 1
+    },
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Recibes -30% de daño de golpes críticos. Los críticos de habilidades se mitigan con tu Blindaje.\n\nLos aliados en 8.8 m reciben -15% de daño de golpes críticos.",
+   "passiveValues": [
+    {
+     "key": "Reducción de daño crítico (%)",
+     "value": 30
+    },
+    {
+     "key": "Reducción para aliados (%)",
+     "value": 15
+    },
+    {
+     "key": "Radio (m)",
+     "value": 8.8
+    }
+   ]
+  },
+  {
+   "name": "Abrigo del alquimista",
+   "englishName": "Alchemist Coat",
+   "category": "final",
+   "tier": 3,
+   "cost": 2350,
+   "ownCost": 600,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 40
+    },
+    {
+     "key": "dampening",
+     "value": 15
+    },
+    {
+     "key": "health",
+     "value": 250
+    },
+    {
+     "key": "mp5",
+     "value": 2.5
+    }
+   ],
+   "components": [
+    {
+     "name": "Relicario de almas",
+     "quantity": 1
+    },
+    {
+     "name": "Piel rúnica",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Usar un consumible: +10 de Amortiguación durante 8 s.\n\nCon un espacio libre de inventario: ganas una Multipoción cada 45 s.",
+   "passiveValues": [
+    {
+     "key": "Amortiguación",
+     "value": 10
+    },
+    {
+     "key": "Duración (s)",
+     "value": 8
+    },
+    {
+     "key": "Intervalo de la poción (s)",
+     "value": 45
+    }
+   ]
+  },
+  {
+   "name": "Guardia de Genji",
+   "englishName": "Genji's Guard",
+   "category": "final",
+   "tier": 3,
+   "cost": 2350,
+   "ownCost": 1050,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 55
+    },
+    {
+     "key": "mana",
+     "value": 200
+    },
+    {
+     "key": "mp5",
+     "value": 5
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo del sabio",
+     "quantity": 1
+    },
+    {
+     "name": "Tomo de maná",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir daño mágico de una habilidad: -3 s de enfriamientos. Enfriamiento: 20 s.",
+   "passiveValues": [
+    {
+     "key": "Reducción de enfriamientos (s)",
+     "value": 3
+    },
+    {
+     "key": "Enfriamiento (s)",
+     "value": 20
+    }
+   ]
+  },
+  {
+   "name": "Amuleto de amanita",
+   "englishName": "Amanita Charm",
+   "category": "final",
+   "tier": 3,
+   "cost": 2350,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 25
+    },
+    {
+     "key": "magical_protection",
+     "value": 25
+    },
+    {
+     "key": "health",
+     "value": 300
+    },
+    {
+     "key": "hp5",
+     "value": 4
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: creas un Hongo curativo (6.4 m de radio) durante 4.5 s. Cura 3% de vida cada 1.5 s y da +1 acumulación de reducción de daño por curación: 10% contra ataques y habilidades y 5% contra definitivas por acumulación. Las acumulaciones se eliminan al activarse.",
+   "activeValues": [
+    {
+     "key": "Radio (m)",
+     "value": 6.4
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4.5
+    },
+    {
+     "key": "Curación (% de vida)",
+     "value": 3
+    },
+    {
+     "key": "Intervalo (s)",
+     "value": 1.5
+    },
+    {
+     "key": "Reducción de daño (%)",
+     "value": 10
+    },
+    {
+     "key": "Reducción contra definitivas (%)",
+     "value": 5
+    }
+   ],
+   "activeCooldownS": 60
+  },
+  {
+   "name": "Pluma de fénix",
+   "englishName": "Phoenix Feather",
+   "category": "final",
+   "tier": 3,
+   "cost": 2350,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 40
+    },
+    {
+     "key": "dampening",
+     "value": 5
+    },
+    {
+     "key": "health",
+     "value": 300
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de disrupción",
+     "quantity": 1
+    },
+    {
+     "name": "Círculo de protección",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: disparas 3 pulsos que te curan e infligen daño verdadero a enemigos en 3.2 m. Curación: 75 de vida + 7.5 de vida faltante. Daño verdadero: 3% de la vida máxima de items.",
+   "activeValues": [
+    {
+     "key": "Pulsos",
+     "value": 3
+    },
+    {
+     "key": "Radio (m)",
+     "value": 3.2
+    },
+    {
+     "key": "Curación base",
+     "value": 75
+    },
+    {
+     "key": "Curación por vida faltante",
+     "value": 7.5
+    },
+    {
+     "key": "Daño verdadero (% de vida de items)",
+     "value": 3
+    }
+   ],
+   "activeCooldownS": 120
+  },
+  {
+   "name": "Coraza del valor",
+   "englishName": "Breastplate of Valor",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 1100,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 45
+    },
+    {
+     "key": "mana",
+     "value": 200
+    },
+    {
+     "key": "mp5",
+     "value": 2
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo del capitán",
+     "quantity": 1
+    },
+    {
+     "name": "Tomo de maná",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Por cada 500 (+25 por nivel) de vida perdida: -1 s de enfriamiento de habilidades.",
+   "passiveValues": [
+    {
+     "key": "Vida perdida base",
+     "value": 500
+    },
+    {
+     "key": "Vida perdida por nivel",
+     "value": 25
+    },
+    {
+     "key": "Reducción de enfriamiento (s)",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "name": "Piel de Leviatán",
+   "englishName": "Leviathan's Hide",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 45
+    },
+    {
+     "key": "plating",
+     "value": 5
+    },
+    {
+     "key": "health",
+     "value": 300
+    }
+   ],
+   "components": [
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    },
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir daño de un ataque de un dios: ese dios tiene -10% de fuerza y daño de ataque durante 4 s.\n\nAtacar a un dios enemigo: +8 de vida máxima permanente.\n\nAl recibir daño de un dios enemigo: -0.5 s, una vez por habilidad o ataque. Enfriamiento: 10 s.",
+   "passiveValues": [
+    {
+     "key": "Reducción de fuerza y daño de ataque (%)",
+     "value": 10
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    },
+    {
+     "key": "Vida máxima permanente",
+     "value": 8
+    },
+    {
+     "key": "Reducción de enfriamiento (s)",
+     "value": 0.5
+    },
+    {
+     "key": "Enfriamiento (s)",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "name": "Capa del mago",
+   "englishName": "Magi's Cloak",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 35
+    },
+    {
+     "key": "magical_protection",
+     "value": 35
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Círculo de protección",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Cada 90 s: ganas una burbuja protectora contra control duro. Al activarse, ganas inmunidad a control durante 1.5 s.",
+   "passiveValues": [
+    {
+     "key": "Intervalo (s)",
+     "value": 90
+    },
+    {
+     "key": "Inmunidad a control (s)",
+     "value": 1.5
+    }
+   ]
+  },
+  {
+   "name": "Escudo del fénix",
+   "englishName": "Shield of the Phoenix",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 35
+    },
+    {
+     "key": "plating",
+     "value": 5
+    },
+    {
+     "key": "health",
+     "value": 225
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de defensa",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad a un dios: te curas 1.5% de vida y restauras 2% de maná. Se activa una vez por habilidad y por dios.",
+   "passiveValues": [
+    {
+     "key": "Curación (% de vida)",
+     "value": 1.5
+    },
+    {
+     "key": "Maná restaurado (%)",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Coraza cinética",
+   "englishName": "Kinetic Cuirass",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 25
+    },
+    {
+     "key": "magical_protection",
+     "value": 25
+    },
+    {
+     "key": "plating",
+     "value": 5
+    },
+    {
+     "key": "health",
+     "value": 300
+    }
+   ],
+   "components": [
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    },
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir daño de 3 ataques de dioses: ganas Cinético (se acumula hasta 2 veces).\n\nCinético hace que tu siguiente ataque libere una onda de choque, aunque falle, que inflige 40 (+4% de tu vida) de daño físico.",
+   "passiveValues": [
+    {
+     "key": "Ataques para activarse",
+     "value": 3
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 2
+    },
+    {
+     "key": "Daño base",
+     "value": 40
+    },
+    {
+     "key": "Daño (% de tu vida)",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Malla de Midgard",
+   "englishName": "Midgardian Mail",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 50
+    },
+    {
+     "key": "plating",
+     "value": 5
+    },
+    {
+     "key": "health",
+     "value": 250
+    }
+   ],
+   "components": [
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    },
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir un ataque básico: el enemigo tiene 10% menos de velocidad de ataque durante 3 s. Se acumula hasta 4 veces.",
+   "passiveValues": [
+    {
+     "key": "Reducción de velocidad de ataque (%)",
+     "value": 10
+    },
+    {
+     "key": "Duración (s)",
+     "value": 3
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Estampida",
+   "englishName": "Stampede",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 30
+    },
+    {
+     "key": "health",
+     "value": 250
+    },
+    {
+     "key": "hp5",
+     "value": 5
+    }
+   ],
+   "components": [
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    },
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: tú y los aliados en 6.4 m ganan inmunidad a ralentizaciones y +60% de velocidad de movimiento, que baja a +20% en 4 s.",
+   "activeValues": [
+    {
+     "key": "Radio (m)",
+     "value": 6.4
+    },
+    {
+     "key": "Velocidad inicial (%)",
+     "value": 60
+    },
+    {
+     "key": "Velocidad final (%)",
+     "value": 20
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    }
+   ],
+   "activeCooldownS": 90
+  },
+  {
+   "name": "Gárgola chillona",
+   "englishName": "Screeching Gargoyle",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 50
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo del sabio",
+     "quantity": 1
+    },
+    {
+     "name": "Círculo de protección",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: los enemigos frente a ti quedan silenciados 1 s y tienen -10% de protecciones durante 4 s.\n\nDurante la fase de luz de luna: golpea a los enemigos a tu alrededor, el silencio dura 1.5 s y la reducción es de 15%.",
+   "activeValues": [
+    {
+     "key": "Silencio (s)",
+     "value": 1
+    },
+    {
+     "key": "Reducción de protecciones (%)",
+     "value": 10
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    },
+    {
+     "key": "Silencio en luz de luna (s)",
+     "value": 1.5
+    },
+    {
+     "key": "Reducción en luz de luna (%)",
+     "value": 15
+    }
+   ],
+   "activeCooldownS": 90
+  },
+  {
+   "name": "Capa profética",
+   "englishName": "Prophetic Cloak",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 22
+    },
+    {
+     "key": "magical_protection",
+     "value": 22
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo del sabio",
+     "quantity": 1
+    },
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al dañar a un dios: +1 acumulación de protección contra el tipo de daño que inflige. Enfriamiento: 5 s.\n\nCon +15 de cada protección, el item evoluciona: +10 de protección física y mágica y +6% de mitigación de daño (+12% si tus protecciones totales superan 300).",
+   "passiveValues": [
+    {
+     "key": "Enfriamiento (s)",
+     "value": 5
+    },
+    {
+     "key": "Acumulaciones para evolucionar",
+     "value": 15
+    },
+    {
+     "key": "Protecciones al evolucionar",
+     "value": 10
+    },
+    {
+     "key": "Mitigación de daño (%)",
+     "value": 6
+    },
+    {
+     "key": "Mitigación con más de 300 protecciones (%)",
+     "value": 12
+    }
+   ]
+  },
+  {
+   "name": "Contagio",
+   "englishName": "Contagion",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "health",
+     "value": 425
+    },
+    {
+     "key": "hp5",
+     "value": 6
+    }
+   ],
+   "components": [
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    },
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir daño de un ataque o habilidad: aplicas +1 acumulación de Contagio. Si un enemigo te roba 100 de vida: +5 acumulaciones.\n\nAl atacar o aplicar control duro a un enemigo afectado: inflige daño mágico igual a 1% de tu vida máxima por acumulación en 4 m de radio y elimina las acumulaciones.",
+   "passiveValues": [
+    {
+     "key": "Robo de vida para el bono",
+     "value": 100
+    },
+    {
+     "key": "Acumulaciones del bono",
+     "value": 5
+    },
+    {
+     "key": "Daño por acumulación (% de vida máxima)",
+     "value": 1
+    },
+    {
+     "key": "Radio (m)",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Erosión",
+   "englishName": "Erosion",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 30
+    },
+    {
+     "key": "magical_protection",
+     "value": 20
+    },
+    {
+     "key": "health",
+     "value": 250
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de defensa",
+     "quantity": 1
+    },
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "-30% a los escudos aplicados a dioses enemigos en 11.2 m.\n\nCuando ocurre: +10% de tus protecciones físicas y mágicas durante 6 s. Se acumula hasta 2 veces.",
+   "passiveValues": [
+    {
+     "key": "Reducción de escudos (%)",
+     "value": 30
+    },
+    {
+     "key": "Radio (m)",
+     "value": 11.2
+    },
+    {
+     "key": "Protecciones (%)",
+     "value": 10
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Escudo del berserker",
+   "englishName": "Berserker's Shield",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 50
+    },
+    {
+     "key": "health",
+     "value": 200
+    },
+    {
+     "key": "hp5",
+     "value": 4
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    },
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al bajar de 60% de vida: entras en Berserk durante 8 s. En Berserk: +15 de protección física, +15 de protección mágica y +25% de velocidad de ataque.",
+   "passiveValues": [
+    {
+     "key": "Vida umbral (%)",
+     "value": 60
+    },
+    {
+     "key": "Duración (s)",
+     "value": 8
+    },
+    {
+     "key": "Protección física",
+     "value": 15
+    },
+    {
+     "key": "Protección mágica",
+     "value": 15
+    },
+    {
+     "key": "Velocidad de ataque (%)",
+     "value": 25
+    }
+   ]
+  },
+  {
+   "name": "Escudo del gladiador",
+   "englishName": "Gladiator's Shield",
+   "category": "final",
+   "tier": 3,
+   "cost": 2450,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 25
+    },
+    {
+     "key": "health",
+     "value": 200
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de defensa",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo del capitán",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Las habilidades infligen daño físico adicional igual a 10 + 40% de las protecciones de tus items. Se activa una vez por lanzamiento y por dios.",
+   "passiveValues": [
+    {
+     "key": "Daño base",
+     "value": 10
+    },
+    {
+     "key": "Daño (% de protecciones de items)",
+     "value": 40
+    }
+   ]
+  },
+  {
+   "name": "Maldición del faraón",
+   "englishName": "Pharaoh's Curse",
+   "category": "final",
+   "tier": 3,
+   "cost": 2450,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 30
+    },
+    {
+     "key": "plating",
+     "value": 5
+    },
+    {
+     "key": "health",
+     "value": 250
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de disrupción",
+     "quantity": 1
+    },
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: los enemigos en 5.6 m tienen -50% de escudos, -20% de velocidad de movimiento y -40% de velocidad de ataque durante 4 s.",
+   "activeValues": [
+    {
+     "key": "Radio (m)",
+     "value": 5.6
+    },
+    {
+     "key": "Reducción de escudos (%)",
+     "value": 50
+    },
+    {
+     "key": "Reducción de velocidad de movimiento (%)",
+     "value": 20
+    },
+    {
+     "key": "Reducción de velocidad de ataque (%)",
+     "value": 40
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    }
+   ],
+   "activeCooldownS": 45
+  },
+  {
+   "name": "Túnica espiritual",
+   "englishName": "Spirit Robe",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 1000,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 20
+    },
+    {
+     "key": "magical_protection",
+     "value": 20
+    },
+    {
+     "key": "tenacity",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    },
+    {
+     "name": "Círculo de protección",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir control duro: +40 de protección física, +40 de protección mágica y curación de 4% de vida con el tiempo, durante 6 s.",
+   "passiveValues": [
+    {
+     "key": "Protección física",
+     "value": 40
+    },
+    {
+     "key": "Protección mágica",
+     "value": 40
+    },
+    {
+     "key": "Curación (% de vida)",
+     "value": 4
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    }
+   ]
+  },
+  {
+   "name": "Vínculo umbral",
+   "englishName": "Umbral Link",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 40
+    },
+    {
+     "key": "lifesteal",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    },
+    {
+     "name": "Hoz maldita",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Con más de 50% de vida: repartes la curación de tu robo de vida con aliados en 11.2 m. +10 de protecciones físicas y mágicas durante 8 s por cada aliado distinto curado.",
+   "passiveValues": [
+    {
+     "key": "Vida umbral (%)",
+     "value": 50
+    },
+    {
+     "key": "Radio (m)",
+     "value": 11.2
+    },
+    {
+     "key": "Protecciones por aliado",
+     "value": 10
+    },
+    {
+     "key": "Duración (s)",
+     "value": 8
+    }
+   ]
+  },
+  {
+   "name": "Atuendo del cazador de oni",
+   "englishName": "Oni Hunter's Garb",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 1150,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 50
+    },
+    {
+     "key": "health",
+     "value": 150
+    },
+    {
+     "key": "mana",
+     "value": 200
+    },
+    {
+     "key": "mp5",
+     "value": 8
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de disrupción",
+     "quantity": 1
+    },
+    {
+     "name": "Tomo de maná",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Por cada dios enemigo en 8.8 m: +4% de mitigación de daño, hasta 3 acumulaciones.",
+   "passiveValues": [
+    {
+     "key": "Radio (m)",
+     "value": 8.8
+    },
+    {
+     "key": "Mitigación por dios (%)",
+     "value": 4
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Ofuda del shogún",
+   "englishName": "Shogun's Ofuda",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 40
+    },
+    {
+     "key": "dampening",
+     "value": 5
+    },
+    {
+     "key": "health",
+     "value": 200
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de disrupción",
+     "quantity": 1
+    },
+    {
+     "name": "Arco del cazador",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "+20% de velocidad de ataque para ti y los aliados en 8.8 m.",
+   "passiveValues": [
+    {
+     "key": "Velocidad de ataque (%)",
+     "value": 20
+    },
+    {
+     "key": "Radio (m)",
+     "value": 8.8
+    }
+   ]
+  },
+  {
+   "name": "Ancile",
+   "englishName": "Ancile",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 55
+    },
+    {
+     "key": "health",
+     "value": 300
+    }
+   ],
+   "components": [
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    },
+    {
+     "name": "Círculo de protección",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: tu siguiente habilidad que dañe a un dios lo silencia durante 1.5 s.",
+   "activeValues": [
+    {
+     "key": "Silencio (s)",
+     "value": 1.5
+    }
+   ],
+   "activeCooldownS": 70
+  },
+  {
+   "name": "Sudario de la venganza",
+   "englishName": "Shroud of Vengeance",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 20
+    },
+    {
+     "key": "magical_protection",
+     "value": 20
+    },
+    {
+     "key": "tenacity",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Capa del clérigo",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir control duro: liberas una onda de choque a tu alrededor que inflige 50 (+40% de tus protecciones, hasta 650) de daño físico.",
+   "passiveValues": [
+    {
+     "key": "Daño base",
+     "value": 50
+    },
+    {
+     "key": "Daño (% de protecciones)",
+     "value": 40
+    },
+    {
+     "key": "Daño máximo",
+     "value": 650
+    }
+   ]
+  },
+  {
+   "name": "Ancla estigia",
+   "englishName": "Stygian Anchor",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 35
+    },
+    {
+     "key": "magical_protection",
+     "value": 30
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 2
+    }
+   ],
+   "passiveText": "Al dañar a un dios: aplicas 40% de reducción de curación durante 5 s y 1 acumulación de Lodo estigio durante 3 s (máximo 5). Las acumulaciones se pierden de una en una. Se activa una vez por habilidad y por dios.\n\nPor acumulación: -3% de velocidad de ataque, y 5% de su curación se te refleja.\n\nLa reducción de curación no se acumula con efectos similares.",
+   "passiveValues": [
+    {
+     "key": "Reducción de curación (%)",
+     "value": 40
+    },
+    {
+     "key": "Duración de la reducción (s)",
+     "value": 5
+    },
+    {
+     "key": "Duración del lodo (s)",
+     "value": 3
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 5
+    },
+    {
+     "key": "Reducción de velocidad de ataque (%)",
+     "value": 3
+    },
+    {
+     "key": "Curación reflejada (%)",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Escudo del vacío",
+   "englishName": "Void Shield",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 55
+    },
+    {
+     "key": "health",
+     "value": 150
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de defensa",
+     "quantity": 1
+    },
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Enemigos en 8.8 m: -10% de protección física. El efecto escala con la distancia: +50% a corta distancia y -50% a distancia máxima.",
+   "passiveValues": [
+    {
+     "key": "Radio (m)",
+     "value": 8.8
+    },
+    {
+     "key": "Reducción de protección física (%)",
+     "value": 10
+    },
+    {
+     "key": "Aumento a corta distancia (%)",
+     "value": 50
+    },
+    {
+     "key": "Reducción a distancia máxima (%)",
+     "value": 50
+    }
+   ]
+  },
+  {
+   "name": "Zancos del rebrote",
+   "englishName": "Regrowth Striders",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 1000,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 45
+    },
+    {
+     "key": "mp5",
+     "value": 3
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo del capitán",
+     "quantity": 1
+    },
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al curarte con una habilidad: +25% de velocidad de movimiento (se desvanece) durante 4 s. Enfriamiento: 10 s.\n\nAl ganar cualquier mejora de velocidad de movimiento: te curas 5% de vida en 10 s.",
+   "passiveValues": [
+    {
+     "key": "Velocidad de movimiento (%)",
+     "value": 25
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    },
+    {
+     "key": "Enfriamiento (s)",
+     "value": 10
+    },
+    {
+     "key": "Curación (% de vida)",
+     "value": 5
+    },
+    {
+     "key": "Duración de la curación (s)",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "name": "Piedra del vacío",
+   "englishName": "Void Stone",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 60
+    },
+    {
+     "key": "health",
+     "value": 150
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de disrupción",
+     "quantity": 1
+    },
+    {
+     "name": "Círculo de protección",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Enemigos en 8.8 m: -10% de protección mágica. El efecto escala con la distancia: +50% a corta distancia y -50% a distancia máxima.",
+   "passiveValues": [
+    {
+     "key": "Radio (m)",
+     "value": 8.8
+    },
+    {
+     "key": "Reducción de protección mágica (%)",
+     "value": 10
+    },
+    {
+     "key": "Aumento a corta distancia (%)",
+     "value": 50
+    },
+    {
+     "key": "Reducción a distancia máxima (%)",
+     "value": 50
+    }
+   ]
+  },
+  {
+   "name": "Piedra de atadura",
+   "englishName": "Stone of Binding",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 1000,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 35
+    },
+    {
+     "key": "magical_protection",
+     "value": 35
+    },
+    {
+     "key": "dampening",
+     "value": 5
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al aplicar control duro a un enemigo: -10 de protecciones físicas y mágicas durante 6 s. Se acumula hasta 3 veces y las acumulaciones se pierden de una en una.",
+   "passiveValues": [
+    {
+     "key": "Reducción de protecciones",
+     "value": 10
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 3
+    }
+   ]
+  },
+  {
+   "name": "Malla mística",
+   "englishName": "Mystical Mail",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 40
+    },
+    {
+     "key": "health",
+     "value": 300
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de defensa",
+     "quantity": 1
+    },
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Enemigos en 4 m: reciben 15 (+1 por nivel) de daño mágico y pierden 25% de su escudo de vida cada segundo. El daño escala con la distancia: +50% a corta distancia y -50% a distancia máxima.",
+   "passiveValues": [
+    {
+     "key": "Radio (m)",
+     "value": 4
+    },
+    {
+     "key": "Daño base",
+     "value": 15
+    },
+    {
+     "key": "Daño por nivel",
+     "value": 1
+    },
+    {
+     "key": "Pérdida de escudo (%)",
+     "value": 25
+    },
+    {
+     "key": "Aumento a corta distancia (%)",
+     "value": 50
+    },
+    {
+     "key": "Reducción a distancia máxima (%)",
+     "value": 50
+    }
+   ]
+  },
+  {
+   "name": "Pridwen gloriosa",
+   "englishName": "Glorious Pridwen",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 1100,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 20
+    },
+    {
+     "key": "magical_protection",
+     "value": 20
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 12
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: explotas (4.8 m de radio) infligiendo daño mágico igual a 40% de tus protecciones, y ganas un escudo de 125% de tus protecciones durante 5 s. Cuando el escudo termina o se rompe, explotas de nuevo infligiendo 70% de tus protecciones.",
+   "activeValues": [
+    {
+     "key": "Radio (m)",
+     "value": 4.8
+    },
+    {
+     "key": "Daño (% de protecciones)",
+     "value": 40
+    },
+    {
+     "key": "Escudo (% de protecciones)",
+     "value": 125
+    },
+    {
+     "key": "Duración del escudo (s)",
+     "value": 5
+    },
+    {
+     "key": "Daño de la segunda explosión (%)",
+     "value": 70
+    }
+   ],
+   "activeCooldownS": 45
+  },
+  {
+   "name": "Piel del león de Nemea",
+   "englishName": "Hide of the Nemean Lion",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 1000,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 35
+    },
+    {
+     "key": "health",
+     "value": 350
+    },
+    {
+     "key": "hp5",
+     "value": 4
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de defensa",
+     "quantity": 1
+    },
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: reflejas 40% del daño de ataque y 20% del daño de habilidades, antes de mitigación, como daño físico. Dura 4 s.",
+   "activeValues": [
+    {
+     "key": "Reflejo de ataques (%)",
+     "value": 40
+    },
+    {
+     "key": "Reflejo de habilidades (%)",
+     "value": 20
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    }
+   ],
+   "activeCooldownS": 60
+  },
+  {
+   "name": "Piel de sierpe",
+   "englishName": "Wyrmskin Hide",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 20
+    },
+    {
+     "key": "magical_protection",
+     "value": 25
+    },
+    {
+     "key": "dampening",
+     "value": 5
+    },
+    {
+     "key": "health",
+     "value": 300
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha de batalla",
+     "quantity": 1
+    },
+    {
+     "name": "Medalla de disrupción",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al golpear a un dios (una vez cada 8 s): ganas 1 de Amortiguación por nivel contra él.",
+   "passiveValues": [
+    {
+     "key": "Enfriamiento (s)",
+     "value": 8
+    },
+    {
+     "key": "Amortiguación por nivel",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "name": "Estela del Ragnarok",
+   "englishName": "Ragnarok's Wake",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 45
+    },
+    {
+     "key": "health",
+     "value": 250
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de defensa",
+     "quantity": 2
+    }
+   ],
+   "activeText": "Al usar: te preparas 2 s y luego vuelas 2.5 s hacia el lugar elegido como un meteoro del Ragnarok, hasta 30 m. Los enemigos cerca de donde caes reciben 600 de daño mágico y son lanzados hacia arriba.",
+   "activeValues": [
+    {
+     "key": "Preparación (s)",
+     "value": 2
+    },
+    {
+     "key": "Duración del vuelo (s)",
+     "value": 2.5
+    },
+    {
+     "key": "Alcance (m)",
+     "value": 30
+    },
+    {
+     "key": "Daño mágico",
+     "value": 600
+    }
+   ],
+   "activeCooldownS": 140
+  },
+  {
+   "name": "Lágrimas de Freya",
+   "englishName": "Freya's Tears",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 1000,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 30
+    },
+    {
+     "key": "magical_protection",
+     "value": 30
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo del sabio",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo del capitán",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al perder 25% de tu vida: +15 de protecciones físicas y mágicas durante 5 s. Se acumula hasta 2 veces.",
+   "passiveValues": [
+    {
+     "key": "Vida perdida (%)",
+     "value": 25
+    },
+    {
+     "key": "Protecciones",
+     "value": 15
+    },
+    {
+     "key": "Duración (s)",
+     "value": 5
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Manto de la discordia",
+   "englishName": "Mantle Of Discord",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 1000,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 35
+    },
+    {
+     "key": "magical_protection",
+     "value": 35
+    },
+    {
+     "key": "tenacity",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Capa del clérigo",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir daño con menos de 40% de vida: aturdes a los enemigos en 3.2 m durante 1 s, ganas inmunidad a control durante 1 s y +15 de Amortiguación durante 6 s. Enfriamiento: 110 s.",
+   "passiveValues": [
+    {
+     "key": "Vida umbral (%)",
+     "value": 40
+    },
+    {
+     "key": "Radio (m)",
+     "value": 3.2
+    },
+    {
+     "key": "Aturdimiento (s)",
+     "value": 1
+    },
+    {
+     "key": "Inmunidad a control (s)",
+     "value": 1
+    },
+    {
+     "key": "Amortiguación",
+     "value": 15
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    },
+    {
+     "key": "Enfriamiento (s)",
+     "value": 110
+    }
+   ]
+  },
+  {
+   "name": "Amuleto de duramen",
+   "englishName": "Heartwood Charm",
+   "category": "final",
+   "tier": 3,
+   "cost": 2650,
+   "ownCost": 1050,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 45
+    },
+    {
+     "key": "mana",
+     "value": 250
+    },
+    {
+     "key": "mp5",
+     "value": 5
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    },
+    {
+     "name": "Báculo del oráculo",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "+10% de curación y escudos.\n\nCuando curas con habilidades, almacenas 20% de esa curación.",
+   "passiveValues": [
+    {
+     "key": "Curación y escudos (%)",
+     "value": 10
+    },
+    {
+     "key": "Curación almacenada (%)",
+     "value": 20
+    }
+   ],
+   "activeText": "Al usar: curas a todos los aliados en 6.4 m por la cantidad almacenada.",
+   "activeValues": [
+    {
+     "key": "Radio (m)",
+     "value": 6.4
+    }
+   ],
+   "activeCooldownS": 90
+  },
+  {
+   "name": "Jubón de atadura",
+   "englishName": "Doublet of Binding",
+   "category": "final",
+   "tier": 3,
+   "cost": 2700,
+   "ownCost": 1150,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 50
+    },
+    {
+     "key": "dampening",
+     "value": 5
+    },
+    {
+     "key": "health",
+     "value": 400
+    }
+   ],
+   "components": [
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    },
+    {
+     "name": "Círculo de protección",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: creas un Vínculo protector con un objetivo. El vínculo te redirige 20% del daño que recibe, hasta 600 de vida. Este daño se mitiga con tu Amortiguación.",
+   "activeValues": [
+    {
+     "key": "Daño redirigido (%)",
+     "value": 20
+    },
+    {
+     "key": "Vida máxima",
+     "value": 600
+    }
+   ],
+   "activeCooldownS": 45
+  },
+  {
+   "name": "Escama dracónica",
+   "englishName": "Draconic Scale",
+   "category": "final",
+   "tier": 3,
+   "cost": 2700,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 30
+    },
+    {
+     "key": "magical_protection",
+     "value": 30
+    },
+    {
+     "key": "health",
+     "value": 300
+    }
+   ],
+   "components": [
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    },
+    {
+     "name": "Sello firme",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir daño de un dios: ganas 4 de protección contra ese tipo de daño. Las acumulaciones duran 1.5 s (máximo 7) y se pierden de una en una.",
+   "passiveValues": [
+    {
+     "key": "Protección por acumulación",
+     "value": 4
+    },
+    {
+     "key": "Duración (s)",
+     "value": 1.5
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 7
+    }
+   ]
+  },
+  {
+   "name": "Manto resuelto",
+   "englishName": "Resolute Mantle",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 1150,
+   "stats": [
+    {
+     "key": "health",
+     "value": 550
+    },
+    {
+     "key": "tenacity",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    },
+    {
+     "name": "Capa del clérigo",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir control duro de una habilidad: +25 de regeneración de vida y +5 de Tenacidad durante 4 s. Este efecto se acumula.\n\nCuando terminan las acumulaciones: ganas 0.5 de regeneración de vida y 1 de Tenacidad permanentes, hasta 20 veces.",
+   "passiveValues": [
+    {
+     "key": "Regeneración de vida",
+     "value": 25
+    },
+    {
+     "key": "Tenacidad",
+     "value": 5
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    },
+    {
+     "key": "Regeneración permanente",
+     "value": 0.5
+    },
+    {
+     "key": "Tenacidad permanente",
+     "value": 1
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 20
+    }
+   ]
+  },
+  {
+   "name": "Piedra hechizada de Circe",
+   "englishName": "Circe's Hexstone",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 1400,
+   "stats": [
+    {
+     "key": "health",
+     "value": 250
+    },
+    {
+     "key": "hp5",
+     "value": 4
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: te polimorfas y embistes hacia adelante, infligiendo 50 de daño físico, con inmunidad a control y +60 de protección física y mágica.\n\nAl golpear a un dios enemigo: lo lanzas por los aires, infliges daño adicional igual a 10% de su vida actual y reduces 40 s el enfriamiento.",
+   "activeValues": [
+    {
+     "key": "Daño físico",
+     "value": 50
+    },
+    {
+     "key": "Protecciones",
+     "value": 60
+    },
+    {
+     "key": "Daño (% de vida actual)",
+     "value": 10
+    },
+    {
+     "key": "Reducción de enfriamiento (s)",
+     "value": 40
+    }
+   ],
+   "activeCooldownS": 120
+  },
+  {
+   "name": "Efigie de Xibalbá",
+   "englishName": "Xibalban Effigy",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 1100,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 30
+    },
+    {
+     "key": "magical_protection",
+     "value": 30
+    },
+    {
+     "key": "mana",
+     "value": 300
+    },
+    {
+     "key": "mp5",
+     "value": 4
+    }
+   ],
+   "components": [
+    {
+     "name": "Sello firme",
+     "quantity": 1
+    },
+    {
+     "name": "Tomo de maná",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: recibes 50% del daño durante 4 s. Después recibes daño físico igual al daño mitigado, sin bajar de 5% de vida.\n\nDurante la fase de luz de luna: solo recibes 50% del daño mitigado.",
+   "activeValues": [
+    {
+     "key": "Daño recibido (%)",
+     "value": 50
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    },
+    {
+     "key": "Vida mínima (%)",
+     "value": 5
+    }
+   ],
+   "activeCooldownS": 90
+  },
+  {
+   "name": "Baluarte radiante",
+   "englishName": "Radiant Bulwark",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 1050,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 20
+    },
+    {
+     "key": "magical_protection",
+     "value": 20
+    },
+    {
+     "key": "plating",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Metal laminado",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: creas un muro de luz que protege a los aliados detrás de ti durante 6 s. Les da todo tu Blindaje y Amortiguación y la mitad de tus protecciones contra enemigos del otro lado, y a ti 20% de mitigación de daño. Mientras canalizas estás silenciado, desarmado y no puedes girar.",
+   "activeValues": [
+    {
+     "key": "Duración (s)",
+     "value": 6
+    },
+    {
+     "key": "Mitigación de daño (%)",
+     "value": 20
+    }
+   ],
+   "activeCooldownS": 100
+  },
+  {
+   "name": "Placa enana",
+   "englishName": "Dwarven Plate",
+   "category": "final",
+   "tier": 3,
+   "cost": 2800,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 35
+    },
+    {
+     "key": "magical_protection",
+     "value": 35
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Sello firme",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "+15 de protección física y +35 de protección mágica.",
+   "passiveValues": [
+    {
+     "key": "Protección física",
+     "value": 15
+    },
+    {
+     "key": "Protección mágica",
+     "value": 35
+    }
+   ],
+   "activeText": "Al usar: cambias cuál protección aumenta más.",
+   "activeCooldownS": 30
+  },
+  {
+   "name": "Alas del húsar",
+   "englishName": "Hussar's Wings",
+   "category": "final",
+   "tier": 3,
+   "cost": 3500,
+   "ownCost": 1800,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 35
+    },
+    {
+     "key": "magical_protection",
+     "value": 35
+    },
+    {
+     "key": "health",
+     "value": 500
+    }
+   ],
+   "components": [
+    {
+     "name": "Medalla de defensa",
+     "quantity": 1
+    },
+    {
+     "name": "Medalla de disrupción",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Eres inmune a las ralentizaciones."
+  },
+  {
+   "name": "Vara de Asclepio",
+   "englishName": "Rod of Asclepius",
+   "category": "final",
+   "tier": 3,
+   "cost": 2350,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 45
+    },
+    {
+     "key": "health",
+     "value": 150
+    },
+    {
+     "key": "hp5",
+     "value": 2.5
+    },
+    {
+     "key": "mp5",
+     "value": 2.5
+    }
+   ],
+   "components": [
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    },
+    {
+     "name": "Piedra asesina",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "+10% de curación y escudos.\n\nAl curar a un aliado con una habilidad: tu curación aumenta 0.5% por cada 1% de vida faltante del objetivo.",
+   "passiveValues": [
+    {
+     "key": "Curación y escudos (%)",
+     "value": 10
+    },
+    {
+     "key": "Curación por vida faltante (%)",
+     "value": 0.5
+    }
+   ]
+  },
+  {
+   "name": "Atavidas",
+   "englishName": "Lifebinder",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 40
+    },
+    {
+     "key": "health",
+     "value": 200
+    },
+    {
+     "key": "mp5",
+     "value": 4
+    }
+   ],
+   "components": [
+    {
+     "name": "Perla llameante",
+     "quantity": 1
+    },
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "+8% de curación y escudos.",
+   "passiveValues": [
+    {
+     "key": "Curación y escudos (%)",
+     "value": 8
+    }
+   ],
+   "activeText": "Al usar: disparas un proyectil que inflige 60 (+8 por nivel) de daño mágico y marca a los dioses enemigos durante 6 s.\n\nEl primer aliado que dañe a un objetivo marcado recibe +70 (+7 por nivel) de curación y +70 (+7 por nivel) de escudo, y consume la marca. Tu fuerza de curación y escudos aumenta este efecto con 150% de efectividad.",
+   "activeValues": [
+    {
+     "key": "Daño base",
+     "value": 60
+    },
+    {
+     "key": "Daño por nivel",
+     "value": 8
+    },
+    {
+     "key": "Duración de la marca (s)",
+     "value": 6
+    },
+    {
+     "key": "Curación y escudo base",
+     "value": 70
+    },
+    {
+     "key": "Curación y escudo por nivel",
+     "value": 7
+    },
+    {
+     "key": "Efectividad (%)",
+     "value": 150
+    }
+   ],
+   "activeCooldownS": 20
+  },
+  {
+   "name": "Cetro de dominio",
+   "englishName": "Scepter of Dominion",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 30
+    },
+    {
+     "key": "health",
+     "value": 150
+    },
+    {
+     "key": "mana",
+     "value": 200
+    },
+    {
+     "key": "mp5",
+     "value": 3
+    }
+   ],
+   "components": [
+    {
+     "name": "Perla llameante",
+     "quantity": 1
+    },
+    {
+     "name": "Tomo de maná",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: creas una zona que pone a los dioses en Estasis. La zona aparece tras 1 s y la Estasis dura 2 s.",
+   "activeValues": [
+    {
+     "key": "Retraso (s)",
+     "value": 1
+    },
+    {
+     "key": "Duración de la Estasis (s)",
+     "value": 2
+    }
+   ],
+   "activeCooldownS": 90
+  },
+  {
+   "name": "Parteescudos",
+   "englishName": "Shield Splitter",
+   "category": "final",
+   "tier": 3,
+   "cost": 2400,
+   "ownCost": 600,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 45
+    },
+    {
+     "key": "physical_protection",
+     "value": 15
+    },
+    {
+     "key": "magical_protection",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    },
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: disparas un proyectil 11.2 m hacia adelante que inflige +40 (+5 por nivel) de daño verdadero. Si el enemigo tiene escudo: -70% de escudo, y ganas un escudo igual a lo reducido.",
+   "activeValues": [
+    {
+     "key": "Alcance (m)",
+     "value": 11.2
+    },
+    {
+     "key": "Daño verdadero base",
+     "value": 40
+    },
+    {
+     "key": "Daño por nivel",
+     "value": 5
+    },
+    {
+     "key": "Reducción de escudo (%)",
+     "value": 70
+    }
+   ],
+   "activeCooldownS": 15
+  },
+  {
+   "name": "Gema de aislamiento",
+   "englishName": "Gem of Isolation",
+   "category": "final",
+   "tier": 3,
+   "cost": 2450,
+   "ownCost": 700,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 50
+    },
+    {
+     "key": "health",
+     "value": 250
+    },
+    {
+     "key": "tenacity",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Perla llameante",
+     "quantity": 1
+    },
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad con daño: ralentización de 15% durante 2 s.",
+   "passiveValues": [
+    {
+     "key": "Ralentización (%)",
+     "value": 15
+    },
+    {
+     "key": "Duración (s)",
+     "value": 2
+    }
+   ]
+  },
+  {
+   "name": "Relicario del alma",
+   "englishName": "Soul Locket",
+   "category": "final",
+   "tier": 3,
+   "cost": 2450,
+   "ownCost": 600,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 50
+    },
+    {
+     "key": "health",
+     "value": 200
+    },
+    {
+     "key": "mp5",
+     "value": 5
+    }
+   ],
+   "components": [
+    {
+     "name": "Relicario de almas",
+     "quantity": 1
+    },
+    {
+     "name": "Perla llameante",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "+10% de curación y escudos.\n\nAl mejorar, curar o escudar a otro dios aliado con una habilidad: ganas una acumulación de Alma (máximo 70).",
+   "passiveValues": [
+    {
+     "key": "Curación y escudos (%)",
+     "value": 10
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 70
+    }
+   ],
+   "activeText": "Al usar: ganas Paso espiritual durante 2.5 s. Consumes tus acumulaciones de Alma, ganas 1% de reducción de daño por acumulación y +20% de velocidad de movimiento, y puedes atravesar jugadores y muros creados por jugadores.",
+   "activeValues": [
+    {
+     "key": "Duración (s)",
+     "value": 2.5
+    },
+    {
+     "key": "Reducción de daño por acumulación (%)",
+     "value": 1
+    },
+    {
+     "key": "Velocidad de movimiento (%)",
+     "value": 20
+    }
+   ],
+   "activeCooldownS": 100
+  },
+  {
+   "name": "Hoja dorada",
+   "englishName": "Golden Blade",
+   "category": "final",
+   "tier": 3,
+   "cost": 2450,
+   "ownCost": 600,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 15
+    },
+    {
+     "key": "attack_damage",
+     "value": 20
+    },
+    {
+     "key": "health",
+     "value": 200
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha de batalla",
+     "quantity": 1
+    },
+    {
+     "name": "Arco manchú",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Los ataques infligen daño físico adicional igual a 10 + 20% de las protecciones de tus items, a todos los enemigos en 2.5 m.",
+   "passiveValues": [
+    {
+     "key": "Daño base",
+     "value": 10
+    },
+    {
+     "key": "Daño (% de protecciones de items)",
+     "value": 20
+    },
+    {
+     "key": "Radio (m)",
+     "value": 2.5
+    }
+   ]
+  },
+  {
+   "name": "Garrote del pendenciero",
+   "englishName": "Brawler’s Beat Stick",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 700,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 15
+    },
+    {
+     "key": "magical_protection",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    },
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Stat adaptativo: +35 de fuerza o +50 de inteligencia, según tu stat de items más alto.\n\nAl dañar a un dios: aplicas 40% de reducción de curación durante 5 s.\n\nEn combate: +2% de fuerza, +2% de inteligencia y +2% de protecciones cada 1.5 s, hasta 5 veces. Fuera de combate: -1 acumulación cada 0.5 s.\n\nLa reducción de curación no se acumula con efectos similares. El combate dura 6 s tras infligir o recibir daño.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 35
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 50
+    },
+    {
+     "key": "Reducción de curación (%)",
+     "value": 40
+    },
+    {
+     "key": "Duración de la reducción (s)",
+     "value": 5
+    },
+    {
+     "key": "Mejora por acumulación (%)",
+     "value": 2
+    },
+    {
+     "key": "Intervalo (s)",
+     "value": 1.5
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Yelmo del resplandor",
+   "englishName": "Helm of Radiance",
+   "category": "final",
+   "tier": 3,
+   "cost": 2500,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 65
+    },
+    {
+     "key": "physical_protection",
+     "value": 35
+    }
+   ],
+   "components": [
+    {
+     "name": "Piedra asesina",
+     "quantity": 1
+    },
+    {
+     "name": "Armadura de legionario",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir daño físico: +7 de protección física durante 6 s. Se acumula hasta 4 veces.",
+   "passiveValues": [
+    {
+     "key": "Protección física",
+     "value": 7
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    },
+    {
+     "key": "Acumulaciones máximas",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Bastón etéreo",
+   "englishName": "Ethereal Staff",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 60
+    },
+    {
+     "key": "health",
+     "value": 250
+    },
+    {
+     "key": "tenacity",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Perla llameante",
+     "quantity": 1
+    },
+    {
+     "name": "Capa del clérigo",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Golpe de habilidad a un dios: robas 5% de vida y maná máximos de un objetivo. Se activa una vez por habilidad. Las acumulaciones duran 60 s y se pierden de una en una.",
+   "passiveValues": [
+    {
+     "key": "Robo de vida y maná (%)",
+     "value": 5
+    },
+    {
+     "key": "Duración (s)",
+     "value": 60
+    }
+   ]
+  },
+  {
+   "name": "Martillo forjarrunas",
+   "englishName": "Runeforged Hammer",
+   "category": "final",
+   "tier": 3,
+   "cost": 2550,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 45
+    },
+    {
+     "key": "health",
+     "value": 350
+    },
+    {
+     "key": "hp5",
+     "value": 3
+    }
+   ],
+   "components": [
+    {
+     "name": "Azul olmeca",
+     "quantity": 1
+    },
+    {
+     "name": "Hacha de batalla",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al aplicar control duro a un dios: lo marcas con una Runa durante 5 s. Atácalo para forjar la Runa e infligir +50 (+65% de las protecciones de tus items) de daño mágico.\n\nAl aplicar control duro a un dios: -6 s de enfriamiento del item. Enfriamiento: 30 s.",
+   "passiveValues": [
+    {
+     "key": "Duración de la marca (s)",
+     "value": 5
+    },
+    {
+     "key": "Daño base",
+     "value": 50
+    },
+    {
+     "key": "Daño (% de protecciones de items)",
+     "value": 65
+    },
+    {
+     "key": "Reducción de enfriamiento (s)",
+     "value": 6
+    },
+    {
+     "key": "Enfriamiento (s)",
+     "value": 30
+    }
+   ]
+  },
+  {
+   "name": "Ojo de la tormenta",
+   "englishName": "Eye of the Storm",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 40
+    },
+    {
+     "key": "hp5",
+     "value": 4
+    },
+    {
+     "key": "echo",
+     "value": 30
+    }
+   ],
+   "components": [
+    {
+     "name": "Skeggox",
+     "quantity": 1
+    },
+    {
+     "name": "Tambor de cuenco",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Cada vez que haces Eco: +1 acumulación.\n\nCon 10 acumulaciones, el siguiente Eco abre una tormenta en 4.8 m que inflige daño físico cada 0.5 s durante 3 s. Daño: 10 + 20% de tu fuerza. Solo aparece al golpear a un dios o jefe de la jungla.",
+   "passiveValues": [
+    {
+     "key": "Acumulaciones necesarias",
+     "value": 10
+    },
+    {
+     "key": "Radio (m)",
+     "value": 4.8
+    },
+    {
+     "key": "Intervalo (s)",
+     "value": 0.5
+    },
+    {
+     "key": "Duración (s)",
+     "value": 3
+    },
+    {
+     "key": "Daño base",
+     "value": 10
+    },
+    {
+     "key": "Daño (% de fuerza)",
+     "value": 20
+    }
+   ]
+  },
+  {
+   "name": "Ojo de Érebo",
+   "englishName": "Eye of Erebus",
+   "category": "final",
+   "tier": 3,
+   "cost": 2600,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "health",
+     "value": 350
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo hábil",
+     "quantity": 1
+    },
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Stat adaptativo: +35 de fuerza o +50 de inteligencia, según tu stat de items más alto.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 35
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 50
+    }
+   ],
+   "activeText": "Al usar: invocas un Ojo vigilante que dura 40 s. Cuando un enemigo entra en su alcance, dispara un proyectil teledirigido: daño mágico igual a 15% de la vida máxima del enemigo, revelación y ralentización de 25% durante 2.5 s.\n\nDurante la fase de luz de luna: cada vez que dañas a un dios, -2 s de enfriamiento de este item (una vez por objetivo, por ataque o habilidad).",
+   "activeValues": [
+    {
+     "key": "Duración (s)",
+     "value": 40
+    },
+    {
+     "key": "Daño (% de vida máxima)",
+     "value": 15
+    },
+    {
+     "key": "Ralentización (%)",
+     "value": 25
+    },
+    {
+     "key": "Duración de la ralentización (s)",
+     "value": 2.5
+    },
+    {
+     "key": "Reducción en luz de luna (s)",
+     "value": 2
+    }
+   ],
+   "activeCooldownS": 40
+  },
+  {
+   "name": "Látigo sanguíneo",
+   "englishName": "Sanguine Lash",
+   "category": "final",
+   "tier": 3,
+   "cost": 2650,
+   "ownCost": 700,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 30
+    },
+    {
+     "key": "strength",
+     "value": 25
+    },
+    {
+     "key": "lifesteal",
+     "value": 5
+    }
+   ],
+   "components": [
+    {
+     "name": "Círculo de protección",
+     "quantity": 1
+    },
+    {
+     "name": "Hoz adamantina",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Dioses enemigos en 4 m: pierden 0.5% de vida (máximo 200) como daño físico cada segundo, +0.66% por cada 10% de robo de vida.",
+   "passiveValues": [
+    {
+     "key": "Radio (m)",
+     "value": 4
+    },
+    {
+     "key": "Daño por segundo (% de vida)",
+     "value": 0.5
+    },
+    {
+     "key": "Daño máximo",
+     "value": 200
+    },
+    {
+     "key": "Daño por cada 10% de robo de vida (%)",
+     "value": 0.66
+    }
+   ],
+   "activeText": "Al usar: el daño se aplica cada 0.33 s durante 4 s.",
+   "activeValues": [
+    {
+     "key": "Intervalo (s)",
+     "value": 0.33
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    }
+   ],
+   "activeCooldownS": 75
+  },
+  {
+   "name": "Caracola de Tritón",
+   "englishName": "Triton's Conch",
+   "category": "final",
+   "tier": 3,
+   "cost": 2700,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 25
+    },
+    {
+     "key": "intelligence",
+     "value": 40
+    },
+    {
+     "key": "health",
+     "value": 250
+    }
+   ],
+   "components": [
+    {
+     "name": "Cítara",
+     "quantity": 1
+    },
+    {
+     "name": "Amuleto vevé",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Tú y los aliados en 8.8 m: +5 (+0.5 por nivel) de fuerza y +5 (+1 por nivel) de inteligencia.",
+   "passiveValues": [
+    {
+     "key": "Radio (m)",
+     "value": 8.8
+    },
+    {
+     "key": "Fuerza base",
+     "value": 5
+    },
+    {
+     "key": "Fuerza por nivel",
+     "value": 0.5
+    },
+    {
+     "key": "Inteligencia base",
+     "value": 5
+    },
+    {
+     "key": "Inteligencia por nivel",
+     "value": 1
+    }
+   ]
+  },
+  {
+   "name": "Yelmo de la oscuridad",
+   "englishName": "Helm of Darkness",
+   "category": "final",
+   "tier": 3,
+   "cost": 2700,
+   "ownCost": 1000,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 45
+    },
+    {
+     "key": "physical_protection",
+     "value": 25
+    },
+    {
+     "key": "magical_protection",
+     "value": 25
+    }
+   ],
+   "components": [
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    },
+    {
+     "name": "Piedra asesina",
+     "quantity": 1
+    }
+   ],
+   "activeText": "Al usar: entras en sigilo y atraviesas jugadores y muros durante 7 s. No se puede usar mientras lanzas algo.\n\nDurante la fase de luz de luna: en sigilo ganas +15% de velocidad de movimiento, y al atravesar a un dios enemigo infliges daño físico igual a 15% de tu vida máxima.",
+   "activeValues": [
+    {
+     "key": "Duración (s)",
+     "value": 7
+    },
+    {
+     "key": "Velocidad en luz de luna (%)",
+     "value": 15
+    },
+    {
+     "key": "Daño (% de vida máxima)",
+     "value": 15
+    }
+   ],
+   "activeCooldownS": 90
+  },
+  {
+   "name": "Escudo del cambiaformas",
+   "englishName": "Shifter's Shield",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 950,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 25
+    },
+    {
+     "key": "magical_protection",
+     "value": 25
+    },
+    {
+     "key": "health",
+     "value": 200
+    },
+    {
+     "key": "hp5",
+     "value": 4
+    }
+   ],
+   "components": [
+    {
+     "name": "Faja del superviviente",
+     "quantity": 1
+    },
+    {
+     "name": "Guardia grabada",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Con más de 75% de vida: +30 de fuerza o +40 de inteligencia (el que sea más alto).\n\nCon menos de 75% de vida: +20 de protección física y mágica.",
+   "passiveValues": [
+    {
+     "key": "Vida umbral (%)",
+     "value": 75
+    },
+    {
+     "key": "Fuerza",
+     "value": 30
+    },
+    {
+     "key": "Inteligencia",
+     "value": 40
+    },
+    {
+     "key": "Protecciones",
+     "value": 20
+    }
+   ]
+  },
+  {
+   "name": "Esfera de negación",
+   "englishName": "Sphere of Negation",
+   "category": "final",
+   "tier": 3,
+   "cost": 2750,
+   "ownCost": 1100,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 40
+    },
+    {
+     "key": "magical_protection",
+     "value": 50
+    }
+   ],
+   "components": [
+    {
+     "name": "Piedra asesina",
+     "quantity": 1
+    },
+    {
+     "name": "Círculo de protección",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Ganas un escudo mágico de +2% de vida máxima cada 3 s, hasta +14% de vida máxima.",
+   "passiveValues": [
+    {
+     "key": "Escudo (% de vida máxima)",
+     "value": 2
+    },
+    {
+     "key": "Intervalo (s)",
+     "value": 3
+    },
+    {
+     "key": "Escudo máximo (%)",
+     "value": 14
+    }
+   ]
+  },
+  {
+   "name": "Perla de los deseos",
+   "englishName": "Wish-Granting Pearl",
+   "category": "final",
+   "tier": 3,
+   "cost": 3550,
+   "ownCost": 1800,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 120
+    },
+    {
+     "key": "health",
+     "value": 425
+    },
+    {
+     "key": "mana",
+     "value": 200
+    }
+   ],
+   "components": [
+    {
+     "name": "Perla llameante",
+     "quantity": 1
+    },
+    {
+     "name": "Odigba",
+     "quantity": 1
+    }
+   ]
+  }
+ ]
+}

@@ -252,7 +252,8 @@ CREATE TABLE items (
     updated_at        TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by        TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
     updated_by        TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed')),
-    english_name      TEXT                    -- nombre original del item en inglés
+    english_name      TEXT,                   -- nombre original del item en inglés
+    source            TEXT                    -- 'wiki' si se importó; NULL si se capturó en la app
 );
 
 CREATE TABLE item_stats (

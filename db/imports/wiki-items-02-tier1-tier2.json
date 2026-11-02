@@ -1,0 +1,926 @@
+{
+ "source": "https://wiki.smite2.com/w/Items",
+ "items": [
+  {
+   "name": "Arco",
+   "englishName": "Bow",
+   "category": "component",
+   "tier": 1,
+   "cost": 300,
+   "ownCost": 300,
+   "stats": [
+    {
+     "key": "attack_speed_percent",
+     "value": 5
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Escudo",
+   "englishName": "Shield",
+   "category": "component",
+   "tier": 1,
+   "cost": 300,
+   "ownCost": 300,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 6
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Faja",
+   "englishName": "Sash",
+   "category": "component",
+   "tier": 1,
+   "cost": 300,
+   "ownCost": 300,
+   "stats": [
+    {
+     "key": "hp5",
+     "value": 2
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Runa",
+   "englishName": "Rune",
+   "category": "component",
+   "tier": 1,
+   "cost": 300,
+   "ownCost": 300,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 7
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Relicario",
+   "englishName": "Reliquary",
+   "category": "component",
+   "tier": 1,
+   "cost": 300,
+   "ownCost": 300,
+   "stats": [
+    {
+     "key": "mp5",
+     "value": 2
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Medallón",
+   "englishName": "Medallion",
+   "category": "component",
+   "tier": 1,
+   "cost": 300,
+   "ownCost": 300,
+   "stats": [
+    {
+     "key": "health",
+     "value": 75
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Hacha",
+   "englishName": "Axe",
+   "category": "component",
+   "tier": 1,
+   "cost": 450,
+   "ownCost": 450,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 5
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Sable",
+   "englishName": "Sabre",
+   "category": "component",
+   "tier": 1,
+   "cost": 550,
+   "ownCost": 550,
+   "stats": [
+    {
+     "key": "critical_chance",
+     "value": 7
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Arco del cazador",
+   "englishName": "Hunter's Bow",
+   "category": "component",
+   "tier": 2,
+   "cost": 750,
+   "ownCost": 450,
+   "stats": [
+    {
+     "key": "attack_speed_percent",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Azul olmeca",
+   "englishName": "Olmec Blue",
+   "category": "component",
+   "tier": 2,
+   "cost": 700,
+   "ownCost": 100,
+   "stats": [
+    {
+     "key": "health",
+     "value": 185
+    },
+    {
+     "key": "hp5",
+     "value": 2
+    }
+   ],
+   "components": [
+    {
+     "name": "Medallón",
+     "quantity": 1
+    },
+    {
+     "name": "Faja",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Tambor de cuenco",
+   "englishName": "Bowl Drum",
+   "category": "component",
+   "tier": 2,
+   "cost": 750,
+   "ownCost": 750,
+   "stats": [
+    {
+     "key": "echo",
+     "value": 10
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Círculo de protección",
+   "englishName": "Circle of Protection",
+   "category": "component",
+   "tier": 2,
+   "cost": 750,
+   "ownCost": 450,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 22
+    }
+   ],
+   "components": [
+    {
+     "name": "Runa",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Armadura de legionario",
+   "englishName": "Legionnaire Armor",
+   "category": "component",
+   "tier": 2,
+   "cost": 750,
+   "ownCost": 450,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 18
+    }
+   ],
+   "components": [
+    {
+     "name": "Escudo",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Capa del clérigo",
+   "englishName": "Cleric's Cloak",
+   "category": "component",
+   "tier": 2,
+   "cost": 800,
+   "ownCost": 800,
+   "stats": [
+    {
+     "key": "tenacity",
+     "value": 5
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Amuleto vevé",
+   "englishName": "Veve Charm",
+   "category": "component",
+   "tier": 2,
+   "cost": 800,
+   "ownCost": 500,
+   "stats": [
+    {
+     "key": "health",
+     "value": 240
+    }
+   ],
+   "components": [
+    {
+     "name": "Medallón",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Anillo del sabio",
+   "englishName": "Sage's Ring",
+   "category": "component",
+   "tier": 2,
+   "cost": 800,
+   "ownCost": 100,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 12
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo",
+     "quantity": 1
+    },
+    {
+     "name": "Runa",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Odigba",
+   "englishName": "Odigba",
+   "category": "component",
+   "tier": 2,
+   "cost": 800,
+   "ownCost": 200,
+   "stats": [
+    {
+     "key": "health",
+     "value": 125
+    },
+    {
+     "key": "mana",
+     "value": 150
+    }
+   ],
+   "components": [
+    {
+     "name": "Medallón",
+     "quantity": 1
+    },
+    {
+     "name": "Diadema",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Matar o asistir a un dios: te curas 5% de tu vida máxima durante 6 s.",
+   "passiveValues": [
+    {
+     "key": "Curación (% de vida máxima)",
+     "value": 5
+    },
+    {
+     "key": "Duración (s)",
+     "value": 6
+    }
+   ]
+  },
+  {
+   "name": "Guardia grabada",
+   "englishName": "Engraved Guard",
+   "category": "component",
+   "tier": 2,
+   "cost": 800,
+   "ownCost": 200,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 10
+    },
+    {
+     "key": "magical_protection",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Escudo",
+     "quantity": 1
+    },
+    {
+     "name": "Runa",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Anillo del capitán",
+   "englishName": "Captain's Ring",
+   "category": "component",
+   "tier": 2,
+   "cost": 800,
+   "ownCost": 100,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 10
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Anillo",
+     "quantity": 1
+    },
+    {
+     "name": "Escudo",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Piel rúnica",
+   "englishName": "Runic Hide",
+   "category": "component",
+   "tier": 2,
+   "cost": 850,
+   "ownCost": 850,
+   "stats": [
+    {
+     "key": "dampening",
+     "value": 10
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Medalla de disrupción",
+   "englishName": "Medal of Disruption",
+   "category": "component",
+   "tier": 2,
+   "cost": 850,
+   "ownCost": 250,
+   "stats": [
+    {
+     "key": "magical_protection",
+     "value": 12
+    },
+    {
+     "key": "health",
+     "value": 150
+    }
+   ],
+   "components": [
+    {
+     "name": "Medallón",
+     "quantity": 1
+    },
+    {
+     "name": "Runa",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Medalla de defensa",
+   "englishName": "Medal of Defense",
+   "category": "component",
+   "tier": 2,
+   "cost": 850,
+   "ownCost": 250,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 10
+    },
+    {
+     "key": "health",
+     "value": 125
+    }
+   ],
+   "components": [
+    {
+     "name": "Medallón",
+     "quantity": 1
+    },
+    {
+     "name": "Escudo",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Hacha de batalla",
+   "englishName": "Battle Axe",
+   "category": "component",
+   "tier": 2,
+   "cost": 900,
+   "ownCost": 150,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 15
+    },
+    {
+     "key": "health",
+     "value": 100
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha",
+     "quantity": 1
+    },
+    {
+     "name": "Medallón",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Metal laminado",
+   "englishName": "Plated Metal",
+   "category": "component",
+   "tier": 2,
+   "cost": 900,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "plating",
+     "value": 9
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Espada ganchuda",
+   "englishName": "Hooked Sword",
+   "category": "component",
+   "tier": 2,
+   "cost": 900,
+   "ownCost": 350,
+   "stats": [
+    {
+     "key": "critical_chance",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Sable",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Relicario de almas",
+   "englishName": "Soul Reliquary",
+   "category": "component",
+   "tier": 2,
+   "cost": 900,
+   "ownCost": 150,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 20
+    },
+    {
+     "key": "mp5",
+     "value": 4
+    }
+   ],
+   "components": [
+    {
+     "name": "Relicario",
+     "quantity": 1
+    },
+    {
+     "name": "Gema",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Brazalete encantado",
+   "englishName": "Enchanted Bracelet",
+   "category": "component",
+   "tier": 2,
+   "cost": 900,
+   "ownCost": 150,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 20
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 8
+    }
+   ],
+   "components": [
+    {
+     "name": "Gema",
+     "quantity": 1
+    },
+    {
+     "name": "Arco",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Botas de combate",
+   "englishName": "Combat Boots",
+   "category": "component",
+   "tier": 2,
+   "cost": 900,
+   "ownCost": 900,
+   "stats": [
+    {
+     "key": "pathfinding",
+     "value": 8
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Arco manchú",
+   "englishName": "Manchu Bow",
+   "category": "component",
+   "tier": 2,
+   "cost": 950,
+   "ownCost": 650,
+   "stats": [
+    {
+     "key": "attack_damage",
+     "value": 10
+    },
+    {
+     "key": "attack_speed_percent",
+     "value": 8
+    }
+   ],
+   "components": [
+    {
+     "name": "Arco",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Los ataques infligen +10 de daño físico.",
+   "passiveValues": [
+    {
+     "key": "Daño físico adicional",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "name": "Perla llameante",
+   "englishName": "Flaming Pearl",
+   "category": "component",
+   "tier": 2,
+   "cost": 950,
+   "ownCost": 200,
+   "stats": [
+    {
+     "key": "intelligence",
+     "value": 25
+    },
+    {
+     "key": "health",
+     "value": 100
+    }
+   ],
+   "components": [
+    {
+     "name": "Gema",
+     "quantity": 1
+    },
+    {
+     "name": "Medallón",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Skeggox",
+   "englishName": "Skeggox",
+   "category": "component",
+   "tier": 2,
+   "cost": 1000,
+   "ownCost": 550,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 15
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Caestus",
+   "englishName": "Caestus",
+   "category": "component",
+   "tier": 2,
+   "cost": 1000,
+   "ownCost": 150,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 10
+    },
+    {
+     "key": "cooldown_rate",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha",
+     "quantity": 1
+    },
+    {
+     "name": "Anillo",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al recibir control duro: +15 de protección física y mágica durante 4 s.",
+   "passiveValues": [
+    {
+     "key": "Protecciones adicionales",
+     "value": 15
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    }
+   ]
+  },
+  {
+   "name": "Faja del superviviente",
+   "englishName": "Survivor's Sash",
+   "category": "component",
+   "tier": 2,
+   "cost": 1000,
+   "ownCost": 1000,
+   "stats": [],
+   "components": [],
+   "passiveText": "Stat adaptativo: +25 de fuerza o +35 de inteligencia, según tu stat de items más alto.",
+   "passiveValues": [
+    {
+     "key": "Fuerza adaptativa",
+     "value": 25
+    },
+    {
+     "key": "Inteligencia adaptativa",
+     "value": 35
+    }
+   ]
+  },
+  {
+   "name": "Hacha infundida",
+   "englishName": "Infused Axe",
+   "category": "component",
+   "tier": 2,
+   "cost": 1050,
+   "ownCost": 300,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 15
+    },
+    {
+     "key": "mana",
+     "value": 150
+    },
+    {
+     "key": "mp5",
+     "value": 1
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha",
+     "quantity": 1
+    },
+    {
+     "name": "Diadema",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Matar o asistir a un dios: restauras 25% de tu maná.",
+   "passiveValues": [
+    {
+     "key": "Maná restaurado (%)",
+     "value": 25
+    }
+   ]
+  },
+  {
+   "name": "Cítara",
+   "englishName": "Zither",
+   "category": "component",
+   "tier": 2,
+   "cost": 1100,
+   "ownCost": 200,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 12
+    },
+    {
+     "key": "intelligence",
+     "value": 20
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha",
+     "quantity": 1
+    },
+    {
+     "name": "Gema",
+     "quantity": 1
+    }
+   ]
+  },
+  {
+   "name": "Sello firme",
+   "englishName": "Stalwart Sigil",
+   "category": "component",
+   "tier": 2,
+   "cost": 1150,
+   "ownCost": 1150,
+   "stats": [
+    {
+     "key": "physical_protection",
+     "value": 15
+    },
+    {
+     "key": "magical_protection",
+     "value": 15
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Hoz adamantina",
+   "englishName": "Adamantine Sickle",
+   "category": "component",
+   "tier": 2,
+   "cost": 1200,
+   "ownCost": 200,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 10
+    },
+    {
+     "key": "lifesteal",
+     "value": 4
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha",
+     "quantity": 1
+    },
+    {
+     "name": "Guadaña",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Con menos de 50% de vida: +10 de fuerza.",
+   "passiveValues": [
+    {
+     "key": "Vida para activarse (%)",
+     "value": 50
+    },
+    {
+     "key": "Fuerza adicional",
+     "value": 10
+    }
+   ]
+  },
+  {
+   "name": "Mota del caos",
+   "englishName": "Mote of Chaos",
+   "category": "component",
+   "tier": 2,
+   "cost": 1250,
+   "ownCost": 1250,
+   "stats": [],
+   "components": [],
+   "passiveText": "+5% de todos los stats provenientes de items.",
+   "passiveValues": [
+    {
+     "key": "Stats adicionales de items (%)",
+     "value": 5
+    }
+   ]
+  },
+  {
+   "name": "Martillo de Lucerna",
+   "englishName": "Lucerne Hammer",
+   "category": "component",
+   "tier": 2,
+   "cost": 1250,
+   "ownCost": 1250,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 20
+    }
+   ],
+   "components": []
+  },
+  {
+   "name": "Kopesh",
+   "englishName": "Kopesh",
+   "category": "component",
+   "tier": 2,
+   "cost": 1250,
+   "ownCost": 250,
+   "stats": [
+    {
+     "key": "strength",
+     "value": 10
+    },
+    {
+     "key": "critical_chance",
+     "value": 10
+    }
+   ],
+   "components": [
+    {
+     "name": "Hacha",
+     "quantity": 1
+    },
+    {
+     "name": "Sable",
+     "quantity": 1
+    }
+   ],
+   "passiveText": "Al golpear críticamente a un dios: +5% de velocidad de movimiento durante 4 s.",
+   "passiveValues": [
+    {
+     "key": "Velocidad de movimiento (%)",
+     "value": 5
+    },
+    {
+     "key": "Duración (s)",
+     "value": 4
+    }
+   ]
+  }
+ ]
+}
