@@ -68,6 +68,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 | `/gods/new` | Formulario para registrar un dios. |
 | `/gods/{id}` | Detalle del dios en dos pestañas: **Información** (el mismo formulario en solo lectura; "Editar" habilita los campos y "Guardar cambios" los guarda) y **Builds**. |
 | `/gods/{id}/builds/new` | Formulario para crear una build del dios. Al guardar vuelve a `/gods/{id}?tab=builds`. |
+| `/gods/{id}/builds/{buildId}/edit` | Formulario para editar una build (datos, rol, aspecto, fortalezas, items y orden de habilidades). Al guardar vuelve a `/gods/{id}?tab=builds`. |
 | `/items` | Tabla de items en orden alfabético con buscador por nombre (`?q=`). 25 por página. Sin más filtros por ahora. |
 | `/items/new` | Formulario para registrar un item con sus ramificaciones. |
 | `/items/{id}` | Detalle del item en solo lectura con "Editar", y la lista de items que lo usan como componente. |
@@ -107,14 +108,14 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - **Items:** lista libre en orden de compra (cualquier categoría, se pueden repetir y reordenar con flechas). Mínimo un item. No se imponen slots del juego.
 - **Orden de habilidades:** cuadrícula de niveles 1–20 × habilidades 1–4. Opcional; cada habilidad sube como máximo a rango 5.
 - El nombre de la build es único por dios (sin distinguir mayúsculas).
-- Por ahora solo se crean builds y se listan en la pestaña Builds del dios. Cada tarjeta muestra el costo total (suma de `items.cost`; un item repetido cuenta cada vez) y cada item es un botón a `/items/{id}` con su nombre en inglés, precio, stats, pasiva y activa. Ver, editar, borrar y el resumen de stats quedan pendientes hasta que el usuario lo pida.
+- Las builds se crean, se editan y se listan en la pestaña Builds del dios. Cada tarjeta muestra el costo total (suma de `items.cost`; un item repetido cuenta cada vez) y cada item es un botón a `/items/{id}` con su nombre en inglés, precio, stats, pasiva y activa. Ver, borrar y el resumen de stats quedan pendientes hasta que el usuario lo pida.
 - **Cómo crea builds Claude (decisión del usuario):**
   1. Solo evalúa items de Tier III, los últimos de cada rama. Los componentes de Tier I y II nunca entran en la evaluación.
   2. Antes de cada build analiza al dios: tipo de daño, escalados, kit, puntos fuertes y debilidades.
   3. Con ese análisis descarta desde el inicio los items que no serían efectivos, para reducir las combinaciones. Ejemplo: Anubis no es un dios de ataques básicos, así que se descarta todo item que tenga o potencie esa cualidad, aunque también dé Inteligencia.
   4. Solo después compara las combinaciones que quedan.
 - `useFieldArray` de React Hook Form no valida su regla de "mínimo una fila" al enviar; la lista de items se revisa a mano en `onSubmit`.
-- **Builds de Anubis:** Claude creó Ráfaga, Asedio y Bastión a pedido del usuario. Son datos reales, pero están marcadas como `claude`: `db:clean-claude` las borra si el usuario no las ha editado. Revisar siempre con `-- --dry-run` antes de limpiar.
+- **Builds de Anubis:** Claude creó Ráfaga, Asedio y Bastión a pedido del usuario. Son datos reales, pero están marcadas como `claude`: `db:clean-claude` las borra si el usuario no las ha editado desde la app; al editarlas pasan a ser suyas. Revisar siempre con `-- --dry-run` antes de limpiar.
 - **Supuestos del análisis de builds (no están en la base; confirmar en el juego):** mitigación = 100 / (100 + protección), tope de penetración de 40%, y lecturas ambiguas de items como Alma segadora ("infligido 4 veces") y Gema de almas (si "golpe de habilidad" cuenta cada tick). `Eco` no está definido en los datos, por eso esos items no se evaluaron.
 
 ## Estructura del código

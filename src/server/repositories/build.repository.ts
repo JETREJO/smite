@@ -72,10 +72,49 @@ export function getBuildFormCatalogs(godId: number): BuildFormCatalogs {
   };
 }
 
-export function buildNameExists(godId: number, name: string): boolean {
+/** Form values of a build, or null when the god has no build with that id. */
+export function getBuildFormValues(godId: number, buildId: number): BuildInput | null {
+  const db = getDb();
+  const build = db
+    .prepare("SELECT name, description, aspect_id, role_id FROM builds WHERE id = ? AND god_id = ?")
+    .get(buildId, godId) as
+    | { name: string; description: string; aspect_id: number | null; role_id: number | null }
+    | undefined;
+  if (!build) return null;
+
+  const strengths = db
+    .prepare("SELECT strength_id FROM build_strength_links WHERE build_id = ? ORDER BY rowid")
+    .all(buildId) as { strength_id: number }[];
+  const items = db
+    .prepare("SELECT item_id FROM build_items WHERE build_id = ? ORDER BY position")
+    .all(buildId) as { item_id: number }[];
+  const levels = db.prepare("SELECT level, slot FROM build_skill_order WHERE build_id = ?").all(buildId) as {
+    level: number;
+    slot: number;
+  }[];
+  const slotsByLevel = new Map(levels.map((row) => [row.level, row.slot]));
+
+  return {
+    name: build.name,
+    description: build.description,
+    aspectId: build.aspect_id,
+    roleId: build.role_id,
+    strengthIds: strengths.map((row) => row.strength_id),
+    newStrengths: [],
+    items: items.map((row) => ({ itemId: row.item_id })),
+    skillOrder: Array.from({ length: MAX_GOD_LEVEL }, (_, index) => ({ slot: slotsByLevel.get(index + 1) ?? null })),
+  };
+}
+
+export function buildExists(godId: number, buildId: number): boolean {
+  return getDb().prepare("SELECT 1 FROM builds WHERE id = ? AND god_id = ?").get(buildId, godId) !== undefined;
+}
+
+/** True when another build of the god already uses the name; excludeBuildId skips the build being edited. */
+export function buildNameExists(godId: number, name: string, excludeBuildId: number | null): boolean {
   const row = getDb()
-    .prepare("SELECT 1 FROM builds WHERE god_id = ? AND lower(name) = lower(?)")
-    .get(godId, name.trim());
+    .prepare("SELECT 1 FROM builds WHERE god_id = ? AND lower(name) = lower(?) AND id IS NOT ?")
+    .get(godId, name.trim(), excludeBuildId);
   return row !== undefined;
 }
 
@@ -104,6 +143,19 @@ function resolveStrengthIds(db: Database.Database, input: BuildInput): number[] 
   return [...ids];
 }
 
+function insertBuildChildren(db: Database.Database, buildId: number, input: BuildInput) {
+  const insertStrength = db.prepare("INSERT INTO build_strength_links (build_id, strength_id) VALUES (?, ?)");
+  resolveStrengthIds(db, input).forEach((strengthId) => insertStrength.run(buildId, strengthId));
+
+  const insertItem = db.prepare("INSERT INTO build_items (build_id, position, item_id) VALUES (?, ?, ?)");
+  input.items.forEach((item, index) => insertItem.run(buildId, index + 1, item.itemId));
+
+  const insertLevel = db.prepare("INSERT INTO build_skill_order (build_id, level, slot) VALUES (?, ?, ?)");
+  input.skillOrder.forEach((level, index) => {
+    if (level.slot !== null) insertLevel.run(buildId, index + 1, level.slot);
+  });
+}
+
 /** Inserts the build with its items and skill order in one transaction. Returns the new build id. */
 export function createBuild(godId: number, input: BuildInput): number {
   const db = getDb();
@@ -125,18 +177,25 @@ export function createBuild(godId: number, input: BuildInput): number {
         ).lastInsertRowid,
     );
 
-    const insertStrength = db.prepare("INSERT INTO build_strength_links (build_id, strength_id) VALUES (?, ?)");
-    resolveStrengthIds(db, input).forEach((strengthId) => insertStrength.run(buildId, strengthId));
-
-    const insertItem = db.prepare("INSERT INTO build_items (build_id, position, item_id) VALUES (?, ?, ?)");
-    input.items.forEach((item, index) => insertItem.run(buildId, index + 1, item.itemId));
-
-    const insertLevel = db.prepare("INSERT INTO build_skill_order (build_id, level, slot) VALUES (?, ?, ?)");
-    input.skillOrder.forEach((level, index) => {
-      if (level.slot !== null) insertLevel.run(buildId, index + 1, level.slot);
-    });
-
+    insertBuildChildren(db, buildId, input);
     return buildId;
   });
   return run();
+}
+
+/** Replaces the build's data, strengths, items and skill order in one transaction. */
+export function updateBuild(buildId: number, input: BuildInput): void {
+  const db = getDb();
+  db.transaction(() => {
+    db.prepare(
+      `UPDATE builds
+          SET aspect_id = ?, role_id = ?, name = ?, description = ?, updated_at = CURRENT_TIMESTAMP, updated_by = ?
+        WHERE id = ?`,
+    ).run(input.aspectId, input.roleId, input.name.trim(), input.description.trim(), getDataAuthor(), buildId);
+
+    for (const table of ["build_strength_links", "build_items", "build_skill_order"]) {
+      db.prepare(`DELETE FROM ${table} WHERE build_id = ?`).run(buildId);
+    }
+    insertBuildChildren(db, buildId, input);
+  })();
 }

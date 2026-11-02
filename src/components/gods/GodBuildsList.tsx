@@ -42,7 +42,7 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
                 Costo total: <span className="font-semibold tabular-nums text-fg">{formatGold(build.totalCost)}</span> de oro
               </p>
             </div>
-            <div className="flex flex-wrap gap-2 text-xs">
+            <div className="flex flex-wrap items-center gap-2 text-xs">
               <AuthorBadge createdBy={build.createdBy} updatedBy={build.updatedBy} />
               {build.roleName && (
                 <span className="rounded-full border border-line-strong px-2.5 py-1 text-fg-muted">{build.roleName}</span>
@@ -52,6 +52,9 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
                   {build.aspectName}
                 </span>
               )}
+              <ButtonLink href={`/gods/${godId}/builds/${build.id}/edit`} variant="secondary" className="py-1">
+                Editar
+              </ButtonLink>
             </div>
           </header>
           {build.strengths.length > 0 && (

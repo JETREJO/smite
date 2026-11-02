@@ -14,18 +14,21 @@ import { SectionCard } from "@/components/ui/SectionCard";
 import { buildEmptyBuildForm } from "@/helpers/build-form-defaults";
 import { toOptionalNumber } from "@/helpers/form-values";
 import type { BuildFormCatalogs, BuildInput } from "@/interfaces/build.interface";
-import { createBuildAction } from "@/server/actions/build.actions";
+import { createBuildAction, updateBuildAction } from "@/server/actions/build.actions";
 
 const MAX_ERRORS_IN_TOAST = 5;
 
 interface BuildFormProps {
   godId: number;
   catalogs: BuildFormCatalogs;
+  /** Build being edited; without it the form creates a new build. */
+  buildId?: number;
+  initialValues?: BuildInput;
 }
 
-export function BuildForm({ godId, catalogs }: BuildFormProps) {
+export function BuildForm({ godId, catalogs, buildId, initialValues }: BuildFormProps) {
   const router = useRouter();
-  const form = useForm<BuildInput>({ defaultValues: buildEmptyBuildForm() });
+  const form = useForm<BuildInput>({ defaultValues: initialValues ?? buildEmptyBuildForm() });
   const { register } = form;
   const { isSubmitting } = form.formState;
   const godHref = `/gods/${godId}?tab=builds`;
@@ -36,7 +39,8 @@ export function BuildForm({ godId, catalogs }: BuildFormProps) {
       toast.error(EMPTY_ITEMS_MESSAGE);
       return;
     }
-    const result = await createBuildAction(godId, values);
+    const result =
+      buildId === undefined ? await createBuildAction(godId, values) : await updateBuildAction(godId, buildId, values);
     if (!result.ok) {
       const errors = result.errors ?? [];
       toast.error(
@@ -106,7 +110,7 @@ export function BuildForm({ godId, catalogs }: BuildFormProps) {
             Cancelar
           </ButtonLink>
           <Button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? "Guardando…" : "Guardar build"}
+            {isSubmitting ? "Guardando…" : buildId === undefined ? "Guardar build" : "Guardar cambios"}
           </Button>
         </div>
       </form>
