@@ -135,6 +135,7 @@ export function getExistingItemIds(ids: number[]): Set<number> {
 
 interface ItemRow {
   name: string;
+  english_name: string | null;
   category_id: number;
   tier: number;
   cost: number;
@@ -153,7 +154,8 @@ export function getItemFormValues(itemId: number): ItemInput | null {
   const db = getDb();
   const item = db
     .prepare(
-      `SELECT name, category_id, tier, cost, passive_text, active_text, active_cooldown_s, upgrade_condition, unique_group
+      `SELECT name, english_name, category_id, tier, cost, passive_text, active_text, active_cooldown_s,
+              upgrade_condition, unique_group
          FROM items WHERE id = ?`,
     )
     .get(itemId) as ItemRow | undefined;
@@ -167,6 +169,7 @@ export function getItemFormValues(itemId: number): ItemInput | null {
 
   const fields: ItemFieldsInput = {
     name: item.name,
+    englishName: item.english_name ?? "",
     categoryId: item.category_id,
     tier: item.tier,
     cost: item.cost,

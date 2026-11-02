@@ -29,6 +29,7 @@ export function buildEmptyItemValue(): ItemValueInput {
 export function buildEmptyItemFields(): ItemFieldsInput {
   return {
     name: "",
+    englishName: "",
     categoryId: null,
     tier: null,
     cost: null,

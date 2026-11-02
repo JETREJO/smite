@@ -12,6 +12,7 @@ export interface ItemValueInput {
 /** Every field of one item (the one being registered or a new component). */
 export interface ItemFieldsInput {
   name: string;
+  englishName: string;
   categoryId: number | null;
   tier: number | null;
   cost: number | null;

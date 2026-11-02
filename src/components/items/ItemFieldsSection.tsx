@@ -37,14 +37,17 @@ export function ItemFieldsSection({ prefix, catalogs }: ItemFieldsSectionProps) 
         <FormField label="Nombre" name={`${prefix}.name`} required>
           <TextInput placeholder="Bancroft's Talon" {...register(`${prefix}.name`, { required: "El nombre es obligatorio." })} />
         </FormField>
+        <FormField label="Nombre en inglés" hint="Opcional. Nombre original del item.">
+          <TextInput placeholder="Sun Beam Bow" {...register(`${prefix}.englishName`)} />
+        </FormField>
+      </div>
+      <div className="grid items-start gap-5 sm:grid-cols-3">
         <FormField label="Categoría" name={`${prefix}.categoryId`} required>
           <SelectInput
             options={catalogs.categories}
             {...register(`${prefix}.categoryId`, { setValueAs: toOptionalNumber, required: "Elige una categoría." })}
           />
         </FormField>
-      </div>
-      <div className="grid items-start gap-5 sm:grid-cols-2">
         <FormField label="Tier" name={`${prefix}.tier`} required hint="1, 2 o 3.">
           <NumberInput
             min={1}

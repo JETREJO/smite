@@ -40,6 +40,7 @@ INSERT INTO stats (key, name, is_percent, applies_to_gods, applies_to_items, sor
     ('basic_attack_damage',    'Poder de ataque',            0, 1, 0, 80),
     ('movement_speed',         'Velocidad de movimiento',    0, 1, 0, 90),
     ('strength',               'Fuerza',                     0, 0, 1, 100),
+    ('attack_damage',          'Daño de ataque',             0, 0, 1, 105),
     ('intelligence',           'Inteligencia',               0, 0, 1, 110),
     ('attack_speed_percent',   'Velocidad de ataque %',      1, 0, 1, 120),
     ('movement_speed_percent', 'Velocidad de movimiento %',  1, 0, 1, 130),

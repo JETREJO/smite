@@ -251,7 +251,8 @@ CREATE TABLE items (
     unique_group      TEXT,                   -- items que no se pueden combinar entre sí
     updated_at        TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by        TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
-    updated_by        TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
+    updated_by        TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed')),
+    english_name      TEXT                    -- nombre original del item en inglés
 );
 
 CREATE TABLE item_stats (

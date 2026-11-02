@@ -84,6 +84,8 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - Al editar un item solo se cambian sus datos y sus componentes directos. Cada componente se edita desde su propia página.
 - Un item no puede ser componente de sí mismo, ni directa ni indirectamente (el servidor lo valida).
 - Los números de la pasiva y la activa se guardan como pares nombre/valor (`item_values`).
+- `items.english_name` guarda el nombre original en inglés (opcional). `name` sigue siendo el nombre principal y el único que se valida como único.
+- **Daño de ataque** (`attack_damage`, Attack Damage) es un stat de items: da daño extra a los ataques básicos. **Fuerza** escala habilidades y da 100% a los ataques básicos. Se guardó separado de "Poder de ataque" (`basic_attack_damage`, stat base de dioses) porque el wiki no confirma que sean el mismo stat; si se confirma, conviene unificarlos.
 - Ojo con React Hook Form: no usar `root` como nombre de campo, porque RHF reserva `errors.root` y descarta esos errores al enviar. Por eso el item principal vive en `item`.
 
 ## Builds

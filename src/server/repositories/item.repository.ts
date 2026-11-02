@@ -49,6 +49,7 @@ function itemRowParams(fields: ItemFieldsInput) {
     fields.activeCooldownS,
     emptyToNull(fields.upgradeCondition),
     emptyToNull(fields.uniqueGroup),
+    emptyToNull(fields.englishName),
   ];
 }
 
@@ -57,8 +58,8 @@ function insertItemRow(db: Database.Database, fields: ItemFieldsInput): number {
     db
       .prepare(
         `INSERT INTO items (slug, name, category_id, tier, cost, passive_text, active_text, active_cooldown_s,
-                            upgrade_condition, unique_group, created_by, updated_by)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                            upgrade_condition, unique_group, english_name, created_by, updated_by)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       )
       .run(...itemRowParams(fields), getDataAuthor(), getDataAuthor()).lastInsertRowid,
   );
@@ -119,8 +120,8 @@ export function updateItem(itemId: number, input: ItemInput): void {
     const result = db
       .prepare(
         `UPDATE items SET slug = ?, name = ?, category_id = ?, tier = ?, cost = ?, passive_text = ?, active_text = ?,
-                          active_cooldown_s = ?, upgrade_condition = ?, unique_group = ?, updated_at = CURRENT_TIMESTAMP,
-                          updated_by = ?
+                          active_cooldown_s = ?, upgrade_condition = ?, unique_group = ?, english_name = ?,
+                          updated_at = CURRENT_TIMESTAMP, updated_by = ?
          WHERE id = ?`,
       )
       .run(...itemRowParams(input.item), getDataAuthor(), itemId);
