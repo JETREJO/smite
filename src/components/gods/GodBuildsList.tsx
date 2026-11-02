@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { AuthorBadge } from "@/components/ui/AuthorBadge";
 import { ButtonLink } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -52,14 +54,45 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
           {build.items.length === 0 ? (
             <p className="text-sm text-fg-subtle">Esta build todavía no tiene items.</p>
           ) : (
-            <ol className="flex flex-wrap gap-2">
+            <ol className="grid gap-3 md:grid-cols-2">
               {build.items.map((item) => (
                 <li key={item.position}>
-                  <ButtonLink href={`/items/${item.itemId}`} variant="secondary">
-                    <span className="tabular-nums text-fg-subtle">{item.position}.</span>
-                    <span>{item.name}</span>
-                    <span className="text-xs font-normal text-fg-subtle">{item.category}</span>
-                  </ButtonLink>
+                  <Link
+                    href={`/items/${item.itemId}`}
+                    className="flex h-full flex-col gap-3 rounded-lg border border-line-strong bg-elevated p-4 text-sm text-fg hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >
+                    <span className="flex flex-wrap items-baseline gap-2">
+                      <span className="tabular-nums text-fg-subtle">{item.position}.</span>
+                      <span className="font-semibold">{item.name}</span>
+                      <span className="text-xs text-fg-subtle">{item.category}</span>
+                    </span>
+                    {item.stats.length > 0 && (
+                      <span className="flex flex-wrap gap-1.5">
+                        {item.stats.map((stat) => (
+                          <span key={stat} className="rounded-full bg-canvas/40 px-2.5 py-1 text-xs text-fg-muted">
+                            {stat}
+                          </span>
+                        ))}
+                      </span>
+                    )}
+                    {item.passiveText && (
+                      <span className="flex flex-col gap-1">
+                        <span className="text-xs font-semibold uppercase tracking-wide text-fg-muted">Pasiva</span>
+                        <span className="whitespace-pre-line text-xs text-fg-muted">{item.passiveText}</span>
+                      </span>
+                    )}
+                    {item.activeText && (
+                      <span className="flex flex-col gap-1">
+                        <span className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
+                          Activa
+                          {item.activeCooldownS !== null && (
+                            <span className="normal-case"> · {item.activeCooldownS} s</span>
+                          )}
+                        </span>
+                        <span className="whitespace-pre-line text-xs text-fg-muted">{item.activeText}</span>
+                      </span>
+                    )}
+                  </Link>
                 </li>
               ))}
             </ol>

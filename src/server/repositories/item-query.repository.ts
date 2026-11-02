@@ -12,7 +12,7 @@ function toLikePattern(text: string): string {
 }
 
 /** Formatted stats ("+40 Fuerza") of every item, keyed by item id. */
-function getStatSummaries(): Map<number, string[]> {
+export function getStatSummaries(): Map<number, string[]> {
   const rows = getDb()
     .prepare(
       `SELECT ist.item_id AS itemId, ist.value, s.name, s.is_percent AS isPercent

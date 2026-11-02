@@ -106,7 +106,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - **Items:** lista libre en orden de compra (cualquier categoría, se pueden repetir y reordenar con flechas). Mínimo un item. No se imponen slots del juego.
 - **Orden de habilidades:** cuadrícula de niveles 1–20 × habilidades 1–4. Opcional; cada habilidad sube como máximo a rango 5.
 - El nombre de la build es único por dios (sin distinguir mayúsculas).
-- Por ahora solo se crean builds y se listan en la pestaña Builds del dios. Cada tarjeta muestra el costo total (suma de `items.cost`; un item repetido cuenta cada vez) y cada item es un botón a `/items/{id}`. Ver, editar, borrar y el resumen de stats quedan pendientes hasta que el usuario lo pida.
+- Por ahora solo se crean builds y se listan en la pestaña Builds del dios. Cada tarjeta muestra el costo total (suma de `items.cost`; un item repetido cuenta cada vez) y cada item es un botón a `/items/{id}` con sus stats, pasiva y activa. Ver, editar, borrar y el resumen de stats quedan pendientes hasta que el usuario lo pida.
 - **Cómo crea builds Claude (decisión del usuario):**
   1. Solo evalúa items de Tier III, los últimos de cada rama. Los componentes de Tier I y II nunca entran en la evaluación.
   2. Antes de cada build analiza al dios: tipo de daño, escalados, kit, puntos fuertes y debilidades.

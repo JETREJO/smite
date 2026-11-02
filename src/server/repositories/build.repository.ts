@@ -3,7 +3,7 @@ import type { BuildFormCatalogs, BuildInput, BuildItemSummary, BuildSummary } fr
 import type { CatalogOption } from "@/interfaces/catalog.interface";
 import { getDb } from "@/server/db/connection";
 import { getDataAuthor } from "@/server/db/data-author";
-import { listItemOptions } from "@/server/repositories/item-query.repository";
+import { getStatSummaries, listItemOptions } from "@/server/repositories/item-query.repository";
 
 export function listBuildsByGod(godId: number): BuildSummary[] {
   const db = getDb();
@@ -20,7 +20,8 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
     .all(godId) as Omit<BuildSummary, "items" | "totalCost" | "skillOrder">[];
 
   const selectItems = db.prepare(
-    `SELECT bi.position, bi.item_id AS itemId, i.name, c.name AS category, i.cost
+    `SELECT bi.position, bi.item_id AS itemId, i.name, c.name AS category, i.cost,
+            i.passive_text AS passiveText, i.active_text AS activeText, i.active_cooldown_s AS activeCooldownS
        FROM build_items bi
        JOIN items i ON i.id = bi.item_id
        JOIN item_categories c ON c.id = i.category_id
@@ -28,12 +29,16 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
       ORDER BY bi.position`,
   );
   const selectSkillOrder = db.prepare("SELECT level, slot FROM build_skill_order WHERE build_id = ? ORDER BY level");
+  const stats = getStatSummaries();
 
   return builds.map((build) => {
     const slotsByLevel = new Map(
       (selectSkillOrder.all(build.id) as { level: number; slot: number }[]).map((row) => [row.level, row.slot]),
     );
-    const items = selectItems.all(build.id) as BuildItemSummary[];
+    const items = (selectItems.all(build.id) as Omit<BuildItemSummary, "stats">[]).map((item) => ({
+      ...item,
+      stats: stats.get(item.itemId) ?? [],
+    }));
     return {
       ...build,
       items,

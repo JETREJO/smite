@@ -8,6 +8,11 @@ export interface BuildItemSummary {
   name: string;
   category: string;
   cost: number;
+  /** Formatted stats, e.g. "+40 Fuerza". */
+  stats: string[];
+  passiveText: string | null;
+  activeText: string | null;
+  activeCooldownS: number | null;
 }
 
 export interface BuildSummary extends Authorship {
