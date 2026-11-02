@@ -126,7 +126,8 @@ CREATE TABLE gods (
     basic_attack_notes          TEXT,
     updated_at                  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by                  TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
-    updated_by                  TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
+    updated_by                  TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed')),
+    source                      TEXT                  -- 'wiki' si se importó; NULL si se capturó en la app
 );
 
 CREATE TABLE god_roles (

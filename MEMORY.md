@@ -93,6 +93,13 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - Stats: `Amortiguación` y `Blindaje` son puntos (1 punto = 1%, tope 35); `Eco` y `Tenacidad` son porcentaje.
 - Ojo con React Hook Form: no usar `root` como nombre de campo, porque RHF reserva `errors.root` y descarta esos errores al enviar. Por eso el item principal vive en `item`.
 
+## Dioses importados
+
+- Los 93 dioses del wiki oficial están cargados con `source = 'wiki'` (parche 0.48.0 según `Data:Gods.json`). El importador es `npm run db:import-gods -- <archivo> [--dry-run]`, y `db:clean-claude` no borra dioses con `source`.
+- Stats: fuente wiki, también en Anubis (decisión del usuario). Nombres de dioses, panteones, roles, habilidades y aspectos ya están en español; las traducciones son de Claude, no oficiales.
+- **Pendiente de traducir:** títulos, descripciones, notas, aspectos y parte de las etiquetas de valores siguen en inglés. El nombre original de cada habilidad queda en `db/imports/wiki-gods-01.json` (`englishName`).
+- Limitaciones del modelo: un escalado por valor (si cambia por rango se guarda el primero y el detalle queda en notas), un registro por posición (formas y posturas alternas van en notas), y los números de los aspectos solo están en texto.
+
 ## Builds
 
 - Cada build tiene **nombre** y **descripción** obligatorios (para qué sirve y en qué situación usarla), aspecto y rol opcionales, items en orden de compra y orden de subida de habilidades.

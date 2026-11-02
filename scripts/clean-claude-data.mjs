@@ -56,14 +56,16 @@ function clean() {
 
   // Claude's builds are gone, so any build left on a Claude god belongs to the user.
   deleted.gods = names(
-    `SELECT name FROM gods g WHERE created_by = 'claude' AND updated_by = 'claude'
+    `SELECT name FROM gods g WHERE created_by = 'claude' AND updated_by = 'claude' AND source IS NULL
        AND NOT EXISTS (SELECT 1 FROM builds b WHERE b.god_id = g.id) ORDER BY name`,
   );
   db.prepare(
-    `DELETE FROM gods WHERE created_by = 'claude' AND updated_by = 'claude'
+    `DELETE FROM gods WHERE created_by = 'claude' AND updated_by = 'claude' AND source IS NULL
        AND NOT EXISTS (SELECT 1 FROM builds b WHERE b.god_id = gods.id)`,
   ).run();
-  kept.gods = names("SELECT name FROM gods WHERE created_by = 'claude' AND updated_by = 'claude' ORDER BY name");
+  kept.gods = names(
+    "SELECT name FROM gods WHERE created_by = 'claude' AND updated_by = 'claude' AND source IS NULL ORDER BY name",
+  );
 
   deleted.specializations = names(
     `SELECT name FROM specializations s WHERE created_by = 'claude' AND updated_by = 'claude'

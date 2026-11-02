@@ -12,7 +12,8 @@
     "db:migrate": "node scripts/migrate-db.mjs",
     "db:reset": "node scripts/init-db.mjs --reset",
     "db:clean-claude": "node scripts/clean-claude-data.mjs",
-    "db:import-items": "node scripts/import-items.mjs"
+    "db:import-items": "node scripts/import-items.mjs",
+    "db:import-gods": "node scripts/import-gods.mjs"
   },
   "dependencies": {
     "better-sqlite3": "13.0.3",
