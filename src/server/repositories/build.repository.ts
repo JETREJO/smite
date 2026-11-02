@@ -17,10 +17,10 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
         WHERE b.god_id = ?
         ORDER BY b.name COLLATE NOCASE`,
     )
-    .all(godId) as Omit<BuildSummary, "items" | "skillOrder">[];
+    .all(godId) as Omit<BuildSummary, "items" | "totalCost" | "skillOrder">[];
 
   const selectItems = db.prepare(
-    `SELECT bi.position, i.name, c.name AS category
+    `SELECT bi.position, bi.item_id AS itemId, i.name, c.name AS category, i.cost
        FROM build_items bi
        JOIN items i ON i.id = bi.item_id
        JOIN item_categories c ON c.id = i.category_id
@@ -33,9 +33,11 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
     const slotsByLevel = new Map(
       (selectSkillOrder.all(build.id) as { level: number; slot: number }[]).map((row) => [row.level, row.slot]),
     );
+    const items = selectItems.all(build.id) as BuildItemSummary[];
     return {
       ...build,
-      items: selectItems.all(build.id) as BuildItemSummary[],
+      items,
+      totalCost: items.reduce((total, item) => total + item.cost, 0),
       skillOrder: Array.from({ length: MAX_GOD_LEVEL }, (_, index) => slotsByLevel.get(index + 1) ?? null),
     };
   });

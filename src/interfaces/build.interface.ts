@@ -4,8 +4,10 @@ import type { ItemOption } from "@/interfaces/item-list.interface";
 
 export interface BuildItemSummary {
   position: number;
+  itemId: number;
   name: string;
   category: string;
+  cost: number;
 }
 
 export interface BuildSummary extends Authorship {
@@ -15,6 +17,8 @@ export interface BuildSummary extends Authorship {
   aspectName: string | null;
   roleName: string | null;
   items: BuildItemSummary[];
+  /** Sum of the items' full cost; a repeated item counts every time. */
+  totalCost: number;
   /** Ability slot (1-4) leveled at each level, in level order; null where no ability was set. */
   skillOrder: (number | null)[];
 }

@@ -30,7 +30,12 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
       {builds.map((build) => (
         <article key={build.id} className="flex flex-col gap-4 rounded-xl border border-line bg-surface p-5 sm:p-6">
           <header className="flex flex-wrap items-start justify-between gap-3">
-            <h3 className="text-lg font-semibold">{build.name}</h3>
+            <div className="flex flex-col gap-1">
+              <h3 className="text-lg font-semibold">{build.name}</h3>
+              <p className="text-sm text-fg-muted">
+                Costo total: <span className="font-semibold tabular-nums text-fg">{build.totalCost.toLocaleString("es-MX")}</span> de oro
+              </p>
+            </div>
             <div className="flex flex-wrap gap-2 text-xs">
               <AuthorBadge createdBy={build.createdBy} updatedBy={build.updatedBy} />
               {build.roleName && (
@@ -49,10 +54,12 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
           ) : (
             <ol className="flex flex-wrap gap-2">
               {build.items.map((item) => (
-                <li key={item.position} className="flex items-center gap-2 rounded-lg bg-elevated px-3 py-2 text-sm">
-                  <span className="tabular-nums text-fg-subtle">{item.position}.</span>
-                  <span>{item.name}</span>
-                  <span className="text-xs text-fg-subtle">{item.category}</span>
+                <li key={item.position}>
+                  <ButtonLink href={`/items/${item.itemId}`} variant="secondary">
+                    <span className="tabular-nums text-fg-subtle">{item.position}.</span>
+                    <span>{item.name}</span>
+                    <span className="text-xs font-normal text-fg-subtle">{item.category}</span>
+                  </ButtonLink>
                 </li>
               ))}
             </ol>
