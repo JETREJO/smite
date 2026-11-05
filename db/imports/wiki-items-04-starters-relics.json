@@ -1,0 +1,810 @@
+{
+  "source": "https://wiki.smite2.com/w/Items",
+  "items": [
+    {
+      "name": "Colgante de piedra azul",
+      "englishName": "Bluestone Pendant",
+      "category": "starter",
+      "tier": 1,
+      "cost": 600,
+      "ownCost": 600,
+      "stats": [
+        {
+          "key": "hp5",
+          "value": 1
+        },
+        {
+          "key": "mp5",
+          "value": 1.5
+        }
+      ],
+      "components": [],
+      "passiveText": "Stat adaptativo: +15 de fuerza o +25 de inteligencia, según tu stat de items más alto.\n\nGolpe de habilidad: +32 de daño físico durante 2 s. Los golpes siguientes al mismo objetivo infligen 50% de daño adicional durante 3 s.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Garrote de Bumba",
+      "englishName": "Bumba's Cudgel",
+      "category": "starter",
+      "tier": 1,
+      "cost": 650,
+      "ownCost": 650,
+      "stats": [
+        {
+          "key": "health",
+          "value": 75
+        },
+        {
+          "key": "mana",
+          "value": 50
+        }
+      ],
+      "components": [],
+      "passiveText": "Stat adaptativo: +15 de fuerza o +25 de inteligencia, según tu stat de items más alto.\n\nHabilidad usada: potencia tu siguiente ataque en 8 s. Inflige +20 (+1 por nivel) de daño verdadero a los enemigos en 1.92 m del objetivo. Si el ataque golpea: -0.33 s de enfriamientos.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Daga dorada de Bumba",
+      "englishName": "Bumba's Golden Dagger",
+      "category": "starter",
+      "tier": 1,
+      "cost": 650,
+      "ownCost": 650,
+      "stats": [
+        {
+          "key": "health",
+          "value": 50
+        },
+        {
+          "key": "attack_speed_percent",
+          "value": 10
+        }
+      ],
+      "components": [],
+      "passiveText": "Stat adaptativo: +15 de fuerza o +25 de inteligencia, según tu stat de items más alto.\n\nAl golpear con un ataque: 10% de daño físico adicional a los enemigos en 1.92 m del objetivo.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Gema conductora",
+      "englishName": "Conduit Gem",
+      "category": "starter",
+      "tier": 1,
+      "cost": 650,
+      "ownCost": 650,
+      "stats": [
+        {
+          "key": "mana",
+          "value": 100
+        },
+        {
+          "key": "mp5",
+          "value": 1
+        }
+      ],
+      "components": [],
+      "passiveText": "Stat adaptativo: +15 de fuerza o +30 de inteligencia, según tu stat de items más alto.\n\nCada 0.5 s: +1 acumulación (máximo 20). Las habilidades con daño infligen 3 de daño verdadero por acumulación (la mitad contra dioses) y eliminan las acumulaciones.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Tributo de la muerte",
+      "englishName": "Death's Toll",
+      "category": "starter",
+      "tier": 1,
+      "cost": 650,
+      "ownCost": 650,
+      "stats": [
+        {
+          "key": "health",
+          "value": 100
+        }
+      ],
+      "components": [],
+      "passiveText": "Stat adaptativo: +15 de fuerza o +25 de inteligencia, según tu stat de items más alto.\n\nAl golpear con un ataque: te curas 2 (+0.3% de vida máxima) y restauras 1 (+0.1% de maná máximo) de maná.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Flecha dorada",
+      "englishName": "Gilded Arrow",
+      "category": "starter",
+      "tier": 1,
+      "cost": 650,
+      "ownCost": 650,
+      "stats": [
+        {
+          "key": "attack_damage",
+          "value": 20
+        },
+        {
+          "key": "attack_speed_percent",
+          "value": 10
+        }
+      ],
+      "components": [],
+      "passiveText": "Cada 10 s: marca al súbdito o monstruo de la jungla enemigo con más vida en 12.8 m. Si le das el golpe final: +3 de oro adicional, +15% de velocidad de ataque durante 8 s y +30 de maná.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Capucha de cuero",
+      "englishName": "Leather Cowl",
+      "category": "starter",
+      "tier": 1,
+      "cost": 600,
+      "ownCost": 600,
+      "stats": [
+        {
+          "key": "lifesteal",
+          "value": 4
+        },
+        {
+          "key": "mp5",
+          "value": 1.5
+        }
+      ],
+      "components": [],
+      "passiveText": "Stat adaptativo: +15 de fuerza o +25 de inteligencia, según tu stat de items más alto.\n\nA 8.8 m o menos de un dios: +15% de velocidad de ataque y +2.5% de velocidad de movimiento.\n\nSolo: +5% de velocidad de movimiento y +7.5% de velocidad de ataque.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Arenas del tiempo",
+      "englishName": "Sands of Time",
+      "category": "starter",
+      "tier": 1,
+      "cost": 650,
+      "ownCost": 650,
+      "stats": [
+        {
+          "key": "mp5",
+          "value": 2
+        },
+        {
+          "key": "cooldown_rate",
+          "value": 10
+        }
+      ],
+      "components": [],
+      "passiveText": "Stat adaptativo: +15 de fuerza o +25 de inteligencia, según tu stat de items más alto.\n\n+0.4 de maná por segundo por cada 10% de maná faltante.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Abnegación",
+      "englishName": "Selflessness",
+      "category": "starter",
+      "tier": 1,
+      "cost": 550,
+      "ownCost": 550,
+      "stats": [
+        {
+          "key": "physical_protection",
+          "value": 15
+        },
+        {
+          "key": "magical_protection",
+          "value": 15
+        },
+        {
+          "key": "health",
+          "value": 100
+        }
+      ],
+      "components": [],
+      "passiveText": "Cuando un dios aliado en 8.8 m recibe control duro: le das un escudo de 25 + 5% de tu vida máxima. Enfriamiento: 20 s.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Sudario vampírico",
+      "englishName": "Vampiric Shroud",
+      "category": "starter",
+      "tier": 1,
+      "cost": 600,
+      "ownCost": 600,
+      "stats": [
+        {
+          "key": "health",
+          "value": 100
+        },
+        {
+          "key": "lifesteal",
+          "value": 4
+        }
+      ],
+      "components": [],
+      "passiveText": "Stat adaptativo: +10 de fuerza o +20 de inteligencia, según tu stat de items más alto.\n\nGolpe de habilidad: te curas 4 de vida y recuperas 4 de maná. Una vez por objetivo y por habilidad.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Bandera de guerra",
+      "englishName": "War Flag",
+      "category": "starter",
+      "tier": 1,
+      "cost": 600,
+      "ownCost": 600,
+      "stats": [
+        {
+          "key": "physical_protection",
+          "value": 15
+        },
+        {
+          "key": "magical_protection",
+          "value": 15
+        },
+        {
+          "key": "attack_speed_percent",
+          "value": 10
+        }
+      ],
+      "components": [],
+      "passiveText": "Matar o asistir a un súbdito o monstruo de la jungla: tú y los dioses aliados en 8.8 m ganan +0.5% de velocidad de movimiento y +1% de velocidad de ataque durante 10 s (hasta 6 acumulaciones).\n\nAsistir a un súbdito o monstruo de la jungla: tú y los aliados en 8.8 m se curan 7 de vida.\n\nAl aplicar cualquier control a un enemigo (una vez cada 8 s): aplicas todos los bonos dos veces.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Hacha del guerrero",
+      "englishName": "Warrior's Axe",
+      "category": "starter",
+      "tier": 1,
+      "cost": 650,
+      "ownCost": 650,
+      "stats": [
+        {
+          "key": "physical_protection",
+          "value": 10
+        },
+        {
+          "key": "magical_protection",
+          "value": 10
+        }
+      ],
+      "components": [],
+      "passiveText": "Stat adaptativo: +10 de fuerza o +20 de inteligencia, según tu stat de items más alto.\n\nAl dañar a un dios: +20 (+2 por nivel) de daño verdadero adicional y te curas 40 (+1 por nivel). Golpea a un solo dios por activación. Enfriamiento: 8 s.",
+      "upgradeCondition": "Nivel 20"
+    },
+    {
+      "name": "Broche de piedra azul",
+      "englishName": "Bluestone Brooch",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2100,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "health",
+          "value": 200
+        },
+        {
+          "key": "hp5",
+          "value": 4
+        },
+        {
+          "key": "mp5",
+          "value": 2.5
+        }
+      ],
+      "components": [
+        {
+          "name": "Colgante de piedra azul",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +30 de fuerza o +50 de inteligencia, según tu stat de items más alto.\n\nGolpe de habilidad: +100 de daño físico durante 2 s. Los dioses reciben daño adicional igual a 7.5% de su vida actual. Los golpes siguientes al mismo objetivo infligen 50% de daño adicional durante 3 s."
+    },
+    {
+      "name": "Martillo de Bumba",
+      "englishName": "Bumba's Hammer",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2150,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "health",
+          "value": 200
+        },
+        {
+          "key": "cooldown_rate",
+          "value": 10
+        }
+      ],
+      "components": [
+        {
+          "name": "Garrote de Bumba",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +35 de fuerza o +60 de inteligencia, según tu stat de items más alto.\n\nHabilidad usada: tu siguiente ataque inflige +60 de daño verdadero a los enemigos en 1.92 m del objetivo. Si el ataque golpea: -0.66 s de enfriamientos y te curas 60."
+    },
+    {
+      "name": "Lanza de Bumba",
+      "englishName": "Bumba's Spear",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2150,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "health",
+          "value": 200
+        },
+        {
+          "key": "attack_speed_percent",
+          "value": 30
+        }
+      ],
+      "components": [
+        {
+          "name": "Daga dorada de Bumba",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +35 de fuerza o +60 de inteligencia, según tu stat de items más alto.\n\nAl golpear con un ataque: 25% de daño físico adicional a los enemigos en 1.92 m del objetivo."
+    },
+    {
+      "name": "Gema del archimago",
+      "englishName": "Archmage's Gem",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2150,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "mana",
+          "value": 150
+        },
+        {
+          "key": "mp5",
+          "value": 4
+        }
+      ],
+      "components": [
+        {
+          "name": "Gema conductora",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +60 de fuerza o +90 de inteligencia, según tu stat de items más alto.\n\nGolpe de habilidad a un dios: daño mágico adicional igual a 40% de tu inteligencia y 50% de tu fuerza. Enfriamiento: 20 s."
+    },
+    {
+      "name": "Abrazo de la muerte",
+      "englishName": "Death's Embrace",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2150,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "health",
+          "value": 150
+        },
+        {
+          "key": "lifesteal",
+          "value": 5
+        }
+      ],
+      "components": [
+        {
+          "name": "Tributo de la muerte",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +40 de fuerza o +70 de inteligencia, según tu stat de items más alto.\n\nAl golpear con un ataque: te curas 1% de tu vida máxima, restauras 2% de tu maná máximo y reduces 0.33 s los enfriamientos que no son de la definitiva."
+    },
+    {
+      "name": "Flecha del tirador",
+      "englishName": "Sharpshooter's Arrow",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2150,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "attack_damage",
+          "value": 60
+        },
+        {
+          "key": "attack_speed_percent",
+          "value": 25
+        },
+        {
+          "key": "critical_chance",
+          "value": 15
+        }
+      ],
+      "components": [
+        {
+          "name": "Flecha dorada",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "+5% de oro por muertes y asistencias.\n\nMás daño de ataque contra dioses enemigos lejanos, hasta +10% a 6 m."
+    },
+    {
+      "name": "Capucha del cazador",
+      "englishName": "Hunter's Cowl",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2100,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "lifesteal",
+          "value": 5
+        },
+        {
+          "key": "mp5",
+          "value": 2.5
+        }
+      ],
+      "components": [
+        {
+          "name": "Capucha de cuero",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +55 de fuerza o +80 de inteligencia, según tu stat de items más alto.\n\nA 8.8 m o menos de un dios: +30% de velocidad de ataque, +5% de robo de vida y +15% de velocidad de movimiento.\n\nSolo: +10% de velocidad de movimiento, +15% de velocidad de ataque y +2.5% de robo de vida."
+    },
+    {
+      "name": "Péndulo de las eras",
+      "englishName": "Pendulum of the Ages",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2150,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "mp5",
+          "value": 4
+        },
+        {
+          "key": "cooldown_rate",
+          "value": 20
+        }
+      ],
+      "components": [
+        {
+          "name": "Arenas del tiempo",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +45 de fuerza o +70 de inteligencia, según tu stat de items más alto.\n\n+4 de maná por segundo por cada 10% de maná faltante.\n\n+3 de fuerza o +7 de inteligencia (según tu stat de items más alto) por cada 10% de maná disponible."
+    },
+    {
+      "name": "Heroísmo",
+      "englishName": "Heroism",
+      "category": "starter",
+      "tier": 2,
+      "cost": 1800,
+      "ownCost": 1250,
+      "stats": [
+        {
+          "key": "physical_protection",
+          "value": 45
+        },
+        {
+          "key": "magical_protection",
+          "value": 45
+        },
+        {
+          "key": "health",
+          "value": 250
+        }
+      ],
+      "components": [
+        {
+          "name": "Abnegación",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "+1 de oro por segundo.\n\nCuando un aliado en 8.8 m recibe control duro: le das un escudo de 50 + 10% de tu vida máxima. Enfriamiento: 15 s."
+    },
+    {
+      "name": "Sudario empapado en sangre",
+      "englishName": "Blood-soaked Shroud",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2100,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "health",
+          "value": 350
+        },
+        {
+          "key": "lifesteal",
+          "value": 8
+        }
+      ],
+      "components": [
+        {
+          "name": "Sudario vampírico",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +40 de fuerza o +70 de inteligencia, según tu stat de items más alto.\n\nGolpe de habilidad: te curas 1% de tu vida máxima y recuperas 1% de tu maná máximo."
+    },
+    {
+      "name": "Estandarte de guerra",
+      "englishName": "War Banner",
+      "category": "starter",
+      "tier": 2,
+      "cost": 1850,
+      "ownCost": 1250,
+      "stats": [
+        {
+          "key": "physical_protection",
+          "value": 30
+        },
+        {
+          "key": "magical_protection",
+          "value": 30
+        },
+        {
+          "key": "attack_speed_percent",
+          "value": 30
+        }
+      ],
+      "components": [
+        {
+          "name": "Bandera de guerra",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Matar o asistir a un súbdito o monstruo de la jungla: tú y los aliados en 8.8 m se curan 1% de vida, restauran 1.25% de maná y ganan +3.5% de velocidad de movimiento y +6.5% de velocidad de ataque. La velocidad dura 10 s y se acumula hasta 6 veces."
+    },
+    {
+      "name": "Hacha hendidora",
+      "englishName": "Sundering Axe",
+      "category": "starter",
+      "tier": 2,
+      "cost": 2150,
+      "ownCost": 1500,
+      "stats": [
+        {
+          "key": "physical_protection",
+          "value": 30
+        },
+        {
+          "key": "magical_protection",
+          "value": 30
+        }
+      ],
+      "components": [
+        {
+          "name": "Hacha del guerrero",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +30 de fuerza o +50 de inteligencia, según tu stat de items más alto.\n\nAl dañar a un dios: +150 (+10% de las protecciones de tus items) de daño verdadero adicional y te curas 125. Golpea a un solo dios por activación. Enfriamiento: 8 s."
+    },
+    {
+      "name": "Égida de aceleración",
+      "englishName": "Aegis of Acceleration",
+      "category": "relic",
+      "tier": 1,
+      "cost": 0,
+      "ownCost": 0,
+      "stats": [],
+      "components": [],
+      "activeText": "Al usar: te vuelves inmune al daño y a la curación durante 1.5 s; solo puedes moverte. Por cada daño de un dios que evites: +7% de velocidad de movimiento durante 6 s (hasta 3 veces).",
+      "activeCooldownS": 140
+    },
+    {
+      "name": "Reliquia de agilidad",
+      "englishName": "Agility Relic",
+      "category": "relic",
+      "tier": 1,
+      "cost": 0,
+      "ownCost": 0,
+      "stats": [],
+      "components": [],
+      "passiveText": "Dioses a distancia: +40% de velocidad de los proyectiles de ataque.\n\nDioses cuerpo a cuerpo: -15% de penalización de movimiento al atacar.",
+      "activeText": "Al usar: te desplazas en la dirección en la que te mueves.",
+      "activeCooldownS": 20
+    },
+    {
+      "name": "Runa de parpadeo",
+      "englishName": "Blink Rune",
+      "category": "relic",
+      "tier": 1,
+      "cost": 0,
+      "ownCost": 0,
+      "stats": [],
+      "components": [],
+      "activeText": "Al usar: te teletransportas hasta 5.6 m. Se puede usar mientras lanzas una habilidad, pero no durante 3 s después de infligir o recibir daño de un dios.\n\nSi dañas o matas a un dios en los 4 s siguientes: -30 s de enfriamiento.",
+      "activeCooldownS": 170
+    },
+    {
+      "name": "Caparazón fantasma",
+      "englishName": "Phantom Shell",
+      "category": "relic",
+      "tier": 1,
+      "cost": 0,
+      "ownCost": 0,
+      "stats": [],
+      "components": [],
+      "activeText": "Al usar: tú y los aliados en 5.6 m ganan un escudo de 100 (+10 por nivel) durante 3 s. Los dioses afectados reciben 20% (+1% por nivel) menos daño de ataques y pueden atravesar jugadores y muros creados por jugadores.",
+      "activeCooldownS": 120
+    },
+    {
+      "name": "Cuentas de purificación",
+      "englishName": "Purification Beads",
+      "category": "relic",
+      "tier": 1,
+      "cost": 0,
+      "ownCost": 0,
+      "stats": [],
+      "components": [],
+      "activeText": "Al usar: inmunidad a control durante 2 s.",
+      "activeCooldownS": 150
+    },
+    {
+      "name": "Corte hendidor",
+      "englishName": "Sundering Arc",
+      "category": "relic",
+      "tier": 1,
+      "cost": 0,
+      "ownCost": 0,
+      "stats": [],
+      "components": [],
+      "activeText": "Al usar: haces sangrar a los enemigos, infligiendo 25 (+4 por nivel) de daño verdadero 3 veces en 2 s. Los monstruos y jefes de la jungla reciben 50 (+8 por nivel).\n\n-30 s de enfriamiento si solo se usa contra monstruos o jefes de la jungla.",
+      "activeCooldownS": 120
+    },
+    {
+      "name": "Grebas de agilidad",
+      "englishName": "Agility Greaves",
+      "category": "relic",
+      "tier": 2,
+      "cost": 2500,
+      "ownCost": 1250,
+      "stats": [
+        {
+          "key": "movement_speed_percent",
+          "value": 5
+        }
+      ],
+      "components": [
+        {
+          "name": "Reliquia de agilidad",
+          "quantity": 1
+        },
+        {
+          "name": "Mota del caos",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "+7.5% de todos los stats de tus items.\n\nDioses a distancia: +40% de velocidad de los proyectiles de ataque.\n\nDioses cuerpo a cuerpo: -15% de penalización de movimiento al atacar.",
+      "activeText": "Al usar: te desplazas en la dirección en la que te mueves. Durante 3 s: +80% de velocidad de los proyectiles de ataque (a distancia) o -30% de penalización de movimiento al atacar (cuerpo a cuerpo).",
+      "activeCooldownS": 20
+    },
+    {
+      "name": "Abismo parpadeante",
+      "englishName": "Blinking Abyss",
+      "category": "relic",
+      "tier": 2,
+      "cost": 2600,
+      "ownCost": 1350,
+      "stats": [],
+      "components": [
+        {
+          "name": "Runa de parpadeo",
+          "quantity": 1
+        },
+        {
+          "name": "Mota del caos",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +20 de fuerza o +35 de inteligencia, según tu stat de items más alto.\n\n+5% de todos los stats de tus items.",
+      "activeText": "Al usar: te teletransportas hasta 5.6 m. Se puede usar en combate, pero no mientras lanzas una habilidad.\n\n1 s después: infliges 25 (+10% de fuerza e inteligencia) de daño mágico en 3.2 m de radio. Si daña a un dios: -65 s de enfriamiento.",
+      "activeCooldownS": 200
+    },
+    {
+      "name": "Caparazón de reprensión",
+      "englishName": "Shell of Rebuke",
+      "category": "relic",
+      "tier": 2,
+      "cost": 2500,
+      "ownCost": 1250,
+      "stats": [
+        {
+          "key": "magical_protection",
+          "value": 20
+        },
+        {
+          "key": "physical_protection",
+          "value": 20
+        }
+      ],
+      "components": [
+        {
+          "name": "Caparazón fantasma",
+          "quantity": 1
+        },
+        {
+          "name": "Mota del caos",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "+7.5% de todos los stats de tus items.",
+      "activeText": "Al usar: creas un campo para los aliados que mitiga 25% del daño, hasta 300 (+40 por nivel).\n\nAl entrar al campo: escudo de 100 (+10 por nivel) durante 3 s. Mientras dure, atraviesas jugadores y muros creados por jugadores.",
+      "activeCooldownS": 120
+    },
+    {
+      "name": "Eco hendidor",
+      "englishName": "Sundering Echo",
+      "category": "relic",
+      "tier": 2,
+      "cost": 2500,
+      "ownCost": 1250,
+      "stats": [],
+      "components": [
+        {
+          "name": "Corte hendidor",
+          "quantity": 1
+        },
+        {
+          "name": "Mota del caos",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "Stat adaptativo: +25 de fuerza o +45 de inteligencia, según tu stat de items más alto.\n\n+7.5% de todos los stats de tus items.",
+      "activeText": "Al usar: haces sangrar a los enemigos, infligiendo 25 (+4 por nivel) de daño verdadero 5 veces en 4 s. Los monstruos y jefes de la jungla reciben 50 (+8 por nivel). Los enemigos que mueren sangrando explotan y aplican el sangrado a los enemigos cercanos.\n\n-30 s de enfriamiento si solo se usa contra monstruos o jefes de la jungla.",
+      "activeCooldownS": 120
+    },
+    {
+      "name": "Talismán de purificación",
+      "englishName": "Talisman of Purification",
+      "category": "relic",
+      "tier": 2,
+      "cost": 2500,
+      "ownCost": 1250,
+      "stats": [
+        {
+          "key": "cooldown_rate",
+          "value": 20
+        }
+      ],
+      "components": [
+        {
+          "name": "Cuentas de purificación",
+          "quantity": 1
+        },
+        {
+          "name": "Mota del caos",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "+7.5% de todos los stats de tus items.",
+      "activeText": "Al usar: tú y los aliados en 6.4 m se limpian de todo control y ganan inmunidad a control durante 1 s.",
+      "activeCooldownS": 140
+    },
+    {
+      "name": "Égida del tiempo detenido",
+      "englishName": "Time-lock Aegis",
+      "category": "relic",
+      "tier": 2,
+      "cost": 2500,
+      "ownCost": 1250,
+      "stats": [
+        {
+          "key": "physical_protection",
+          "value": 15
+        },
+        {
+          "key": "magical_protection",
+          "value": 15
+        }
+      ],
+      "components": [
+        {
+          "name": "Égida de aceleración",
+          "quantity": 1
+        },
+        {
+          "name": "Mota del caos",
+          "quantity": 1
+        }
+      ],
+      "passiveText": "+6% de todos los stats de tus items.",
+      "activeText": "Al usar: quedas detenido en el tiempo, sin poder moverte ni actuar, e inmune al daño y a la curación durante 2.25 s. Mientras tanto restauras rápido 15 s de regeneración y 7.5 s de enfriamientos. Reactívalo para salir antes.",
+      "activeCooldownS": 140
+    }
+  ]
+}

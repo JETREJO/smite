@@ -22,7 +22,8 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
     .all(godId) as Omit<BuildSummary, "strengths" | "items" | "totalCost" | "skillOrder">[];
 
   const selectItems = db.prepare(
-    `SELECT bi.position, bi.item_id AS itemId, i.name, i.english_name AS englishName, c.name AS category, i.cost,
+    `SELECT bi.position, bi.item_id AS itemId, i.name, i.english_name AS englishName, c.name AS category,
+            c.key AS categoryKey, i.cost, i.upgrade_condition AS upgradeCondition,
             i.passive_text AS passiveText, i.active_text AS activeText, i.active_cooldown_s AS activeCooldownS
        FROM build_items bi
        JOIN items i ON i.id = bi.item_id

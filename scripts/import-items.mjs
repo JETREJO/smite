@@ -73,8 +73,8 @@ console.log(`Respaldo: ${backupDatabase(db, dbPath, "before-import")}`);
 db.transaction(() => {
   const insertItem = db.prepare(
     `INSERT INTO items (slug, name, english_name, category_id, tier, cost, passive_text, active_text, active_cooldown_s,
-                        source, created_by, updated_by)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'wiki', 'claude', 'claude')`,
+                        upgrade_condition, source, created_by, updated_by)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'wiki', 'claude', 'claude')`,
   );
   const insertStat = db.prepare("INSERT INTO item_stats (item_id, stat_id, value) VALUES (?, ?, ?)");
   const insertValue = db.prepare("INSERT INTO item_values (item_id, kind, key, value) VALUES (?, ?, ?, ?)");
@@ -91,6 +91,7 @@ db.transaction(() => {
       item.passiveText ?? null,
       item.activeText ?? null,
       item.activeCooldownS ?? null,
+      item.upgradeCondition ?? null,
     ).lastInsertRowid;
     for (const stat of item.stats) insertStat.run(itemId, statId.get(stat.key).id, stat.value);
     for (const value of item.passiveValues ?? []) insertValue.run(itemId, "passive", value.key, value.value);

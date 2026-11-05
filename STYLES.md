@@ -27,7 +27,7 @@
 | `warning` | `#E0B25C` | Advertencias | `text-warning` |
 | `info` | `#74A9E6` | Información neutral | `text-info` |
 
-Opacidades permitidas sobre tokens: `bg-accent/15` para selección suave, `focus:ring-accent/30` para el foco, `bg-danger/10` para el hover de acciones peligrosas, `bg-canvas/40` para sub-tarjetas dentro de una tarjeta.
+Opacidades permitidas sobre tokens: `bg-accent/15` para selección suave, `focus:ring-accent/30` para el foco, `bg-danger/10` para el hover de acciones peligrosas, `bg-canvas/40` para sub-tarjetas dentro de una tarjeta, `border-accent/60` + `bg-accent/10` para etiquetas de aspecto, y `border-success/60` + `bg-success/10` (iniciales) o `border-info/60` + `bg-info/10` (reliquias) para distinguir esas tarjetas de item en una build.
 
 ## Tipografía
 

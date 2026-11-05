@@ -90,7 +90,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - `db:clean-claude` nunca borra items con `source` (son datos reales, no pruebas). Si el usuario edita uno, pasa a ser suyo como cualquier otro.
 - Las traducciones de nombres son de Claude, no oficiales del juego: el usuario las revisa.
 - **Daño de ataque** (`attack_damage`, Attack Damage) es un stat de items: da daño extra a los ataques básicos. **Fuerza** escala habilidades y da 100% a los ataques básicos. Se guardó separado de "Poder de ataque" (`basic_attack_damage`, stat base de dioses) porque el wiki no confirma que sean el mismo stat; si se confirma, conviene unificarlos. Indicio: el wiki usa el icono `BasicAttackPower` para Attack Damage.
-- Tier I, II y III del wiki ya están completos (12, 40 y 136). Falta importar reliquias, curios, consumibles, starters y específicos de un dios. El tipo de Tier III (ofensivo, defensivo, híbrido) aún no se guarda.
+- Tier I, II y III del wiki ya están completos (12, 40 y 136). También los iniciales (12 de Tier I y 12 mejorados de Tier II) y las reliquias (6 base de Tier I con costo 0 y 6 mejoradas de Tier II, hechas con su reliquia base y Mota del caos). El wiki no da tier a las reliquias mejoradas: se guardan como Tier II porque la base solo acepta 1-3. Los iniciales de Tier I guardan `upgrade_condition` = "Nivel 20". Falta importar curios, consumibles y específicos de un dios. El tipo de Tier III (ofensivo, defensivo, híbrido) aún no se guarda.
 - Stats: `Amortiguación` y `Blindaje` son puntos (1 punto = 1%, tope 35); `Eco` y `Tenacidad` son porcentaje.
 - Ojo con React Hook Form: no usar `root` como nombre de campo, porque RHF reserva `errors.root` y descarta esos errores al enviar. Por eso el item principal vive en `item`.
 
@@ -108,7 +108,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - **Items:** lista libre en orden de compra (cualquier categoría, se pueden repetir y reordenar con flechas). Mínimo un item. No se imponen slots del juego.
 - **Orden de habilidades:** cuadrícula de niveles 1–20 × habilidades 1–4. Opcional; cada habilidad sube como máximo a rango 5.
 - El nombre de la build es único por dios (sin distinguir mayúsculas).
-- Las builds se crean, se editan y se listan en la pestaña Builds del dios. Cada tarjeta muestra el costo total (suma de `items.cost`; un item repetido cuenta cada vez) y cada item es un botón a `/items/{id}` con su nombre en inglés, precio, stats, pasiva y activa. Ver, borrar y el resumen de stats quedan pendientes hasta que el usuario lo pida.
+- Las builds se crean, se editan y se listan en la pestaña Builds del dios. Cada tarjeta muestra el costo total (suma de `items.cost`; un item repetido cuenta cada vez) y cada item es un botón a `/items/{id}` con su nombre en inglés, precio, stats, pasiva y activa. Las tarjetas de iniciales (verde, `success`) y reliquias (azul, `info`) usan otro color que las de items. Ver, borrar y el resumen de stats quedan pendientes hasta que el usuario lo pida.
 - **Cómo crea builds Claude (decisión del usuario):**
   1. Solo evalúa items de Tier III, los últimos de cada rama. Los componentes de Tier I y II nunca entran en la evaluación.
   2. Antes de cada build analiza al dios: tipo de daño, escalados, kit, puntos fuertes y debilidades.
@@ -117,6 +117,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - `useFieldArray` de React Hook Form no valida su regla de "mínimo una fila" al enviar; la lista de items se revisa a mano en `onSubmit`.
 - **Builds de Anubis:** Claude creó Ráfaga, Asedio y Bastión a pedido del usuario. Son datos reales, pero están marcadas como `claude`: `db:clean-claude` las borra si el usuario no las ha editado desde la app; al editarlas pasan a ser suyas. Revisar siempre con `-- --dry-run` antes de limpiar.
 - **Builds de Cu Chulainn:** Claude creó Sabueso, Sed de sangre y Guardián (rol Solo) con las mismas reglas de autoría que las de Anubis.
+- **Builds de Mercury:** Claude creó Ejecutor, Cazador e Iniciador (rol Jungla), con la misma autoría. Para Mercury los items de crítico sí se evaluaron, porque Te hice mirar puede hacer crítico; se asumió un multiplicador de 1.75.
 - **Regla al comparar builds:** cada build tiene que ganar la situación que promete. Se fija un mínimo de vida efectiva por situación, para que el simulador no elija solo daño, y si una build pierde en su propia especialidad contra otra, se cambia en vez de dejarle la etiqueta.
 - **Supuestos del análisis de builds (no están en la base; confirmar en el juego):** mitigación = 100 / (100 + protección), tope de penetración de 40%, y lecturas ambiguas de items como Alma segadora ("infligido 4 veces") y Gema de almas (si "golpe de habilidad" cuenta cada tick). `Eco` no está definido en los datos, por eso esos items no se evaluaron. Para dioses de ataques también se asume que el robo de vida cura 100% con ataques; el multiplicador de crítico no está en los datos.
 

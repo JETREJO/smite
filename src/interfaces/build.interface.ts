@@ -8,7 +8,11 @@ export interface BuildItemSummary {
   name: string;
   englishName: string | null;
   category: string;
+  /** Category key from item_categories (starter, relic, final...). */
+  categoryKey: string;
   cost: number;
+  /** Starters and relics that upgrade, e.g. "Nivel 20". */
+  upgradeCondition: string | null;
   /** Formatted stats, e.g. "+40 Fuerza". */
   stats: string[];
   passiveText: string | null;
