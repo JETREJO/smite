@@ -4,6 +4,8 @@ Decisiones importantes del proyecto. Claude mantiene este archivo; si alguien m�
 
 ## Objetivo
 
+> **Objetivo nuevo (2026-11-05):** convertir la app en una plataforma pública para la comunidad. El plan está en [docs/ROADMAP.md](docs/ROADMAP.md) y el historial de decisiones en [docs/PROJECT_LOG.md](docs/PROJECT_LOG.md). Mientras el plan avanza, lo que sigue describe la app tal como funciona hoy.
+
 Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus stats, habilidades y escalado de poder, y armar builds personalizadas para cada dios.
 
 ## Stack

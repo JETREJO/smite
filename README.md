@@ -4,6 +4,8 @@ Base de datos y planificador de builds para **SMITE 2** (Hi-Rez): registrar dios
 
 Hecha con Next.js, TypeScript, React y SQLite. Las decisiones del proyecto están en [MEMORY.md](MEMORY.md), las reglas de estilos en [STYLES.md](STYLES.md) y las de idioma en [LANGUAGES.md](LANGUAGES.md).
 
+El plan para convertirla en una plataforma pública está en [docs/ROADMAP.md](docs/ROADMAP.md), y la bitácora de decisiones y avances en [docs/PROJECT_LOG.md](docs/PROJECT_LOG.md).
+
 ## Datos actuales, sin historial de parches
 
 La base de datos guarda solo los valores **actuales** del juego. Cuando sale un parche, los valores se actualizan a mano desde la aplicación. No se guarda en qué parche cambió algo ni el historial de valores anteriores.
