@@ -79,7 +79,7 @@ export function listItemOptions(): ItemOption[] {
   const db = getDb();
   const rows = db
     .prepare(
-      `SELECT i.id, i.name, c.name AS category, i.tier, i.cost
+      `SELECT i.id, i.name, c.name AS category, c.key AS categoryKey, i.tier, i.cost
          FROM items i JOIN item_categories c ON c.id = i.category_id
         ORDER BY i.name COLLATE NOCASE`,
     )
@@ -134,6 +134,18 @@ export function getItemDescendantIds(itemId: number): number[] {
     )
     .all(itemId) as { id: number }[];
   return rows.map((row) => row.id);
+}
+
+/** Category key (starter, relic, final...) of each existing item, keyed by item id. */
+export function getItemCategoryKeys(ids: number[]): Map<number, string> {
+  if (ids.length === 0) return new Map();
+  const rows = getDb()
+    .prepare(
+      `SELECT i.id, c.key FROM items i JOIN item_categories c ON c.id = i.category_id
+        WHERE i.id IN (${ids.map(() => "?").join(", ")})`,
+    )
+    .all(...ids) as { id: number; key: string }[];
+  return new Map(rows.map((row) => [row.id, row.key]));
 }
 
 export function getExistingItemIds(ids: number[]): Set<number> {

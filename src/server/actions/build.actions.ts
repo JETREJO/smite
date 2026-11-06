@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
+import { isSlotCategory, RELIC_CATEGORY_KEY, STARTER_CATEGORY_KEY } from "@/helpers/build-slots";
 import type { ActionResult } from "@/interfaces/action-result.interface";
 import type { BuildInput } from "@/interfaces/build.interface";
 import {
@@ -14,7 +15,7 @@ import {
   updateBuild,
 } from "@/server/repositories/build.repository";
 import { getGodName } from "@/server/repositories/god-query.repository";
-import { getExistingItemIds } from "@/server/repositories/item-query.repository";
+import { getItemCategoryKeys } from "@/server/repositories/item-query.repository";
 import { validateBuild } from "@/server/validators/build.validator";
 
 /** Shared checks before saving; returns an error result or null when the input can be saved. */
@@ -40,9 +41,19 @@ function checkBuildInput(godId: number, input: BuildInput, buildId: number | nul
     return { ok: false, message: "Una de las fortalezas ya no existe. Recarga la página." };
   }
   const itemIds = input.items.map((item) => item.itemId as number);
-  const foundIds = getExistingItemIds([...new Set(itemIds)]);
-  if (itemIds.some((id) => !foundIds.has(id))) {
+  const slotIds = [input.starterItemId, input.relicItemId].filter((id): id is number => id !== null);
+  const categories = getItemCategoryKeys([...new Set([...itemIds, ...slotIds])]);
+  if ([...itemIds, ...slotIds].some((id) => !categories.has(id))) {
     return { ok: false, message: "Uno de los items ya no existe. Recarga la página." };
+  }
+  if (input.starterItemId !== null && categories.get(input.starterItemId) !== STARTER_CATEGORY_KEY) {
+    return { ok: false, message: "En el espacio del inicial solo puedes guardar un item inicial." };
+  }
+  if (input.relicItemId !== null && categories.get(input.relicItemId) !== RELIC_CATEGORY_KEY) {
+    return { ok: false, message: "En el espacio de la reliquia solo puedes guardar una reliquia." };
+  }
+  if (itemIds.some((id) => isSlotCategory(categories.get(id) as string))) {
+    return { ok: false, message: "Los iniciales y las reliquias van en su propio espacio, no en la lista de items." };
   }
   return null;
 }

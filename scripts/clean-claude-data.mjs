@@ -40,7 +40,8 @@ function clean() {
     `SELECT id, name FROM items i
       WHERE created_by = 'claude' AND updated_by = 'claude' AND source IS NULL
         AND NOT EXISTS (SELECT 1 FROM item_recipes r WHERE r.component_id = i.id)
-        AND NOT EXISTS (SELECT 1 FROM build_items bi WHERE bi.item_id = i.id)`,
+        AND NOT EXISTS (SELECT 1 FROM build_items bi WHERE bi.item_id = i.id)
+        AND NOT EXISTS (SELECT 1 FROM builds b WHERE i.id IN (b.starter_item_id, b.relic_item_id))`,
   );
   const deleteItem = db.prepare("DELETE FROM items WHERE id = ?");
   for (let batch = deletableItems.all(); batch.length > 0; batch = deletableItems.all()) {

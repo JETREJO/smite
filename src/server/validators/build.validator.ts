@@ -18,6 +18,8 @@ export function validateBuild(input: BuildInput): string[] {
   if (input.aspectId !== null && !isId(input.aspectId)) errors.push("El aspecto no es válido.");
   if (input.roleId !== null && !isId(input.roleId)) errors.push("El rol no es válido.");
 
+  if (input.starterItemId !== null && !isId(input.starterItemId)) errors.push("El inicial no es válido.");
+  if (input.relicItemId !== null && !isId(input.relicItemId)) errors.push("La reliquia no es válida.");
   if (input.strengthIds.some((id) => !isId(id))) errors.push("Una de las fortalezas no es válida.");
   if (input.newStrengths.some(isBlank)) errors.push("Una de las fortalezas nuevas está vacía.");
 

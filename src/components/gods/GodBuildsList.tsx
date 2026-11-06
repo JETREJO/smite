@@ -1,9 +1,9 @@
-import Link from "next/link";
-
+import { BuildItemCard } from "@/components/builds/BuildItemCard";
 import { AuthorBadge } from "@/components/ui/AuthorBadge";
 import { ButtonLink } from "@/components/ui/Button";
 import { EmptyState } from "@/components/ui/EmptyState";
-import type { BuildSummary } from "@/interfaces/build.interface";
+import { formatGold } from "@/helpers/stat-format";
+import type { BuildSlotItem, BuildSummary } from "@/interfaces/build.interface";
 
 interface GodBuildsListProps {
   godId: number;
@@ -11,15 +11,26 @@ interface GodBuildsListProps {
   builds: BuildSummary[];
 }
 
-/** Card colors that set starters and relics apart from regular items. */
-const ITEM_CARD_STYLES: Record<string, { card: string; label: string }> = {
-  starter: { card: "border-success/60 bg-success/10 hover:border-success", label: "text-success" },
-  relic: { card: "border-info/60 bg-info/10 hover:border-info", label: "text-info" },
-};
-const DEFAULT_ITEM_CARD_STYLE = { card: "border-line-strong bg-elevated hover:border-accent", label: "text-fg-subtle" };
+interface BuildSlotProps {
+  label: string;
+  item: BuildSlotItem | null;
+  emptyMessage: string;
+}
 
-function formatGold(amount: number): string {
-  return amount.toLocaleString("es-MX");
+/** The build's own starter or relic slot; keeps its place with a message when it's empty. */
+function BuildSlot({ label, item, emptyMessage }: BuildSlotProps) {
+  return (
+    <div className="flex flex-col gap-2">
+      <h4 className="text-xs font-semibold uppercase tracking-wide text-fg-muted">{label}</h4>
+      {item ? (
+        <BuildItemCard item={item} />
+      ) : (
+        <p className="flex flex-1 items-center rounded-lg border border-dashed border-line-strong p-4 text-sm text-fg-subtle">
+          {emptyMessage}
+        </p>
+      )}
+    </div>
+  );
 }
 
 export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
@@ -77,66 +88,24 @@ export function GodBuildsList({ godId, godName, builds }: GodBuildsListProps) {
             </ul>
           )}
           <p className="whitespace-pre-line text-sm text-fg-muted">{build.description}</p>
-          {build.items.length === 0 ? (
-            <p className="text-sm text-fg-subtle">Esta build todavía no tiene items.</p>
-          ) : (
-            <ol className="grid gap-3 md:grid-cols-2">
-              {build.items.map((item) => {
-                const style = ITEM_CARD_STYLES[item.categoryKey] ?? DEFAULT_ITEM_CARD_STYLE;
-                return (
+          <div className="grid gap-3 md:grid-cols-2">
+            <BuildSlot label="Inicial" item={build.starter} emptyMessage="A esta build no se le ha añadido un inicial." />
+            <BuildSlot label="Reliquia" item={build.relic} emptyMessage="A esta build no se le ha añadido una reliquia." />
+          </div>
+          <div className="flex flex-col gap-2">
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-fg-muted">Items</h4>
+            {build.items.length === 0 ? (
+              <p className="text-sm text-fg-subtle">Esta build todavía no tiene items.</p>
+            ) : (
+              <ol className="grid gap-3 md:grid-cols-2">
+                {build.items.map((item) => (
                   <li key={item.position}>
-                    <Link
-                      href={`/items/${item.itemId}`}
-                      className={`flex h-full flex-col gap-3 rounded-lg border p-4 text-sm text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${style.card}`}
-                    >
-                      <span className="flex items-start justify-between gap-3">
-                        <span className="flex min-w-0 gap-2">
-                          <span className="tabular-nums text-fg-subtle">{item.position}.</span>
-                          <span className="flex min-w-0 flex-col">
-                            <span className="font-semibold">{item.name}</span>
-                            {item.englishName && <span className="text-xs text-fg-subtle">{item.englishName}</span>}
-                          </span>
-                        </span>
-                        <span className="flex shrink-0 flex-col items-end">
-                          <span className="font-semibold tabular-nums">{formatGold(item.cost)} de oro</span>
-                          <span className={`text-xs ${style.label}`}>
-                            {item.category}
-                            {item.upgradeCondition && ` · Mejora: ${item.upgradeCondition.toLowerCase()}`}
-                          </span>
-                        </span>
-                      </span>
-                      {item.stats.length > 0 && (
-                        <span className="flex flex-wrap gap-1.5">
-                          {item.stats.map((stat) => (
-                            <span key={stat} className="rounded-full bg-canvas/40 px-2.5 py-1 text-xs text-fg-muted">
-                              {stat}
-                            </span>
-                          ))}
-                        </span>
-                      )}
-                      {item.passiveText && (
-                        <span className="flex flex-col gap-1">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-fg-muted">Pasiva</span>
-                          <span className="whitespace-pre-line text-xs text-fg-muted">{item.passiveText}</span>
-                        </span>
-                      )}
-                      {item.activeText && (
-                        <span className="flex flex-col gap-1">
-                          <span className="text-xs font-semibold uppercase tracking-wide text-fg-muted">
-                            Activa
-                            {item.activeCooldownS !== null && (
-                              <span className="normal-case"> · {item.activeCooldownS} s</span>
-                            )}
-                          </span>
-                          <span className="whitespace-pre-line text-xs text-fg-muted">{item.activeText}</span>
-                        </span>
-                      )}
-                    </Link>
+                    <BuildItemCard item={item} position={item.position} />
                   </li>
-                );
-              })}
-            </ol>
-          )}
+                ))}
+              </ol>
+            )}
+          </div>
           {build.skillOrder.some((slot) => slot !== null) && (
             <div className="flex flex-col gap-2">
               <h4 className="text-xs font-semibold uppercase tracking-wide text-fg-muted">Orden de habilidades</h4>

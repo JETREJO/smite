@@ -13,6 +13,7 @@ export interface ItemOption {
   id: number;
   name: string;
   category: string;
+  categoryKey: string;
   tier: number;
   cost: number;
   stats: string[];

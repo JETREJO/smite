@@ -1,7 +1,15 @@
 import type Database from "better-sqlite3";
 
 import { MAX_GOD_LEVEL } from "@/helpers/ability-slots";
-import type { BuildFormCatalogs, BuildInput, BuildItemSummary, BuildSummary } from "@/interfaces/build.interface";
+import { isSlotCategory, RELIC_CATEGORY_KEY, STARTER_CATEGORY_KEY } from "@/helpers/build-slots";
+import { formatGold } from "@/helpers/stat-format";
+import type {
+  BuildFormCatalogs,
+  BuildInput,
+  BuildItemSummary,
+  BuildSlotItem,
+  BuildSummary,
+} from "@/interfaces/build.interface";
 import type { CatalogOption } from "@/interfaces/catalog.interface";
 import { getDb } from "@/server/db/connection";
 import { getDataAuthor } from "@/server/db/data-author";
@@ -12,19 +20,30 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
   const builds = db
     .prepare(
       `SELECT b.id, b.name, b.description, a.name AS aspectName, r.name AS roleName,
-              b.created_by AS createdBy, b.updated_by AS updatedBy
+              b.created_by AS createdBy, b.updated_by AS updatedBy,
+              b.starter_item_id AS starterItemId, b.relic_item_id AS relicItemId
          FROM builds b
          LEFT JOIN aspects a ON a.id = b.aspect_id
          LEFT JOIN roles r ON r.id = b.role_id
         WHERE b.god_id = ?
         ORDER BY b.name COLLATE NOCASE`,
     )
-    .all(godId) as Omit<BuildSummary, "strengths" | "items" | "totalCost" | "skillOrder">[];
+    .all(godId) as (Omit<BuildSummary, "strengths" | "starter" | "relic" | "items" | "totalCost" | "skillOrder"> & {
+    starterItemId: number | null;
+    relicItemId: number | null;
+  })[];
+
+  const itemColumns = `i.name, i.english_name AS englishName, c.name AS category,
+            c.key AS categoryKey, i.cost, i.upgrade_condition AS upgradeCondition,
+            i.passive_text AS passiveText, i.active_text AS activeText, i.active_cooldown_s AS activeCooldownS`;
+  const selectSlotItem = db.prepare(
+    `SELECT i.id AS itemId, ${itemColumns}
+       FROM items i JOIN item_categories c ON c.id = i.category_id
+      WHERE i.id = ?`,
+  );
 
   const selectItems = db.prepare(
-    `SELECT bi.position, bi.item_id AS itemId, i.name, i.english_name AS englishName, c.name AS category,
-            c.key AS categoryKey, i.cost, i.upgrade_condition AS upgradeCondition,
-            i.passive_text AS passiveText, i.active_text AS activeText, i.active_cooldown_s AS activeCooldownS
+    `SELECT bi.position, bi.item_id AS itemId, ${itemColumns}
        FROM build_items bi
        JOIN items i ON i.id = bi.item_id
        JOIN item_categories c ON c.id = i.category_id
@@ -40,8 +59,13 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
       ORDER BY l.rowid`,
   );
   const stats = getStatSummaries();
+  const slotItem = (itemId: number | null): BuildSlotItem | null => {
+    if (itemId === null) return null;
+    const row = selectSlotItem.get(itemId) as Omit<BuildSlotItem, "stats"> | undefined;
+    return row ? { ...row, stats: stats.get(row.itemId) ?? [] } : null;
+  };
 
-  return builds.map((build) => {
+  return builds.map(({ starterItemId, relicItemId, ...build }) => {
     const slotsByLevel = new Map(
       (selectSkillOrder.all(build.id) as { level: number; slot: number }[]).map((row) => [row.level, row.slot]),
     );
@@ -49,11 +73,15 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
       ...item,
       stats: stats.get(item.itemId) ?? [],
     }));
+    const starter = slotItem(starterItemId);
+    const relic = slotItem(relicItemId);
     return {
       ...build,
       strengths: (selectStrengths.all(build.id) as { name: string }[]).map((row) => row.name),
+      starter,
+      relic,
       items,
-      totalCost: items.reduce((total, item) => total + item.cost, 0),
+      totalCost: [starter, relic, ...items].reduce((total, item) => total + (item?.cost ?? 0), 0),
       skillOrder: Array.from({ length: MAX_GOD_LEVEL }, (_, index) => slotsByLevel.get(index + 1) ?? null),
     };
   });
@@ -62,11 +90,18 @@ export function listBuildsByGod(godId: number): BuildSummary[] {
 /** Everything the build form needs for a god, read from the database. */
 export function getBuildFormCatalogs(godId: number): BuildFormCatalogs {
   const db = getDb();
+  const allItems = listItemOptions();
+  const toSlotOption = (item: (typeof allItems)[number]) => ({
+    id: item.id,
+    name: `${item.name} (tier ${item.tier}, ${formatGold(item.cost)} de oro)`,
+  });
   return {
     aspects: db.prepare("SELECT id, name FROM aspects WHERE god_id = ? ORDER BY name").all(godId) as CatalogOption[],
     roles: db.prepare("SELECT id, name FROM roles ORDER BY id").all() as CatalogOption[],
     strengths: db.prepare("SELECT id, name FROM build_strengths ORDER BY name").all() as CatalogOption[],
-    items: listItemOptions(),
+    starters: allItems.filter((item) => item.categoryKey === STARTER_CATEGORY_KEY).map(toSlotOption),
+    relics: allItems.filter((item) => item.categoryKey === RELIC_CATEGORY_KEY).map(toSlotOption),
+    items: allItems.filter((item) => !isSlotCategory(item.categoryKey)),
     abilities: db
       .prepare("SELECT slot, name FROM abilities WHERE god_id = ? AND slot BETWEEN 1 AND 4 ORDER BY slot")
       .all(godId) as { slot: number; name: string }[],
@@ -77,9 +112,19 @@ export function getBuildFormCatalogs(godId: number): BuildFormCatalogs {
 export function getBuildFormValues(godId: number, buildId: number): BuildInput | null {
   const db = getDb();
   const build = db
-    .prepare("SELECT name, description, aspect_id, role_id FROM builds WHERE id = ? AND god_id = ?")
+    .prepare(
+      `SELECT name, description, aspect_id, role_id, starter_item_id, relic_item_id
+         FROM builds WHERE id = ? AND god_id = ?`,
+    )
     .get(buildId, godId) as
-    | { name: string; description: string; aspect_id: number | null; role_id: number | null }
+    | {
+        name: string;
+        description: string;
+        aspect_id: number | null;
+        role_id: number | null;
+        starter_item_id: number | null;
+        relic_item_id: number | null;
+      }
     | undefined;
   if (!build) return null;
 
@@ -102,6 +147,8 @@ export function getBuildFormValues(godId: number, buildId: number): BuildInput |
     roleId: build.role_id,
     strengthIds: strengths.map((row) => row.strength_id),
     newStrengths: [],
+    starterItemId: build.starter_item_id,
+    relicItemId: build.relic_item_id,
     items: items.map((row) => ({ itemId: row.item_id })),
     skillOrder: Array.from({ length: MAX_GOD_LEVEL }, (_, index) => ({ slot: slotsByLevel.get(index + 1) ?? null })),
   };
@@ -164,13 +211,16 @@ export function createBuild(godId: number, input: BuildInput): number {
     const buildId = Number(
       db
         .prepare(
-          `INSERT INTO builds (god_id, aspect_id, role_id, name, description, created_by, updated_by)
-           VALUES (?, ?, ?, ?, ?, ?, ?)`,
+          `INSERT INTO builds (god_id, aspect_id, role_id, starter_item_id, relic_item_id, name, description,
+                               created_by, updated_by)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         )
         .run(
           godId,
           input.aspectId,
           input.roleId,
+          input.starterItemId,
+          input.relicItemId,
           input.name.trim(),
           input.description.trim(),
           getDataAuthor(),
@@ -184,15 +234,25 @@ export function createBuild(godId: number, input: BuildInput): number {
   return run();
 }
 
-/** Replaces the build's data, strengths, items and skill order in one transaction. */
+/** Replaces the build's data, starter, relic, strengths, items and skill order in one transaction. */
 export function updateBuild(buildId: number, input: BuildInput): void {
   const db = getDb();
   db.transaction(() => {
     db.prepare(
       `UPDATE builds
-          SET aspect_id = ?, role_id = ?, name = ?, description = ?, updated_at = CURRENT_TIMESTAMP, updated_by = ?
+          SET aspect_id = ?, role_id = ?, starter_item_id = ?, relic_item_id = ?, name = ?, description = ?,
+              updated_at = CURRENT_TIMESTAMP, updated_by = ?
         WHERE id = ?`,
-    ).run(input.aspectId, input.roleId, input.name.trim(), input.description.trim(), getDataAuthor(), buildId);
+    ).run(
+      input.aspectId,
+      input.roleId,
+      input.starterItemId,
+      input.relicItemId,
+      input.name.trim(),
+      input.description.trim(),
+      getDataAuthor(),
+      buildId,
+    );
 
     for (const table of ["build_strength_links", "build_items", "build_skill_order"]) {
       db.prepare(`DELETE FROM ${table} WHERE build_id = ?`).run(buildId);

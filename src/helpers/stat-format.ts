@@ -4,3 +4,8 @@ export function formatStat(value: number, name: string, isPercent: boolean): str
   if (isPercent) return `${sign}${value}% ${name.replace(/\s*%$/, "")}`;
   return `${sign}${value} ${name}`;
 }
+
+/** "17,700" — gold amounts with thousands separators. */
+export function formatGold(amount: number): string {
+  return amount.toLocaleString("es-MX");
+}

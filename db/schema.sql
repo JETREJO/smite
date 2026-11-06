@@ -304,6 +304,9 @@ CREATE TABLE builds (
     updated_at  TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by  TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
     updated_by  TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed')),
+    -- espacios propios para el inicial y la reliquia (opcionales); la app valida su categoría
+    starter_item_id INTEGER REFERENCES items(id),
+    relic_item_id   INTEGER REFERENCES items(id),
     UNIQUE (god_id, name),
     -- el aspecto tiene que ser del mismo dios
     FOREIGN KEY (aspect_id, god_id) REFERENCES aspects(id, god_id)

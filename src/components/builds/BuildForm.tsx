@@ -97,7 +97,32 @@ export function BuildForm({ godId, catalogs, buildId, initialValues }: BuildForm
           </div>
         </SectionCard>
 
-        <SectionCard title="Items" description="En el orden en que se compran. Usa las flechas para reordenarlos.">
+        <SectionCard
+          title="Inicial y reliquia"
+          description="Opcionales. Cada espacio acepta solo su tipo: el inicial, un item inicial; la reliquia, una reliquia."
+        >
+          <div className="grid items-start gap-5 sm:grid-cols-2">
+            <FormField label="Inicial" name="starterItemId">
+              <SelectInput
+                options={catalogs.starters}
+                placeholder="Sin inicial"
+                {...register("starterItemId", { setValueAs: toOptionalNumber })}
+              />
+            </FormField>
+            <FormField label="Reliquia" name="relicItemId">
+              <SelectInput
+                options={catalogs.relics}
+                placeholder="Sin reliquia"
+                {...register("relicItemId", { setValueAs: toOptionalNumber })}
+              />
+            </FormField>
+          </div>
+        </SectionCard>
+
+        <SectionCard
+          title="Items"
+          description="En el orden en que se compran. Usa las flechas para reordenarlos. Los iniciales y las reliquias van en su propio espacio."
+        >
           <BuildItemsField items={catalogs.items} />
         </SectionCard>
 

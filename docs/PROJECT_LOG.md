@@ -40,6 +40,7 @@ Registro de decisiones, objetivos logrados y cambios importantes, en orden crono
 | 2026-11-05 | Publicidad con AdSense y el sitio gratis para los usuarios. | Modelo de ingresos elegido por el usuario. | Planes de pago. |
 | 2026-11-06 | Seguir el plan de [ROADMAP.md](ROADMAP.md) y registrar el avance en esta bitácora. | Ir paso por paso y marcar lo que queda listo. | — |
 | 2026-11-06 | Filtros de items: en Tipo y Tier basta con cumplir uno; en los stats el item debe tener todos los marcados; los grupos se combinan con "y". "Poder" es Fuerza. Los filtros se definen en tablas de la base (`item_filter_*`), no en el código. | Decisión del usuario; buscar items concretos al armar una build. Los catálogos siempre salen de la base. | Stats combinados con "o"; un filtro "Poder" = Fuerza o Inteligencia. |
+| 2026-11-06 | Las builds tienen un espacio propio para el inicial y otro para la reliquia, opcionales, de cualquier tier. Cada espacio solo acepta su categoría y la lista de items ya no acepta ninguna de las dos. Las builds que ya existían quedaron igual, con ambos espacios vacíos y un mensaje. | Pedido del usuario: separar iniciales y reliquias de los items. | Dejarlos dentro de la lista de items; un solo espacio para ambos. |
 
 ## Objetivos logrados
 
@@ -58,7 +59,8 @@ Registro de decisiones, objetivos logrados y cambios importantes, en orden crono
 | 2026-11-02 | Builds: costo total, items enlazados con sus stats y efectos, fortalezas y edición. | `648e80a`, `da14bde`, `e363d86`, `18841cd` |
 | 2026-11-05 | Iniciales y reliquias del wiki importadas, con su color en las builds. | `c267fca` |
 | 2026-11-06 | Plan de trabajo para la plataforma pública ([ROADMAP.md](ROADMAP.md)) y esta bitácora. | `81f3337` |
-| 2026-11-06 | Filtros en la tabla de items: botón "Filtros" con casillas por grupo (Tipo, Tier, Ataque, Defensa, Utilidad), etiquetas para quitar cada filtro y filtros en la URL. | Este commit |
+| 2026-11-06 | Filtros en la tabla de items: botón "Filtros" con casillas por grupo (Tipo, Tier, Ataque, Defensa, Utilidad), etiquetas para quitar cada filtro y filtros en la URL. | `5befc62` |
+| 2026-11-06 | Builds: espacios de inicial y reliquia en el formulario y en la tarjeta, con validación en el servidor y el costo total incluyéndolos. | Este commit |
 
 ## Cambios
 

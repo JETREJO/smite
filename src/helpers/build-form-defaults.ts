@@ -9,6 +9,8 @@ export function buildEmptyBuildForm(): BuildInput {
     roleId: null,
     strengthIds: [],
     newStrengths: [],
+    starterItemId: null,
+    relicItemId: null,
     items: [{ itemId: null }],
     skillOrder: Array.from({ length: MAX_GOD_LEVEL }, () => ({ slot: null })),
   };
