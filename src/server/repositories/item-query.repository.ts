@@ -5,6 +5,7 @@ import type { PaginatedResult } from "@/interfaces/god-list.interface";
 import type { ItemListItem, ItemOption, ItemParentSummary } from "@/interfaces/item-list.interface";
 import type { ItemFieldsInput, ItemInput, ItemStatInput, ItemValueInput } from "@/interfaces/item.interface";
 import { getDb } from "@/server/db/connection";
+import { buildItemFilterSql } from "@/server/repositories/item-filter.repository";
 
 /** Escapes LIKE wildcards so the search text is matched literally. */
 function toLikePattern(text: string): string {
@@ -33,11 +34,21 @@ export function countItems(): number {
   return (getDb().prepare("SELECT count(*) AS total FROM items").get() as { total: number }).total;
 }
 
-export function listItems(filters: { search: string; page: number }): PaginatedResult<ItemListItem> {
+export function listItems(filters: { search: string; page: number; filterKeys: string[] }): PaginatedResult<ItemListItem> {
   const db = getDb();
   const search = filters.search.trim();
-  const where = search === "" ? "" : "WHERE i.name LIKE ? ESCAPE '\\'";
-  const params = search === "" ? [] : [toLikePattern(search)];
+  const conditions: string[] = [];
+  const params: (string | number)[] = [];
+  if (search !== "") {
+    conditions.push("i.name LIKE ? ESCAPE '\\'");
+    params.push(toLikePattern(search));
+  }
+  const filterSql = buildItemFilterSql(filters.filterKeys);
+  if (filterSql.where !== "") {
+    conditions.push(filterSql.where);
+    params.push(...filterSql.params);
+  }
+  const where = conditions.length === 0 ? "" : `WHERE ${conditions.join(" AND ")}`;
 
   const { total } = db.prepare(`SELECT count(*) AS total FROM items i ${where}`).get(...params) as { total: number };
   const pageCount = Math.max(1, Math.ceil(total / ITEMS_PAGE_SIZE));

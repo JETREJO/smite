@@ -39,6 +39,7 @@ Registro de decisiones, objetivos logrados y cambios importantes, en orden crono
 | 2026-11-05 | Idioma base **inglés**, con traducciones manuales a **español y portugués** y selector de idioma. Debe poder sumar más idiomas (francés, alemán) sin rediseñar. Reemplaza en parte la decisión del 2026-10-24 sobre el idioma de la interfaz. | Llegar a toda la comunidad. El tráfico en inglés paga más publicidad. | Solo español. |
 | 2026-11-05 | Publicidad con AdSense y el sitio gratis para los usuarios. | Modelo de ingresos elegido por el usuario. | Planes de pago. |
 | 2026-11-06 | Seguir el plan de [ROADMAP.md](ROADMAP.md) y registrar el avance en esta bitácora. | Ir paso por paso y marcar lo que queda listo. | — |
+| 2026-11-06 | Filtros de items: en Tipo y Tier basta con cumplir uno; en los stats el item debe tener todos los marcados; los grupos se combinan con "y". "Poder" es Fuerza. Los filtros se definen en tablas de la base (`item_filter_*`), no en el código. | Decisión del usuario; buscar items concretos al armar una build. Los catálogos siempre salen de la base. | Stats combinados con "o"; un filtro "Poder" = Fuerza o Inteligencia. |
 
 ## Objetivos logrados
 
@@ -56,7 +57,8 @@ Registro de decisiones, objetivos logrados y cambios importantes, en orden crono
 | 2026-11-02 | 93 dioses del wiki importados, con habilidades, valores, escalados y aspectos. | `8f5efaf` |
 | 2026-11-02 | Builds: costo total, items enlazados con sus stats y efectos, fortalezas y edición. | `648e80a`, `da14bde`, `e363d86`, `18841cd` |
 | 2026-11-05 | Iniciales y reliquias del wiki importadas, con su color en las builds. | `c267fca` |
-| 2026-11-06 | Plan de trabajo para la plataforma pública ([ROADMAP.md](ROADMAP.md)) y esta bitácora. | Este commit |
+| 2026-11-06 | Plan de trabajo para la plataforma pública ([ROADMAP.md](ROADMAP.md)) y esta bitácora. | `81f3337` |
+| 2026-11-06 | Filtros en la tabla de items: botón "Filtros" con casillas por grupo (Tipo, Tier, Ataque, Defensa, Utilidad), etiquetas para quitar cada filtro y filtros en la URL. | Este commit |
 
 ## Cambios
 
@@ -64,3 +66,4 @@ Registro de decisiones, objetivos logrados y cambios importantes, en orden crono
 |---|---|
 | 2026-10-24 | La base se reinició para cambiar el esquema y se perdió un dios del usuario. Desde entonces los cambios de esquema van por migraciones con respaldo previo. |
 | 2026-11-02 | Anubis pasó a los stats del wiki. Sus valores anteriores están en `data/backups/smite-2026-11-02_10-49-01-before-migrate.db` (solo en la base local). |
+| 2026-11-06 | A pedido del usuario, todos los registros que seguían marcados como de Claude pasaron a ser suyos (`updated_by = 'user'`): 92 dioses, 204 items, 3 builds (Cazador, Ejecutor, Iniciador), 19 especializaciones y 18 fortalezas. `created_by` se conservó. `db:clean-claude` ya no borra nada de lo que existía ese día. Respaldo previo: `data/backups/smite-2026-11-06_12-19-54-claim-all-for-user.db` (solo en la base local). |

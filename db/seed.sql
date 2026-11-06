@@ -85,6 +85,78 @@ INSERT INTO effect_types (key, name) VALUES
     ('buff',      'Mejora'),
     ('debuff',    'Penalización');
 
+-- Filtros de la tabla de items (ver db/migrations/007_add_item_filters.sql).
+INSERT INTO item_filter_groups (key, name, match_mode, sort_order, created_by, updated_by) VALUES
+    ('type',    'Tipo',     'any', 10, 'seed', 'seed'),
+    ('tier',    'Tier',     'any', 20, 'seed', 'seed'),
+    ('offense', 'Ataque',   'all', 30, 'seed', 'seed'),
+    ('defense', 'Defensa',  'all', 40, 'seed', 'seed'),
+    ('utility', 'Utilidad', 'all', 50, 'seed', 'seed');
+
+INSERT INTO item_filters (key, group_id, name, tier, requires_active, sort_order, created_by, updated_by)
+SELECT f.key, g.id, f.name, f.tier, f.requires_active, f.sort_order, 'seed', 'seed'
+  FROM (
+    SELECT 'items' AS key, 'type' AS grp, 'Items' AS name, NULL AS tier, 0 AS requires_active, 10 AS sort_order
+    UNION ALL SELECT 'starters',            'type',    'Iniciales',            NULL, 0, 20
+    UNION ALL SELECT 'relics',              'type',    'Reliquias',            NULL, 0, 30
+    UNION ALL SELECT 'consumables',         'type',    'Consumibles',          NULL, 0, 40
+    UNION ALL SELECT 'tier-1',              'tier',    'Tier I',               1,    0, 10
+    UNION ALL SELECT 'tier-2',              'tier',    'Tier II',              2,    0, 20
+    UNION ALL SELECT 'tier-3',              'tier',    'Tier III',             3,    0, 30
+    UNION ALL SELECT 'strength',            'offense', 'Fuerza',               NULL, 0, 10
+    UNION ALL SELECT 'intelligence',        'offense', 'Inteligencia',         NULL, 0, 20
+    UNION ALL SELECT 'attack-damage',       'offense', 'Daño de ataque',       NULL, 0, 30
+    UNION ALL SELECT 'attack-speed',        'offense', 'Velocidad de ataque',  NULL, 0, 40
+    UNION ALL SELECT 'penetration',         'offense', 'Penetración',          NULL, 0, 50
+    UNION ALL SELECT 'lifesteal',           'offense', 'Robo de vida',         NULL, 0, 60
+    UNION ALL SELECT 'physical-protection', 'defense', 'Protección física',    NULL, 0, 10
+    UNION ALL SELECT 'magical-protection',  'defense', 'Protección mágica',    NULL, 0, 20
+    UNION ALL SELECT 'health',              'defense', 'Vida y regeneración',  NULL, 0, 30
+    UNION ALL SELECT 'cooldown',            'utility', 'Enfriamiento',         NULL, 0, 10
+    UNION ALL SELECT 'mana',                'utility', 'Maná y regeneración',  NULL, 0, 20
+    UNION ALL SELECT 'echo',                'utility', 'Eco',                  NULL, 0, 30
+    UNION ALL SELECT 'active',              'utility', 'Con activa',           NULL, 1, 40
+  ) f
+  JOIN item_filter_groups g ON g.key = f.grp;
+
+-- "Items" es todo lo que no es inicial, reliquia ni consumible.
+INSERT INTO item_filter_categories (filter_id, category_id)
+SELECT f.id, c.id
+  FROM (
+    SELECT 'items' AS filter_key, 'component' AS category_key
+    UNION ALL SELECT 'items',       'final'
+    UNION ALL SELECT 'items',       'curio'
+    UNION ALL SELECT 'items',       'god_specific'
+    UNION ALL SELECT 'starters',    'starter'
+    UNION ALL SELECT 'relics',      'relic'
+    UNION ALL SELECT 'consumables', 'consumable'
+  ) m
+  JOIN item_filters f ON f.key = m.filter_key
+  JOIN item_categories c ON c.key = m.category_key;
+
+INSERT INTO item_filter_stats (filter_id, stat_id)
+SELECT f.id, s.id
+  FROM (
+    SELECT 'strength' AS filter_key, 'strength' AS stat_key
+    UNION ALL SELECT 'intelligence',        'intelligence'
+    UNION ALL SELECT 'attack-damage',       'attack_damage'
+    UNION ALL SELECT 'attack-speed',        'attack_speed_percent'
+    UNION ALL SELECT 'attack-speed',        'attack_speed'
+    UNION ALL SELECT 'penetration',         'penetration_flat'
+    UNION ALL SELECT 'penetration',         'penetration_percent'
+    UNION ALL SELECT 'lifesteal',           'lifesteal'
+    UNION ALL SELECT 'physical-protection', 'physical_protection'
+    UNION ALL SELECT 'magical-protection',  'magical_protection'
+    UNION ALL SELECT 'health',              'health'
+    UNION ALL SELECT 'health',              'hp5'
+    UNION ALL SELECT 'cooldown',            'cooldown_rate'
+    UNION ALL SELECT 'mana',                'mana'
+    UNION ALL SELECT 'mana',                'mp5'
+    UNION ALL SELECT 'echo',                'echo'
+  ) m
+  JOIN item_filters f ON f.key = m.filter_key
+  JOIN stats s ON s.key = m.stat_key;
+
 -- Todo lo anterior viene del seed, no del usuario ni de Claude.
 UPDATE pantheons           SET created_by = 'seed', updated_by = 'seed';
 UPDATE roles               SET created_by = 'seed', updated_by = 'seed';

@@ -11,10 +11,13 @@ const SEARCH_DEBOUNCE_MS = 300;
 interface UrlSearchInputProps {
   initialValue: string;
   placeholder: string;
+  /** Other URL params to keep while searching (e.g. the active filters). */
+  keepParams?: Record<string, string | number | null>;
 }
 
-/** Search box that writes ?q= to the URL (and goes back to page 1) so the server renders the results. */
-export function UrlSearchInput({ initialValue, placeholder }: UrlSearchInputProps) {
+/** Search box that writes ?q= to the URL (and goes back to page 1) so the server renders the results.
+ * `keepParams` are kept in the URL; the page param is always dropped. */
+export function UrlSearchInput({ initialValue, placeholder, keepParams = {} }: UrlSearchInputProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [search, setSearch] = useState(initialValue);
@@ -27,7 +30,7 @@ export function UrlSearchInput({ initialValue, placeholder }: UrlSearchInputProp
     setSearch(text);
     clearTimeout(searchTimeout.current);
     searchTimeout.current = setTimeout(() => {
-      router.replace(`${pathname}${buildQueryString({ q: text.trim() })}`, { scroll: false });
+      router.replace(`${pathname}${buildQueryString({ ...keepParams, q: text.trim() })}`, { scroll: false });
     }, SEARCH_DEBOUNCE_MS);
   }
 

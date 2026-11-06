@@ -60,6 +60,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
   - Limpia sus datos solo con `npm run db:clean-claude` (respaldo antes; `-- --dry-run` para simular). Conserva lo que datos del usuario necesitan y reporta los registros del usuario que Claude haya modificado.
   - Antes de limpiar, revisa con `-- --dry-run` que no se vaya a borrar un dato real que el usuario pidió capturar y aún no ha editado.
   - Nunca usa `db:reset -- --force`.
+- **Todo lo que existía el 2026-11-06 es del usuario** (se le pasó `updated_by = 'user'` en bloque, a su pedido). Las builds de Anubis, Cu Chulainn y Mercury y los datos del wiki ya no son de Claude: no se borran ni se editan para pruebas.
 - En la página de un dios, item o build aparece "Registrado por Claude" o "Modificado por Claude" cuando aplica.
 
 ## Páginas
@@ -71,7 +72,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 | `/gods/{id}` | Detalle del dios en dos pestañas: **Información** (el mismo formulario en solo lectura; "Editar" habilita los campos y "Guardar cambios" los guarda) y **Builds**. |
 | `/gods/{id}/builds/new` | Formulario para crear una build del dios. Al guardar vuelve a `/gods/{id}?tab=builds`. |
 | `/gods/{id}/builds/{buildId}/edit` | Formulario para editar una build (datos, rol, aspecto, fortalezas, items y orden de habilidades). Al guardar vuelve a `/gods/{id}?tab=builds`. |
-| `/items` | Tabla de items en orden alfabético con buscador por nombre (`?q=`). 25 por página. Sin más filtros por ahora. |
+| `/items` | Tabla de items en orden alfabético con buscador por nombre y botón "Filtros" (`?q=&filters=a,b&page=`). 25 por página. |
 | `/items/new` | Formulario para registrar un item con sus ramificaciones. |
 | `/items/{id}` | Detalle del item en solo lectura con "Editar", y la lista de items que lo usan como componente. |
 
@@ -88,6 +89,7 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
 - Un item no puede ser componente de sí mismo, ni directa ni indirectamente (el servidor lo valida).
 - Los números de la pasiva y la activa se guardan como pares nombre/valor (`item_values`).
 - `items.english_name` guarda el nombre original en inglés (opcional). `name` sigue siendo el nombre principal y el único que se valida como único.
+- **Filtros de `/items`:** se definen en la base (migración 007). `item_filter_groups` agrupa los filtros y su `match_mode` dice cómo se combinan dentro del grupo: `any` (Tipo, Tier: basta con uno) o `all` (Ataque, Defensa, Utilidad: el item debe tenerlos todos). Los grupos se combinan con "y". Cada filtro de `item_filters` coincide si cumple todo lo que define: categorías (`item_filter_categories`), al menos uno de sus stats (`item_filter_stats`), `tier` y `requires_active`. "Items" = componente, final, curio y específico de un dios. "Poder" del usuario = Fuerza. Para agregar un filtro basta con insertar filas (con una migración).
 - **Importación del wiki:** los items del wiki oficial se preparan en JSON (`db/imports/`) y se cargan con `npm run db:import-items -- <archivo> [--dry-run]`. Se guardan traducidos al español, con el nombre original en `english_name`, `created_by = 'claude'` y `source = 'wiki'`. Es todo o nada: valida nombres, stats, componentes y que costo total = costo propio + componentes, y hace respaldo antes.
 - `db:clean-claude` nunca borra items con `source` (son datos reales, no pruebas). Si el usuario edita uno, pasa a ser suyo como cualquier otro.
 - Las traducciones de nombres son de Claude, no oficiales del juego: el usuario las revisa.
@@ -117,9 +119,9 @@ Aplicación para **SMITE 2** (Hi-Rez): registrar dioses e items, consultar sus s
   3. Con ese análisis descarta desde el inicio los items que no serían efectivos, para reducir las combinaciones. Ejemplo: Anubis no es un dios de ataques básicos, así que se descarta todo item que tenga o potencie esa cualidad, aunque también dé Inteligencia.
   4. Solo después compara las combinaciones que quedan.
 - `useFieldArray` de React Hook Form no valida su regla de "mínimo una fila" al enviar; la lista de items se revisa a mano en `onSubmit`.
-- **Builds de Anubis:** Claude creó Ráfaga, Asedio y Bastión a pedido del usuario. Son datos reales, pero están marcadas como `claude`: `db:clean-claude` las borra si el usuario no las ha editado desde la app; al editarlas pasan a ser suyas. Revisar siempre con `-- --dry-run` antes de limpiar.
-- **Builds de Cu Chulainn:** Claude creó Sabueso, Sed de sangre y Guardián (rol Solo) con las mismas reglas de autoría que las de Anubis.
-- **Builds de Mercury:** Claude creó Ejecutor, Cazador e Iniciador (rol Jungla), con la misma autoría. Para Mercury los items de crítico sí se evaluaron, porque Te hice mirar puede hacer crítico; se asumió un multiplicador de 1.75.
+- **Builds de Anubis:** Claude creó Ráfaga, Asedio y Bastión a pedido del usuario. Son datos reales y desde el 2026-11-06 son del usuario (`updated_by = 'user'`).
+- **Builds de Cu Chulainn:** Claude creó Sabueso, Sed de sangre y Guardián (rol Solo), también del usuario desde el 2026-11-06.
+- **Builds de Mercury:** Claude creó Ejecutor, Cazador e Iniciador (rol Jungla), también del usuario desde el 2026-11-06. Para Mercury los items de crítico sí se evaluaron, porque Te hice mirar puede hacer crítico; se asumió un multiplicador de 1.75.
 - **Regla al comparar builds:** cada build tiene que ganar la situación que promete. Se fija un mínimo de vida efectiva por situación, para que el simulador no elija solo daño, y si una build pierde en su propia especialidad contra otra, se cambia en vez de dejarle la etiqueta.
 - **Supuestos del análisis de builds (no están en la base; confirmar en el juego):** mitigación = 100 / (100 + protección), tope de penetración de 40%, y lecturas ambiguas de items como Alma segadora ("infligido 4 veces") y Gema de almas (si "golpe de habilidad" cuenta cada tick). `Eco` no está definido en los datos, por eso esos items no se evaluaron. Para dioses de ataques también se asume que el robo de vida cura 100% con ataques; el multiplicador de crítico no está en los datos.
 

@@ -20,3 +20,12 @@ export function buildQueryString(values: Record<string, string | number | null |
   const query = params.toString();
   return query === "" ? "" : `?${query}`;
 }
+
+/** Comma-separated list from the URL ("a,b,c"), without blanks or repeats. */
+export function getListParam(params: SearchParams, key: string): string[] {
+  const values = getStringParam(params, key)
+    .split(",")
+    .map((value) => value.trim())
+    .filter((value) => value !== "");
+  return [...new Set(values)];
+}

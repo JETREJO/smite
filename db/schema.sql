@@ -341,6 +341,51 @@ CREATE TABLE build_strength_links (
     PRIMARY KEY (build_id, strength_id)
 );
 
+-- Filtros de la tabla de items (/items). Se agrupan y cada grupo dice cómo se combinan sus filtros:
+--   match_mode = 'any': el item cumple al menos uno de los filtros marcados del grupo (Tipo, Tier).
+--   match_mode = 'all': el item cumple todos los filtros marcados del grupo (stats).
+-- Entre grupos distintos siempre se combinan con "y".
+--
+-- Un filtro coincide con un item cuando cumple todas las condiciones que tiene definidas:
+--   item_filter_categories: la categoría del item es una de estas.
+--   item_filter_stats:      el item tiene al menos uno de estos stats.
+--   tier:                   el item es de este tier.
+--   requires_active:        el item tiene activa.
+
+CREATE TABLE item_filter_groups (
+    id          INTEGER PRIMARY KEY,
+    key         TEXT NOT NULL UNIQUE,
+    name        TEXT NOT NULL,
+    match_mode  TEXT NOT NULL CHECK (match_mode IN ('any', 'all')),
+    sort_order  INTEGER NOT NULL DEFAULT 0,
+    created_by  TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by  TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
+);
+
+CREATE TABLE item_filters (
+    id              INTEGER PRIMARY KEY,
+    key             TEXT NOT NULL UNIQUE,
+    group_id        INTEGER NOT NULL REFERENCES item_filter_groups(id),
+    name            TEXT NOT NULL,
+    tier            INTEGER CHECK (tier BETWEEN 1 AND 3),
+    requires_active INTEGER NOT NULL DEFAULT 0 CHECK (requires_active IN (0, 1)),
+    sort_order      INTEGER NOT NULL DEFAULT 0,
+    created_by      TEXT NOT NULL DEFAULT 'user' CHECK (created_by IN ('user', 'claude', 'seed')),
+    updated_by      TEXT NOT NULL DEFAULT 'user' CHECK (updated_by IN ('user', 'claude', 'seed'))
+);
+
+CREATE TABLE item_filter_categories (
+    filter_id   INTEGER NOT NULL REFERENCES item_filters(id) ON DELETE CASCADE,
+    category_id INTEGER NOT NULL REFERENCES item_categories(id),
+    PRIMARY KEY (filter_id, category_id)
+);
+
+CREATE TABLE item_filter_stats (
+    filter_id INTEGER NOT NULL REFERENCES item_filters(id) ON DELETE CASCADE,
+    stat_id   INTEGER NOT NULL REFERENCES stats(id),
+    PRIMARY KEY (filter_id, stat_id)
+);
+
 ------------------------------------------------------------------------------
 -- Índices para las consultas más comunes
 ------------------------------------------------------------------------------
